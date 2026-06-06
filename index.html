@@ -78,7 +78,8 @@ section{position:relative;padding-block:clamp(80px,12vh,150px)}
 .ph__mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;
   font-size:1.5rem;color:rgba(255,255,255,.18);letter-spacing:.05em}
 .ph--rose .ph__mono,.ph--light .ph__mono{color:rgba(96,12,0,.14)}
-.ph__img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.ph__img,.ph__video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0}
+.ph.has-img::before{z-index:1;background:linear-gradient(to top,rgba(28,21,18,.18),transparent 55%)}
 
 /* grain overlay */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.05;mix-blend-mode:multiply}
@@ -364,8 +365,8 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
     </div>
     <div class="hero-media">
       <div class="hero-badge"><span>YV</span></div>
-      <div class="ph m1" data-parallax="-40"><div class="ph__mono">portrait</div><span class="ph__tag">Hero · фото сюди</span></div>
-      <div class="ph ph--dark m2" data-parallax="30"><span class="ph__tag">фото</span></div>
+      <div class="ph m1 has-img" data-parallax="-40"><img class="ph__img" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">Fashion portrait</span></div>
+      <div class="ph ph--dark m2 has-img" data-parallax="30"><img class="ph__img" src="assets/photo-5.jpg" alt="Beauty portrait by Yana Vergun"><span class="ph__tag">Beauty</span></div>
     </div>
   </div>
 </section>
@@ -381,10 +382,10 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
 <!-- CATEGORIES -->
 <section class="wrap">
   <div class="cats">
-    <article class="cat reveal"><div class="ph ph--rose" data-tilt><div class="ph__mono">YV</div><span class="ph__tag">Studio</span></div><h3 class="h3">Studio</h3><p data-en="Portrait, fashion &amp; beauty shoots in the studio.">Портретні, fashion та beauty зйомки у студії.</p></article>
-    <article class="cat reveal"><div class="ph" data-tilt><div class="ph__mono">YV</div><span class="ph__tag">Street</span></div><h3 class="h3">Street</h3><p data-en="Live emotion, natural light, frames on the street.">Живі емоції, природне світло та кадри на вулиці.</p></article>
-    <article class="cat reveal"><div class="ph ph--wine" data-tilt><div class="ph__mono">YV</div><span class="ph__tag">Brand</span></div><h3 class="h3">Brand Content</h3><p data-en="Photo &amp; video content for brands and business.">Фото та відео контент для брендів і бізнесу.</p></article>
-    <article class="cat reveal"><div class="ph ph--dark" data-tilt><div class="ph__mono">YV</div><span class="ph__tag">Backstage</span></div><h3 class="h3">Backstage</h3><p data-en="Behind the scenes — the process and atmosphere.">За кадром — процес і атмосфера зйомки.</p></article>
+    <article class="cat reveal"><div class="ph ph--rose has-img" data-tilt><img class="ph__img" src="assets/photo-6.jpg" alt="Studio fashion shoot by Yana Vergun"><span class="ph__tag">Studio</span></div><h3 class="h3">Studio</h3><p data-en="Portrait, fashion &amp; beauty shoots in the studio.">Портретні, fashion та beauty зйомки у студії.</p></article>
+    <article class="cat reveal"><div class="ph has-img" data-tilt><img class="ph__img" src="assets/photo-2.jpg" alt="Street fashion shoot by Yana Vergun"><span class="ph__tag">Street</span></div><h3 class="h3">Street</h3><p data-en="Live emotion, natural light, frames on the street.">Живі емоції, природне світло та кадри на вулиці.</p></article>
+    <article class="cat reveal"><div class="ph ph--wine has-img" data-tilt><img class="ph__img" src="assets/photo-3.jpg" alt="Brand content shoot by Yana Vergun"><span class="ph__tag">Brand</span></div><h3 class="h3">Brand Content</h3><p data-en="Photo &amp; video content for brands and business.">Фото та відео контент для брендів і бізнесу.</p></article>
+    <article class="cat reveal"><div class="ph ph--dark has-img" data-tilt><img class="ph__img" src="assets/photo-7.jpg" alt="Backstage style portrait by Yana Vergun"><span class="ph__tag">Backstage</span></div><h3 class="h3">Backstage</h3><p data-en="Behind the scenes — the process and atmosphere.">За кадром — процес і атмосфера зйомки.</p></article>
   </div>
 </section>
 
@@ -395,11 +396,11 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
     <a href="#" class="tlink reveal" data-en="View full portfolio">Дивитись повне портфоліо <span class="arr">→</span></a>
   </div>
   <div class="pf">
-    <div class="pf-item pf-a reveal"><div class="ph ph--rose"><div class="ph__mono">YV</div></div><div class="ov"><h4>Luma Jewelry</h4><small data-en="brand content">контент для бренду</small></div></div>
-    <div class="pf-item pf-b reveal"><div class="ph ph--dark"><div class="ph__mono">YV</div></div><div class="ov"><h4>Editorial Portraits</h4><small data-en="studio">студія</small></div></div>
-    <div class="pf-item pf-c reveal"><div class="ph"><div class="ph__mono">YV</div></div><div class="ov"><h4>Summer in Lviv</h4><small>street</small></div></div>
-    <div class="pf-item pf-d reveal"><div class="ph ph--wine"><div class="ph__mono">YV</div></div><div class="ov"><h4>Brand Campaign</h4><small data-en="fashion &amp; beauty">fashion &amp; beauty</small></div></div>
-    <div class="pf-item pf-e reveal"><div class="ph ph--dark"><div class="ph__mono">YV</div></div><div class="ov"><h4>Backstage</h4><small data-en="behind the scenes">за кадром</small></div></div>
+    <div class="pf-item pf-a reveal"><div class="ph ph--rose has-img"><img class="ph__img" src="assets/photo-4.jpg" alt="Beauty editorial portrait by Yana Vergun"></div><div class="ov"><h4>Beauty Editorial</h4><small data-en="brand content">контент для бренду</small></div></div>
+    <div class="pf-item pf-b reveal"><div class="ph ph--dark has-img"><img class="ph__img" src="assets/photo-7.jpg" alt="Studio portrait by Yana Vergun"></div><div class="ov"><h4>Editorial Portraits</h4><small data-en="studio">студія</small></div></div>
+    <div class="pf-item pf-c reveal"><div class="ph has-img"><img class="ph__img" src="assets/photo-2.jpg" alt="Summer outdoor portrait by Yana Vergun"></div><div class="ov"><h4>Summer in Lviv</h4><small>street</small></div></div>
+    <div class="pf-item pf-d reveal"><div class="ph ph--wine has-img"><img class="ph__img" src="assets/photo-3.jpg" alt="Brand campaign portrait by Yana Vergun"></div><div class="ov"><h4>Brand Campaign</h4><small data-en="fashion &amp; beauty">fashion &amp; beauty</small></div></div>
+    <div class="pf-item pf-e reveal"><div class="ph ph--dark has-img"><img class="ph__img" src="assets/photo-6.jpg" alt="Studio fashion image by Yana Vergun"></div><div class="ov"><h4>Backstage</h4><small data-en="behind the scenes">за кадром</small></div></div>
   </div>
 </section>
 
@@ -407,7 +408,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
 <section class="wrap about" id="about">
   <div class="about-grid">
     <div class="about-media reveal">
-      <div class="ph" data-parallax="-30"><div class="ph__mono">about · фото сюди</div></div>
+      <div class="ph has-img" data-parallax="-30"><img class="ph__img" src="assets/photo-5.jpg" alt="Studio beauty portrait by Yana Vergun"></div>
       <div class="badge">YV</div>
     </div>
     <div class="about-copy">
@@ -464,8 +465,8 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <div class="testi-stack" id="testiStack"></div>
       <div class="testi-dots" id="testiDots"></div>
     </div>
-    <div class="ph ph--dark"><div class="ph__mono">YV</div><span class="ph__tag">фото</span></div>
-    <div class="ph ph--rose"><div class="ph__mono">YV</div><span class="ph__tag">фото</span></div>
+    <div class="ph ph--dark has-img"><video class="ph__video" src="assets/video-1.mp4" poster="assets/photo-1.jpg" autoplay muted loop playsinline></video><span class="ph__tag">video</span></div>
+    <div class="ph ph--rose has-img"><img class="ph__img" src="assets/photo-4.jpg" alt="Beauty portrait by Yana Vergun"><span class="ph__tag">фото</span></div>
   </div>
 </section>
 
@@ -489,7 +490,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
         <p class="note" data-en="* demo form — connect to phone / Telegram when building">* демо-форма — підключимо до телефону / Telegram при розробці</p>
       </form>
     </div>
-    <div class="contact-media reveal"><div class="ph" data-parallax="-30"><div class="ph__mono">фото сюди</div></div></div>
+    <div class="contact-media reveal"><div class="ph has-img" data-parallax="-30"><img class="ph__img" src="assets/photo-7.jpg" alt="Contact section portrait by Yana Vergun"></div></div>
   </div>
 </section>
 </main>
