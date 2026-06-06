@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="uk" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yana Vergun — Photography / Visual Content · Львів</title>
+<meta name="description" content="Yana Vergun — фотограф та відеограф у Львові. Photo & video content для брендів, fashion & beauty, жіночі портрети. Працюю по всій Україні.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#600C00; --oxblood:#45100F; --wine-hover:#7A1A0C;
+  --ivory:#F4EEE6; --rose-cream:#F1E7E4; --sand:#E3D7C9; --line:#DBCFC2;
+  --ink:#1C1512; --ink-muted:#6A5E55; --paper:#FCFAF7; --cream-on-wine:#F2E7DD;
+  --radius:14px; --radius-lg:22px;
+  --ease-lux:cubic-bezier(.22,1,.36,1);
+  --ease-inout:cubic-bezier(.65,0,.35,1);
+  --maxw:1320px; --pad:clamp(20px,5vw,80px);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Manrope",-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{
+  font-family:var(--sans); background:var(--ivory); color:var(--ink);
+  font-size:1.0625rem; line-height:1.7; font-weight:400; overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--wine);color:var(--cream-on-wine)}
+
+/* ---------- TYPOGRAPHY ---------- */
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.22em;color:var(--ink-muted);font-weight:500}
+.eyebrow.on-wine{color:rgba(242,231,221,.7)}
+h1,h2,h3{font-weight:400;line-height:1}
+.display{font-family:var(--serif);font-weight:500;line-height:.95;letter-spacing:-.01em}
+.h-xl{font-family:var(--serif);font-size:clamp(3.4rem,8vw,7rem);font-weight:500;line-height:.92;letter-spacing:-.015em}
+.h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:500;line-height:1}
+.h2{font-family:var(--serif);font-size:clamp(2rem,3.6vw,3rem);font-weight:500}
+.h3{font-size:.95rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600}
+.it{font-style:italic;font-weight:400}
+.muted{color:var(--ink-muted)}
+.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--ink-muted);max-width:46ch}
+
+/* ---------- LAYOUT ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+section{position:relative;padding-block:clamp(80px,12vh,150px)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:clamp(36px,5vw,64px);flex-wrap:wrap}
+
+/* ---------- BUTTONS / LINKS ---------- */
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--sans);font-size:.85rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;padding:1.05em 1.8em;border-radius:999px;cursor:pointer;border:1px solid transparent;
+  transition:background .5s var(--ease-lux),color .5s var(--ease-lux),border-color .5s var(--ease-lux),transform .4s var(--ease-lux);will-change:transform}
+.btn--primary{background:var(--wine);color:var(--cream-on-wine)}
+.btn--primary:hover{background:var(--wine-hover)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--ink)}
+.btn--light{background:var(--cream-on-wine);color:var(--wine)}
+.btn--light:hover{background:#fff}
+.btn .arr{transition:transform .5s var(--ease-lux)}
+.btn:hover .arr{transform:translateX(4px)}
+.tlink{display:inline-flex;align-items:center;gap:.5em;font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;position:relative}
+.tlink::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-lux)}
+.tlink:hover::after{transform:scaleX(1)}
+.tlink .arr{transition:transform .5s var(--ease-lux)}
+.tlink:hover .arr{transform:translateX(4px)}
+
+/* ---------- IMAGE PLACEHOLDERS (swap with real photos) ---------- */
+.ph{position:relative;overflow:hidden;border-radius:4px;background:linear-gradient(135deg,#e7dccd,#cdbba6)}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 70% 20%,rgba(96,12,0,.06),transparent 60%)}
+.ph--wine{background:linear-gradient(150deg,#7a221a,#45100f)}
+.ph--rose{background:linear-gradient(135deg,#efe2dd,#e3cfc6)}
+.ph--dark{background:linear-gradient(150deg,#352b26,#1c1512)}
+.ph__tag{position:absolute;left:14px;bottom:12px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);font-weight:600;z-index:2}
+.ph--rose .ph__tag,.ph--light .ph__tag{color:rgba(28,21,18,.4)}
+.ph__mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;
+  font-size:1.5rem;color:rgba(255,255,255,.18);letter-spacing:.05em}
+.ph--rose .ph__mono,.ph--light .ph__mono{color:rgba(96,12,0,.14)}
+.ph__img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+
+/* grain overlay */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.05;mix-blend-mode:multiply}
+
+/* ---------- LOADER ---------- */
+.loader{position:fixed;inset:0;z-index:9800;background:var(--wine);display:grid;place-items:center;
+  animation:loaderFail 0s linear 3.2s forwards}
+@keyframes loaderFail{to{visibility:hidden;opacity:0;pointer-events:none}}
+.loader__inner{text-align:center;color:var(--cream-on-wine)}
+.loader__mono{font-family:var(--serif);font-style:italic;font-size:3rem;letter-spacing:.1em}
+.loader__name{margin-top:14px;font-size:.7rem;letter-spacing:.45em;text-transform:uppercase;opacity:.7}
+.loader.done{visibility:hidden}
+.curtain{position:fixed;inset:0;z-index:9700;background:var(--oxblood);transform:translateY(0)}
+
+/* ---------- HEADER ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:8000;transition:background .5s var(--ease-lux),padding .5s var(--ease-lux),box-shadow .5s}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad)}
+header.scrolled{background:rgba(244,238,230,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+header.scrolled .nav{padding-block:14px}
+.brand{line-height:1}
+.brand b{display:block;font-weight:300;font-size:1.05rem;letter-spacing:.32em}
+.brand span{display:block;font-size:.52rem;letter-spacing:.5em;color:var(--ink-muted);margin-top:3px;padding-left:3px}
+.menu{display:flex;gap:34px;list-style:none}
+.menu a{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;position:relative;padding:4px 0}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-lux)}
+.menu a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.lang{display:flex;gap:6px;font-size:.72rem;letter-spacing:.1em;font-weight:600}
+.lang button{background:none;border:none;cursor:pointer;color:var(--ink-muted);font:inherit;padding:2px}
+.lang button.active{color:var(--wine)}
+.burger{display:none;width:30px;height:18px;position:relative;background:none;border:none;cursor:pointer}
+.burger span{position:absolute;left:0;height:1.5px;width:100%;background:var(--ink);transition:transform .4s var(--ease-lux),opacity .3s}
+.burger span:nth-child(1){top:0}.burger span:nth-child(2){top:50%;transform:translateY(-50%)}.burger span:nth-child(3){bottom:0}
+
+/* mobile overlay menu */
+.mobile-menu{position:fixed;inset:0;z-index:8500;background:var(--wine);color:var(--cream-on-wine);
+  display:flex;flex-direction:column;justify-content:center;padding:var(--pad);transform:translateY(-100%);
+  transition:transform .7s var(--ease-lux);visibility:hidden}
+.mobile-menu.open{transform:translateY(0);visibility:visible}
+.mobile-menu ul{list-style:none}
+.mobile-menu li{overflow:hidden}
+.mobile-menu a{font-family:var(--serif);font-size:clamp(2.2rem,9vw,3.4rem);font-weight:500;display:block;padding:8px 0}
+.mm-close{position:absolute;top:26px;right:var(--pad);background:none;border:none;color:inherit;font-size:1.6rem;cursor:pointer}
+
+/* ---------- HERO ---------- */
+.hero{padding-top:clamp(150px,20vh,220px);padding-bottom:clamp(40px,6vh,80px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,80px);align-items:center}
+.hero-eyebrow{margin-bottom:26px}
+.hero h1{margin-bottom:28px}
+.hero h1 .it{display:block}
+.hero .lead{margin-bottom:38px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.hero-loc{display:flex;align-items:center;gap:10px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+.hero-loc .dot{width:6px;height:6px;border-radius:50%;background:var(--wine)}
+.hero-media{position:relative;height:min(72vh,640px)}
+.hero-media .m1{position:absolute;inset:0 18% 8% 0;border-radius:6px}
+.hero-media .m2{position:absolute;right:0;bottom:0;width:42%;height:46%;border:6px solid var(--ivory);border-radius:4px}
+.hero-badge{position:absolute;left:-26px;top:18%;width:104px;height:104px;border-radius:50%;background:var(--ivory);
+  display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--wine);
+  box-shadow:0 20px 50px -25px rgba(28,21,18,.4);z-index:3}
+.hero-badge .ring{position:absolute;inset:0}
+
+/* ---------- MARQUEE ---------- */
+.marquee{border-block:1px solid var(--line);padding-block:18px;overflow:hidden;white-space:nowrap}
+.marquee__track{display:inline-flex;gap:0;will-change:transform}
+.marquee__track span{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.2rem);font-style:italic;padding:0 26px;color:var(--ink)}
+.marquee__track span::after{content:"·";margin-left:52px;color:var(--wine);font-style:normal}
+
+/* ---------- CATEGORIES ---------- */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px)}
+.cat{display:flex;flex-direction:column;gap:16px}
+.cat .ph{aspect-ratio:3/4}
+.cat h3{margin-top:4px}
+.cat p{font-size:.9rem;color:var(--ink-muted);line-height:1.55}
+
+/* ---------- PORTFOLIO (broken grid) ---------- */
+.pf{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,1.6vw,22px);align-items:start}
+.pf-item{position:relative;overflow:hidden;border-radius:4px;cursor:pointer}
+.pf-item .ph{position:absolute;inset:0;border-radius:0;transition:transform 1.2s var(--ease-lux)}
+.pf-item:hover .ph{transform:scale(1.06)}
+.pf-item .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(69,16,15,.78),transparent 55%);
+  opacity:0;transition:opacity .6s var(--ease-lux);display:flex;flex-direction:column;justify-content:end;padding:22px;z-index:3}
+.pf-item:hover .ov{opacity:1}
+.pf-item .ov h4{font-family:var(--serif);font-size:1.5rem;color:var(--cream-on-wine);transform:translateY(10px);transition:transform .6s var(--ease-lux)}
+.pf-item .ov small{color:rgba(242,231,221,.7);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;transform:translateY(10px);transition:transform .6s var(--ease-lux) .05s}
+.pf-item:hover .ov h4,.pf-item:hover .ov small{transform:translateY(0)}
+.pf-a{grid-column:span 2;aspect-ratio:4/5}
+.pf-b{grid-column:span 2;aspect-ratio:4/5}
+.pf-c{grid-column:span 2;aspect-ratio:4/5}
+.pf-d{grid-column:span 4;aspect-ratio:3/2}
+.pf-e{grid-column:span 2;aspect-ratio:4/5}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,90px);align-items:center}
+.about-media{position:relative}
+.about-media .ph{aspect-ratio:4/5}
+.about-media .badge{position:absolute;right:-22px;bottom:30px;width:120px;height:120px;border-radius:50%;background:var(--wine);
+  color:var(--cream-on-wine);display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:1.8rem}
+.about h2{margin:18px 0 26px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:22px 40px;margin:34px 0 32px;border-top:1px solid var(--line);padding-top:30px}
+.fact .k{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-muted)}
+.fact .v{font-family:var(--serif);font-size:1.3rem;margin-top:4px}
+
+/* ---------- SERVICES (full-bleed wine) ---------- */
+.services{background:var(--oxblood);color:var(--cream-on-wine)}
+.services .h2{color:var(--cream-on-wine)}
+.services .eyebrow{color:rgba(242,231,221,.6);text-align:center;display:block}
+.services .h2{text-align:center;margin:10px 0 8px}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin:clamp(44px,6vw,70px) 0 50px}
+.svc{border-top:1px solid rgba(242,231,221,.22);padding-top:24px}
+.svc .ico{width:30px;height:30px;margin-bottom:20px;opacity:.85}
+.svc h3{font-family:var(--serif);font-size:1.4rem;text-transform:none;letter-spacing:0;font-weight:500;margin-bottom:10px}
+.svc p{font-size:.88rem;color:rgba(242,231,221,.72);line-height:1.6;margin-bottom:18px}
+.svc .price{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,231,221,.5);margin-bottom:14px}
+.svc .tlink{color:var(--cream-on-wine)}
+.svc-cta{text-align:center}
+
+/* ---------- PROCESS ---------- */
+.proc-line{position:relative;height:1px;background:var(--line);margin:0 0 50px}
+.proc-line .fill{position:absolute;inset:0;background:var(--wine);transform:scaleX(0);transform-origin:left}
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.step .num{font-family:var(--serif);font-size:2.4rem;color:var(--wine);line-height:1}
+.step h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;margin:14px 0 8px;font-weight:600}
+.step p{font-size:.84rem;color:var(--ink-muted);line-height:1.55}
+
+/* ---------- TESTIMONIAL ---------- */
+.testi{display:grid;grid-template-columns:1.4fr .9fr 1fr;gap:20px;align-items:stretch}
+.testi .quote{background:var(--wine);color:var(--cream-on-wine);border-radius:6px;padding:clamp(30px,4vw,52px);display:flex;flex-direction:column;justify-content:center}
+.testi .quote .mark{font-family:var(--serif);font-size:4rem;line-height:.5;opacity:.5}
+.testi-stack{display:grid;margin:18px 0 22px}
+.testi-stack .slide{grid-area:1/1;opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .6s var(--ease-lux),transform .6s var(--ease-lux)}
+.testi-stack .slide.active{opacity:1;transform:none;pointer-events:auto}
+.testi-stack .slide p{font-family:var(--serif);font-size:clamp(1.4rem,2.4vw,2rem);font-style:italic;margin:0 0 18px;line-height:1.25}
+.testi-stack .slide cite{font-style:normal;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;opacity:.8;display:block}
+.testi-dots{display:flex;gap:9px;margin-top:26px}
+.testi-dots button{width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;
+  background:rgba(242,231,221,.32);transition:background .4s var(--ease-lux),width .4s var(--ease-lux)}
+.testi-dots button.active{background:var(--cream-on-wine);width:22px;border-radius:4px}
+.testi .ph{border-radius:6px}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,6vw,80px);align-items:center}
+.quick{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.qbtn{display:inline-flex;align-items:center;gap:.6em;font-size:.82rem;font-weight:600;letter-spacing:.04em;
+  padding:.85em 1.3em;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  transition:border-color .4s var(--ease-lux),background .4s var(--ease-lux),transform .4s var(--ease-lux);will-change:transform}
+.qbtn:hover{border-color:var(--ink)}
+.qbtn--primary{background:var(--wine);color:var(--cream-on-wine);border-color:var(--wine)}
+.qbtn--primary:hover{background:var(--wine-hover);border-color:var(--wine-hover)}
+.qbtn .qico{font-size:1rem;line-height:1}
+.contact h2{margin:14px 0 22px}
+.form{display:grid;gap:16px;margin-top:30px;max-width:520px}
+.field input,.field textarea{width:100%;background:var(--paper);border:1px solid var(--line);border-radius:8px;
+  padding:16px 18px;font:inherit;font-size:.95rem;color:var(--ink);transition:border-color .4s}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--wine)}
+.field input::placeholder,.field textarea::placeholder{color:#a89c92}
+.contact-media .ph{aspect-ratio:3/4;border-radius:6px}
+.note{font-size:.78rem;color:var(--ink-muted);margin-top:6px}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:#e9e1d8;padding-block:clamp(60px,8vw,90px) 36px;position:relative;overflow:hidden}
+.foot-watermark{font-family:var(--serif);font-size:clamp(4rem,18vw,15rem);line-height:.8;color:rgba(244,238,230,.05);
+  white-space:nowrap;text-align:center;font-style:italic;margin-bottom:30px;pointer-events:none}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:30px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-grid h5{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(233,225,216,.5);margin-bottom:18px}
+.foot-grid a,.foot-grid p{display:block;font-size:.9rem;color:rgba(233,225,216,.85);margin-bottom:10px}
+.foot-grid a:hover{color:#fff}
+.foot-brand b{font-weight:300;font-size:1.1rem;letter-spacing:.3em}
+.foot-brand span{font-size:.55rem;letter-spacing:.45em;color:rgba(233,225,216,.5);display:block;margin-top:4px}
+.foot-bottom{display:flex;justify-content:space-between;padding-top:26px;font-size:.72rem;color:rgba(233,225,216,.5);letter-spacing:.05em;flex-wrap:wrap;gap:10px}
+
+/* ---------- REVEAL (JS-driven) ---------- */
+.js .reveal{opacity:0;transform:translateY(46px);filter:blur(9px)}
+.js .reveal-mask{display:inline-block;overflow:hidden;vertical-align:top}
+.js .reveal-mask>*{display:inline-block;transform:translateY(110%)}
+html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:none!important;filter:none!important}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-media{height:60vh}
+  .cats{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:1fr 1fr;gap:26px}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .testi{grid-template-columns:1fr;}
+  .testi .quote{min-height:auto}
+  .testi .ph{min-height:240px}
+  .contact-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px 20px}
+  .pf{grid-template-columns:repeat(2,1fr)}
+  .pf-a,.pf-b,.pf-c,.pf-e{grid-column:span 1}
+  .pf-d{grid-column:span 2}
+  .proc{grid-template-columns:1fr;gap:0}
+  .step{padding:26px 0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:none}
+  .step h4{margin:12px 0 8px}
+  .proc-line{display:none}
+}
+@media (max-width:760px){
+  .menu,.lang{display:none}
+  .burger{display:block}
+  .nav-right .btn{display:none}
+  .cats{grid-template-columns:1fr 1fr}
+  .proc{grid-template-columns:1fr;gap:0}
+  .step{padding:26px 0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .num{font-size:1.7rem}
+  .step h4{margin:12px 0 8px}
+  .proc-line{display:none}
+  .pf{grid-template-columns:1fr}
+  .pf-a,.pf-b,.pf-c,.pf-d,.pf-e{grid-column:1/-1}
+  .pf-d{aspect-ratio:4/5}
+  .svc-grid{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- GRAIN -->
+<svg class="grain" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<!-- LOADER + CURTAIN -->
+<div class="loader" id="loader"><div class="loader__inner">
+  <div class="loader__mono">YV</div>
+  <div class="loader__name">Yana Vergun · Photography</div>
+</div></div>
+<div class="curtain" id="curtain"></div>
+
+<!-- HEADER -->
+<header id="header">
+  <nav class="wrap nav">
+    <a href="#" class="brand"><b>YANA VERGUN</b><span>PHOTOGRAPHY</span></a>
+    <ul class="menu">
+      <li><a href="#portfolio" data-en="Portfolio">Портфоліо</a></li>
+      <li><a href="#services" data-en="Services">Послуги</a></li>
+      <li><a href="#process" data-en="Process">Процес</a></li>
+      <li><a href="#about" data-en="About">Про мене</a></li>
+      <li><a href="#contact" data-en="Contacts">Контакти</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang"><button class="active" data-lang="uk">UA</button><span>/</span><button data-lang="en">EN</button></div>
+      <a href="#contact" class="btn btn--primary magnet" data-en="Book a shoot">Забронювати зйомку</a>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mm-close" id="mmClose" aria-label="Закрити">✕</button>
+  <ul>
+    <li><a href="#portfolio" data-en="Portfolio">Портфоліо</a></li>
+    <li><a href="#services" data-en="Services">Послуги</a></li>
+    <li><a href="#process" data-en="Process">Процес</a></li>
+    <li><a href="#about" data-en="About">Про мене</a></li>
+    <li><a href="#contact" data-en="Contacts">Контакти</a></li>
+  </ul>
+  <a href="#contact" class="btn btn--light" style="margin-top:40px;align-self:flex-start" data-en="Book a shoot">Забронювати зйомку <span class="arr">→</span></a>
+</div>
+
+<main>
+<!-- HERO -->
+<section class="hero wrap" id="top">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="hero-eyebrow eyebrow reveal" data-en="PHOTOGRAPHER · LVIV / UKRAINE">ФОТОГРАФ · ЛЬВІВ / УКРАЇНА</div>
+      <h1 class="h-xl reveal">PHOTOS<br><span class="it">that feel.</span></h1>
+      <p class="lead reveal" data-en="Visual stories for women, brands and business. Photo &amp; video content with attention to emotion, mood and detail.">
+        Створюю візуальні історії для жінок, брендів і бізнесу. Фото та відео з увагою до емоції, настрою та деталей.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#portfolio" class="btn btn--primary magnet" data-en="View portfolio">Переглянути портфоліо <span class="arr">→</span></a>
+        <a href="#about" class="btn btn--ghost magnet" data-en="About me">Про мене</a>
+      </div>
+      <div class="hero-loc reveal"><span class="dot"></span><span data-en="Lviv · working across Ukraine">Львів · працюю по всій Україні</span></div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-badge"><span>YV</span></div>
+      <div class="ph m1" data-parallax="-40"><div class="ph__mono">portrait</div><span class="ph__tag">Hero · фото сюди</span></div>
+      <div class="ph ph--dark m2" data-parallax="30"><span class="ph__tag">фото</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track" id="marquee">
+    <span>Photography</span><span>Visual Content</span><span>Fashion &amp; Beauty</span><span>Brand Content</span><span>Lviv</span>
+    <span>Photography</span><span>Visual Content</span><span>Fashion &amp; Beauty</span><span>Brand Content</span><span>Lviv</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="wrap">
+  <div class="cats">
+    <article class="cat reveal"><div class="ph ph--rose" data-tilt><div class="ph__mono">YV</div><span class="ph__tag">Studio</span></div><h3 class="h3">Studio</h3><p data-en="Portrait, fashion &amp; beauty shoots in the studio.">Портретні, fashion та beauty зйомки у студії.</p></article>
+    <article class="cat reveal"><div class="ph" data-tilt><div class="ph__mono">YV</div><span class="ph__tag">Street</span></div><h3 class="h3">Street</h3><p data-en="Live emotion, natural light, frames on the street.">Живі емоції, природне світло та кадри на вулиці.</p></article>
+    <article class="cat reveal"><div class="ph ph--wine" data-tilt><div class="ph__mono">YV</div><span class="ph__tag">Brand</span></div><h3 class="h3">Brand Content</h3><p data-en="Photo &amp; video content for brands and business.">Фото та відео контент для брендів і бізнесу.</p></article>
+    <article class="cat reveal"><div class="ph ph--dark" data-tilt><div class="ph__mono">YV</div><span class="ph__tag">Backstage</span></div><h3 class="h3">Backstage</h3><p data-en="Behind the scenes — the process and atmosphere.">За кадром — процес і атмосфера зйомки.</p></article>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="wrap" id="portfolio">
+  <div class="sec-head">
+    <div><div class="eyebrow reveal" data-en="Curated portfolio">Обрані роботи</div></div>
+    <a href="#" class="tlink reveal" data-en="View full portfolio">Дивитись повне портфоліо <span class="arr">→</span></a>
+  </div>
+  <div class="pf">
+    <div class="pf-item pf-a reveal"><div class="ph ph--rose"><div class="ph__mono">YV</div></div><div class="ov"><h4>Luma Jewelry</h4><small data-en="brand content">контент для бренду</small></div></div>
+    <div class="pf-item pf-b reveal"><div class="ph ph--dark"><div class="ph__mono">YV</div></div><div class="ov"><h4>Editorial Portraits</h4><small data-en="studio">студія</small></div></div>
+    <div class="pf-item pf-c reveal"><div class="ph"><div class="ph__mono">YV</div></div><div class="ov"><h4>Summer in Lviv</h4><small>street</small></div></div>
+    <div class="pf-item pf-d reveal"><div class="ph ph--wine"><div class="ph__mono">YV</div></div><div class="ov"><h4>Brand Campaign</h4><small data-en="fashion &amp; beauty">fashion &amp; beauty</small></div></div>
+    <div class="pf-item pf-e reveal"><div class="ph ph--dark"><div class="ph__mono">YV</div></div><div class="ov"><h4>Backstage</h4><small data-en="behind the scenes">за кадром</small></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="wrap about" id="about">
+  <div class="about-grid">
+    <div class="about-media reveal">
+      <div class="ph" data-parallax="-30"><div class="ph__mono">about · фото сюди</div></div>
+      <div class="badge">YV</div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow reveal" data-en="About me">Про мене</div>
+      <h2 class="h1 reveal" data-en="I capture emotion,<br>not just frames.">Я знімаю емоції,<br>а не просто кадри.</h2>
+      <p class="lead reveal" data-en="For me, photography is about people, mood and detail. I work with brands and creative people to build visuals that look expensive and feel alive in the frame.">
+        Для мене фотографія — це про людей, настрій і деталі. Працюю з брендами та творчими людьми, створюючи візуал, що виглядає дорого і живе у кадрі.
+      </p>
+      <div class="facts reveal">
+        <div class="fact"><div class="k" data-en="City">Місто</div><div class="v">Львів</div></div>
+        <div class="fact"><div class="k" data-en="Focus">Фокус</div><div class="v">Photo &amp; Video</div></div>
+        <div class="fact"><div class="k" data-en="Genre">Напрям</div><div class="v">Fashion / Portraits</div></div>
+        <div class="fact"><div class="k" data-en="Availability">Доступність</div><div class="v">Україна &amp; worldwide</div></div>
+      </div>
+      <a href="#contact" class="btn btn--primary magnet reveal" data-en="Let's work together">Попрацюймо разом <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="eyebrow reveal" data-en="Services">Послуги</div>
+    <h2 class="h2 reveal">What I Shoot</h2>
+    <div class="svc-grid">
+      <div class="svc reveal"><div class="ico">◐</div><h3 data-en="Women Portraits">Жіночі портрети</h3><p data-en="Individual portraits that reveal who you really are.">Індивідуальні портрети, що розкривають тебе по-справжньому.</p><div class="price" data-en="Cost — individual">Вартість — індивідуально</div><a href="#contact" class="tlink" data-en="Discuss →">Обговорити →</a></div>
+      <div class="svc reveal"><div class="ico">✦</div><h3>Fashion &amp; Beauty</h3><p data-en="Fashion shoots, lookbook, beauty &amp; editorial.">Fashion-зйомки, lookbook, beauty та editorial.</p><div class="price" data-en="Cost — individual">Вартість — індивідуально</div><a href="#contact" class="tlink" data-en="Discuss →">Обговорити →</a></div>
+      <div class="svc reveal"><div class="ico">◇</div><h3>Brand Content</h3><p data-en="Visual content for brands, social media &amp; campaigns.">Візуальний контент для брендів, соцмереж та кампаній.</p><div class="price" data-en="Cost — individual">Вартість — індивідуально</div><a href="#contact" class="tlink" data-en="Discuss →">Обговорити →</a></div>
+      <div class="svc reveal"><div class="ico">▷</div><h3>Photo &amp; Video</h3><p data-en="Photo and video format of content for your brand.">Фото та відео формат контенту під твій бренд.</p><div class="price" data-en="Cost — individual">Вартість — індивідуально</div><a href="#contact" class="tlink" data-en="Discuss →">Обговорити →</a></div>
+    </div>
+    <div class="svc-cta reveal"><a href="#contact" class="btn btn--light magnet" data-en="Book a shoot">Забронювати зйомку <span class="arr">→</span></a></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="wrap" id="process">
+  <div class="eyebrow reveal" data-en="Process">Процес</div>
+  <h2 class="h1 reveal" style="margin:10px 0 50px" data-en="How we work together">Як ми працюємо разом</h2>
+  <div class="proc-line" id="procLine"><div class="fill" id="procFill"></div></div>
+  <div class="proc">
+    <div class="step reveal"><div class="num">01</div><h4 data-en="Request">Запит</h4><p data-en="You leave a request — we discuss the idea and goals.">Ти залишаєш заявку — обговорюємо ідею та задачі.</p></div>
+    <div class="step reveal"><div class="num">02</div><h4 data-en="Planning">Планування</h4><p data-en="We pick a concept, location and references.">Підбираємо концепцію, локацію та референси.</p></div>
+    <div class="step reveal"><div class="num">03</div><h4 data-en="Shoot day">Зйомка</h4><p data-en="We create content in a calm, comfortable atmosphere.">Створюємо контент у спокійній, комфортній атмосфері.</p></div>
+    <div class="step reveal"><div class="num">04</div><h4 data-en="Selection">Відбір</h4><p data-en="A careful selection of the best frames together.">Ретельно відбираємо найкращі кадри разом.</p></div>
+    <div class="step reveal"><div class="num">05</div><h4 data-en="Delivery">Готовий матеріал</h4><p data-en="You get finished content in the needed formats.">Отримуєш готовий контент у потрібних форматах.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="wrap">
+  <div class="testi reveal">
+    <div class="quote">
+      <div class="mark">“</div>
+      <div class="testi-stack" id="testiStack"></div>
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+    <div class="ph ph--dark"><div class="ph__mono">YV</div><span class="ph__tag">фото</span></div>
+    <div class="ph ph--rose"><div class="ph__mono">YV</div><span class="ph__tag">фото</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="wrap contact" id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="eyebrow reveal" data-en="Let's create something beautiful">Створімо щось красиве</div>
+      <h2 class="h-xl reveal" style="font-size:clamp(2.6rem,6vw,5rem)" data-en="LET'S<br><span class='it'>create.</span>">ГОТОВІ<br><span class="it">почати?</span></h2>
+      <p class="lead reveal" data-en="Write to me wherever's comfortable — or leave a request and I'll text you back.">Пиши, де зручно — або залиш заявку, і я напишу тобі сама.</p>
+      <div class="quick reveal">
+        <a class="qbtn qbtn--primary magnet" href="https://t.me/yanVergn" target="_blank" rel="noopener"><span class="qico">✈</span> Telegram</a>
+        <a class="qbtn magnet" href="https://instagram.com/vergun_ph" target="_blank" rel="noopener"><span class="qico">◎</span> Instagram</a>
+      </div>
+      <form class="form reveal" id="form" onsubmit="return false">
+        <div class="field"><input type="text" placeholder="Ваше ім'я" required></div>
+        <div class="field"><input type="tel" placeholder="Телефон" required></div>
+        <div class="field"><input type="text" placeholder="Instagram (необов'язково)"></div>
+        <div class="field"><textarea placeholder="Кілька слів про зйомку (необов'язково)"></textarea></div>
+        <button type="submit" class="btn btn--primary magnet" id="submitBtn" data-en="Send request">Надіслати заявку <span class="arr">→</span></button>
+        <p class="note" data-en="* demo form — connect to phone / Telegram when building">* демо-форма — підключимо до телефону / Telegram при розробці</p>
+      </form>
+    </div>
+    <div class="contact-media reveal"><div class="ph" data-parallax="-30"><div class="ph__mono">фото сюди</div></div></div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-watermark">Let's create</div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><b>YANA VERGUN</b><span>PHOTOGRAPHY</span><p style="margin-top:18px;max-width:32ch" data-en="Visual stories that make brands and people fall in love.">Візуальні історії, у які закохуються бренди та люди.</p></div>
+      <div><h5 data-en="Menu">Меню</h5><a href="#portfolio" data-en="Portfolio">Портфоліо</a><a href="#services" data-en="Services">Послуги</a><a href="#process" data-en="Process">Процес</a><a href="#about" data-en="About">Про мене</a></div>
+      <div><h5>Follow</h5><a href="https://instagram.com/vergun_ph" target="_blank" rel="noopener">Instagram</a><a href="#">TikTok</a><a href="#">Pinterest</a><a href="#">Threads</a></div>
+      <div><h5 data-en="Let's connect">Зв'язатись</h5><a href="tel:+380960000000">+380 96 000 00 00</a><a href="https://t.me/yanVergn" target="_blank" rel="noopener">Telegram</a><a href="https://instagram.com/vergun_ph" target="_blank" rel="noopener">Instagram · @vergun_ph</a><p data-en="Lviv, Ukraine">Львів, Україна</p></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Yana Vergun Photography</span><span data-en="Privacy policy">Політика конфіденційності</span></div>
+  </div>
+</footer>
+
+<!-- LIBS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+<script>
+document.documentElement.classList.remove('no-js');
+document.documentElement.classList.add('js');
+var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(REDUCE) document.documentElement.classList.add('reduce');
+var hasGSAP = typeof gsap !== 'undefined';
+
+/* ---- LOADER + CURTAIN ---- */
+function forceShowAll(){
+  document.querySelectorAll('.reveal,.reveal-mask>*').forEach(function(e){
+    e.style.opacity=1; e.style.transform='none'; e.style.filter='none';
+  });
+}
+function startIntro(){
+  var loader = document.getElementById('loader');
+  var curtain = document.getElementById('curtain');
+  if(hasGSAP && !REDUCE){
+    gsap.timeline()
+      .to('#loader .loader__inner',{opacity:0,duration:.5,ease:'power2.out'},.6)
+      .to(loader,{yPercent:-100,duration:.9,ease:'power4.inOut'},'-=.1')
+      .to(curtain,{yPercent:-100,duration:.9,ease:'power4.inOut'},'-=.7')
+      .add(introReveal,'-=.3')
+      .set([loader,curtain],{display:'none'});
+  } else {
+    loader.style.display='none'; curtain.style.display='none';
+    forceShowAll();
+  }
+}
+// run as soon as ready (handles the case where 'load' already fired)
+if(document.readyState === 'complete'){
+  setTimeout(startIntro, REDUCE?150:500);
+} else {
+  window.addEventListener('load', function(){ setTimeout(startIntro, REDUCE?150:800); });
+}
+// hard safety net — hero text must never stay hidden
+setTimeout(function(){
+  var hero=document.querySelector('.hero'); if(!hero) return;
+  hero.querySelectorAll('.reveal').forEach(function(e){
+    if(parseFloat(getComputedStyle(e).opacity) === 0){ e.style.opacity=1; e.style.transform='none'; e.style.filter='none'; }
+  });
+}, 3200);
+
+/* ---- INTRO HERO REVEAL ---- */
+function introReveal(){
+  if(!hasGSAP) return;
+  gsap.to('.hero .reveal',{opacity:1,y:0,filter:'blur(0px)',duration:1.1,stagger:.12,ease:'power3.out'});
+}
+
+/* ---- SCROLL REVEALS ---- */
+if(hasGSAP && !REDUCE){
+  gsap.registerPlugin(ScrollTrigger);
+
+  // staggered groups — cards cascade one after another
+  ['.cats','.svc-grid','.proc','.pf'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(group){
+      var items = group.querySelectorAll('.reveal');
+      if(!items.length) return;
+      gsap.to(items,{opacity:1,y:0,filter:'blur(0px)',duration:1.2,ease:'power3.out',stagger:.13,
+        scrollTrigger:{trigger:group,start:'top 82%',once:true}});
+    });
+  });
+
+  // standalone fade-up (skip hero + grouped items above)
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    if(el.closest('.hero')) return;
+    if(el.closest('.cats,.svc-grid,.proc,.pf')) return;
+    gsap.to(el,{opacity:1,y:0,filter:'blur(0px)',duration:1.2,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 86%',once:true}});
+  });
+
+  // masked headings — line rises from behind a mask
+  gsap.utils.toArray('.reveal-mask>*').forEach(function(el){
+    if(el.closest('.hero')) return;
+    gsap.fromTo(el,{yPercent:110},{yPercent:0,duration:1.25,ease:'power4.out',
+      scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+  });
+
+  // image curtain — photos uncover from the bottom up
+  gsap.utils.toArray('.ph').forEach(function(el){
+    if(el.closest('.hero')) return;
+    gsap.fromTo(el,{clipPath:'inset(100% 0% 0% 0%)'},
+      {clipPath:'inset(0% 0% 0% 0%)',duration:1.35,ease:'power3.out',
+       scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+  });
+
+  // parallax
+  gsap.utils.toArray('[data-parallax]').forEach(function(el){
+    var amt = parseFloat(el.getAttribute('data-parallax'));
+    gsap.to(el,{y:amt,ease:'none',
+      scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}});
+  });
+  // process line draw
+  gsap.to('#procFill',{scaleX:1,ease:'none',
+    scrollTrigger:{trigger:'#procLine',start:'top 80%',end:'+=300',scrub:true}});
+}
+
+/* ---- SMOOTH SCROLL (Lenis) ---- */
+if(typeof Lenis !== 'undefined' && !REDUCE){
+  var lenis = new Lenis({lerp:.085,wheelMultiplier:1,smoothWheel:true});
+  if(hasGSAP){
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })();
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id=a.getAttribute('href'); if(id.length<2) return;
+      var t=document.querySelector(id); if(!t) return;
+      e.preventDefault(); lenis.scrollTo(t,{offset:-70}); closeMenu();
+    });
+  });
+}
+
+/* ---- HEADER SCROLLED ---- */
+var header=document.getElementById('header');
+function onScroll(){ header.classList.toggle('scrolled', window.scrollY>40); }
+window.addEventListener('scroll',onScroll); onScroll();
+
+/* ---- MARQUEE ---- */
+(function(){
+  var track=document.getElementById('marquee'); if(!track||REDUCE) return;
+  var x=0, w=track.scrollWidth/2;
+  (function loop(){ x-=0.5; if(-x>=w) x=0; track.style.transform='translateX('+x+'px)'; requestAnimationFrame(loop); })();
+})();
+
+/* ---- MOBILE MENU ---- */
+var mm=document.getElementById('mobileMenu'), burger=document.getElementById('burger');
+function openMenu(){ mm.classList.add('open'); }
+function closeMenu(){ mm.classList.remove('open'); }
+burger&&burger.addEventListener('click',openMenu);
+document.getElementById('mmClose').addEventListener('click',closeMenu);
+mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+
+/* ---- MAGNETIC BUTTONS ---- */
+(function(){
+  if(window.matchMedia('(hover:none)').matches || REDUCE) return;
+  document.querySelectorAll('.magnet').forEach(function(el){
+    el.addEventListener('mousemove',function(e){
+      var r=el.getBoundingClientRect();
+      var dx=(e.clientX-(r.left+r.width/2))*.25, dy=(e.clientY-(r.top+r.height/2))*.35;
+      el.style.transform='translate('+dx+'px,'+dy+'px)';
+    });
+    el.addEventListener('mouseleave',function(){ el.style.transform=''; });
+  });
+})();
+
+/* ---- TESTIMONIALS CAROUSEL (stacked crossfade — no layout shift) ---- */
+(function(){
+  var data=[
+    {t:"Яна допомагає відчути себе впевнено й красиво в кадрі.", n:"— Марія Бондаренко · особистий портрет"},
+    {t:"Працювати з Яною — суцільне задоволення. Кадри живі, теплі й по-справжньому мої.", n:"— Софія Коваленко · fashion-зйомка"},
+    {t:"Вона бачить деталі, яких не помічаєш сам. Результат перевершив усі очікування.", n:"— Катерина Шевченко · бренд"},
+    {t:"Зйомка минула легко й невимушено, а фото — наче з обкладинки журналу.", n:"— Анастасія Мельник · beauty"},
+    {t:"Для нашого бренду це були найкращі візуали за рік. Дякую за професійність і смак!", n:"— Олена Ткаченко · brand content"},
+    {t:"Відчувала себе спокійно весь процес. Яна вміє розкрити людину перед камерою.", n:"— Дарина Кравчук · портрет"}
+  ];
+  var stack=document.getElementById('testiStack'), dotsWrap=document.getElementById('testiDots');
+  if(!stack||!dotsWrap) return;
+  var slides=data.map(function(d,idx){
+    var s=document.createElement('div'); s.className='slide'+(idx===0?' active':'');
+    var p=document.createElement('p'); p.textContent=d.t;
+    var c=document.createElement('cite'); c.textContent=d.n;
+    s.appendChild(p); s.appendChild(c); stack.appendChild(s);
+    var b=document.createElement('button'); b.setAttribute('aria-label','Відгук '+(idx+1));
+    b.addEventListener('click',function(){ go(idx); restart(); });
+    dotsWrap.appendChild(b);
+    return s;
+  });
+  var i=0, timer;
+  function go(n){ slides[i].classList.remove('active'); i=(n+slides.length)%slides.length; slides[i].classList.add('active'); dots(); }
+  function dots(){ Array.prototype.forEach.call(dotsWrap.children,function(b,idx){ b.classList.toggle('active', idx===i); }); }
+  function restart(){ clearInterval(timer); if(!REDUCE) timer=setInterval(function(){ go(i+1); }, 6000); }
+  dots(); restart();
+})();
+
+/* ---- LANG TOGGLE (UA default) ---- */
+(function(){
+  var btns=document.querySelectorAll('.lang button'); var cur='uk';
+  var nodes=document.querySelectorAll('[data-en]');
+  var ua=new Map(); nodes.forEach(function(n){ ua.set(n, n.innerHTML); });
+  function setLang(l){
+    cur=l;
+    nodes.forEach(function(n){ n.innerHTML = (l==='en') ? n.getAttribute('data-en') : ua.get(n); });
+    document.documentElement.lang = (l==='en')?'en':'uk';
+    btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===l); });
+  }
+  btns.forEach(function(b){ b.addEventListener('click',function(){ setLang(b.getAttribute('data-lang')); }); });
+})();
+
+/* ---- FORM DEMO ---- */
+var form=document.getElementById('form');
+form&&form.addEventListener('submit',function(){
+  var b=document.getElementById('submitBtn');
+  b.innerHTML='Дякую! Я зв\u0027яжуся з тобою ✓';
+  b.style.background='var(--ink)';
+});
+</script>
+</body>
+</html>
