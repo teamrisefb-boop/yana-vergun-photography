@@ -100,8 +100,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:8000;transition:background .5
 .nav{display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad)}
 header.scrolled{background:rgba(244,238,230,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
 header.scrolled .nav{padding-block:14px}
-.brand{line-height:1;display:inline-flex;align-items:center}
-.brand img{width:190px;height:auto;display:block}
+.brand{line-height:1}
+.brand b{display:block;font-weight:300;font-size:1.05rem;letter-spacing:.32em}
+.brand span{display:block;font-size:.52rem;letter-spacing:.5em;color:var(--ink-muted);margin-top:3px;padding-left:3px}
 .menu{display:flex;gap:34px;list-style:none}
 .menu a{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;position:relative;padding:4px 0}
 .menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-lux)}
@@ -289,7 +290,6 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .nav{padding:12px 16px;background:rgba(244,238,230,.92);backdrop-filter:blur(16px);border:1px solid rgba(219,207,194,.72);border-radius:999px;box-shadow:0 14px 34px -28px rgba(28,21,18,.58)}
   header.scrolled{background:transparent;box-shadow:none;backdrop-filter:none}
   header.scrolled .nav{padding-block:10px}
-  .brand img{width:160px}
   .menu,.lang{display:none}
   .burger{display:block}
   .burger{width:28px;height:17px}
@@ -325,7 +325,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
 <!-- HEADER -->
 <header id="header">
   <nav class="wrap nav">
-    <a href="#" class="brand" aria-label="Yana Vergun Photography"><img src="assets/logo.png" alt="Yana Vergun Photography"></a>
+    <a href="#" class="brand"><b>YANA VERGUN</b><span>PHOTOGRAPHY</span></a>
     <ul class="menu">
       <li><a href="#portfolio" data-en="Portfolio">Портфоліо</a></li>
       <li><a href="#services" data-en="Services">Послуги</a></li>
