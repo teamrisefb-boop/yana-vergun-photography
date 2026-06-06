@@ -7,7 +7,7 @@
 <meta name="description" content="Yana Vergun — фотограф та відеограф у Львові. Photo & video content для брендів, fashion & beauty, жіночі портрети. Працюю по всій Україні.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 <style>
 :root{
   --wine:#600C00; --oxblood:#45100F; --wine-hover:#7A1A0C;
@@ -17,8 +17,8 @@
   --ease-lux:cubic-bezier(.22,1,.36,1);
   --ease-inout:cubic-bezier(.65,0,.35,1);
   --maxw:1320px; --pad:clamp(20px,5vw,80px);
-  --serif:"Cormorant Garamond",Georgia,serif;
-  --sans:"Manrope",-apple-system,sans-serif;
+  --serif:"Montserrat",-apple-system,sans-serif;
+  --sans:"Montserrat",-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -120,7 +120,9 @@ header.scrolled .nav{padding-block:14px}
 .mobile-menu.open{transform:translateY(0);visibility:visible}
 .mobile-menu ul{list-style:none}
 .mobile-menu li{overflow:hidden}
-.mobile-menu a{font-family:var(--serif);font-size:clamp(2.2rem,9vw,3.4rem);font-weight:500;display:block;padding:8px 0}
+.mobile-menu ul a{font-family:var(--serif);font-size:clamp(2.2rem,9vw,3.4rem);font-weight:500;display:block;padding:8px 0}
+.mobile-menu .btn{font-family:var(--sans);font-size:.85rem;line-height:1.35;display:inline-flex;max-width:100%;
+  white-space:normal;text-align:center;justify-content:center;overflow-wrap:anywhere;padding:1.05em 1.4em}
 .mm-close{position:absolute;top:26px;right:var(--pad);background:none;border:none;color:inherit;font-size:1.6rem;cursor:pointer}
 
 /* ---------- HERO ---------- */
