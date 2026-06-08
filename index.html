@@ -77,6 +77,8 @@ section{position:relative;padding-block:clamp(80px,12vh,150px)}
 .ph__tag{position:absolute;left:14px;bottom:12px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
   color:rgba(255,255,255,.62);font-weight:600;z-index:2}
 .ph--rose .ph__tag,.ph--light .ph__tag{color:rgba(28,21,18,.4)}
+.video-open{display:none;position:absolute;right:12px;bottom:12px;z-index:4;align-items:center;gap:.45em;padding:.72em 1em;
+  border-radius:999px;background:rgba(242,231,221,.92);color:var(--wine);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .ph__mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;
   font-size:1.5rem;color:rgba(255,255,255,.18);letter-spacing:.05em}
 .ph--rose .ph__mono,.ph--light .ph__mono{color:rgba(96,12,0,.14)}
@@ -286,6 +288,8 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .proc-line{display:none}
 }
 @media (max-width:760px){
+  section{padding-block:48px}
+  .sec-head{margin-bottom:24px}
   header{top:10px;left:12px;right:12px}
   .nav{padding:12px 16px;background:rgba(244,238,230,.92);backdrop-filter:blur(16px);border:1px solid rgba(219,207,194,.72);border-radius:999px;box-shadow:0 14px 34px -28px rgba(28,21,18,.58)}
   header.scrolled{background:transparent;box-shadow:none;backdrop-filter:none}
@@ -294,18 +298,33 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .burger{display:block}
   .burger{width:28px;height:17px}
   .nav-right .btn{display:none}
-  .cats{grid-template-columns:1fr 1fr}
+  .hero{padding-top:128px;padding-bottom:34px}
+  .hero-grid{gap:24px}
+  .hero-media{height:auto;min-height:0;display:grid;grid-template-columns:1fr .62fr;gap:10px;align-items:end}
+  .hero-media .m1,.hero-media .m2{position:relative;inset:auto;right:auto;bottom:auto;width:auto;height:auto;border-radius:6px}
+  .hero-media .m1{aspect-ratio:4/5}
+  .hero-media .m2{aspect-ratio:4/5;border:4px solid var(--ivory);transform:translateY(18px)}
+  .marquee{padding-block:12px}
+  .cats{grid-template-columns:1fr 1fr;gap:18px 14px}
+  .cat{gap:12px}
+  .cat h3{margin-top:0}
+  .cat p{font-size:.82rem;line-height:1.45}
   .proc{grid-template-columns:1fr;gap:0}
-  .step{padding:26px 0;border-bottom:1px solid var(--line)}
+  .step{padding:18px 0;border-bottom:1px solid var(--line)}
   .step:last-child{border-bottom:none}
   .step .num{font-size:1.7rem}
   .step h4{margin:12px 0 8px}
   .proc-line{display:none}
-  .pf{grid-template-columns:1fr}
+  .pf{grid-template-columns:1fr;gap:16px}
   .pf-a,.pf-b,.pf-c,.pf-d,.pf-e{grid-column:1/-1!important}
+  .pf-item{aspect-ratio:4/5}
   .pf-d{aspect-ratio:4/5}
+  .about,.contact{padding-block:56px}
+  .testi{gap:16px}
+  .testi .quote{padding:28px 24px}
   .testi .ph{aspect-ratio:4/5;min-height:0}
   .testi .ph .ph__img{object-position:center top}
+  .video-open{display:inline-flex}
   .svc-grid{grid-template-columns:1fr}
   .facts{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
@@ -474,7 +493,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <div class="testi-stack" id="testiStack"></div>
       <div class="testi-dots" id="testiDots"></div>
     </div>
-    <div class="ph ph--dark has-img video-tile"><video class="ph__video" poster="assets/photo-1.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" controls><source src="assets/video-1.mp4" type="video/mp4"></video><img class="ph__img ph__fallback" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">video</span></div>
+    <div class="ph ph--dark has-img video-tile"><video class="ph__video" poster="assets/photo-1.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" controls><source src="assets/video-1.mp4" type="video/mp4"></video><img class="ph__img ph__fallback" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">video</span><a class="video-open" href="assets/video-1.mp4" target="_blank" rel="noopener">Відкрити відео</a></div>
     <div class="ph ph--rose has-img"><img class="ph__img" src="assets/photo-4.jpg" alt="Beauty portrait by Yana Vergun"><span class="ph__tag">фото</span></div>
   </div>
 </section>
