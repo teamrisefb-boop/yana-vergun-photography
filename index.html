@@ -81,6 +81,7 @@ section{position:relative;padding-block:clamp(80px,12vh,150px)}
   font-size:1.5rem;color:rgba(255,255,255,.18);letter-spacing:.05em}
 .ph--rose .ph__mono,.ph--light .ph__mono{color:rgba(96,12,0,.14)}
 .ph__img,.ph__video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0}
+.ph__fallback{display:none}
 .ph.has-img::before{z-index:1;background:linear-gradient(to top,rgba(28,21,18,.18),transparent 55%)}
 
 /* grain overlay */
@@ -304,6 +305,10 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .pf{grid-template-columns:1fr}
   .pf-a,.pf-b,.pf-c,.pf-d,.pf-e{grid-column:1/-1}
   .pf-d{aspect-ratio:4/5}
+  .testi .ph{aspect-ratio:4/5;min-height:0}
+  .testi .ph .ph__img{object-position:center top}
+  .ph__video{display:none}
+  .ph__fallback{display:block}
   .svc-grid{grid-template-columns:1fr}
   .facts{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
@@ -472,7 +477,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <div class="testi-stack" id="testiStack"></div>
       <div class="testi-dots" id="testiDots"></div>
     </div>
-    <div class="ph ph--dark has-img"><video class="ph__video" src="assets/video-1.mp4" poster="assets/photo-1.jpg" autoplay muted loop playsinline controls></video><span class="ph__tag">video</span></div>
+    <div class="ph ph--dark has-img"><video class="ph__video" src="assets/video-1.mp4" poster="assets/photo-1.jpg" autoplay muted loop playsinline controls></video><img class="ph__img ph__fallback" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">video</span></div>
     <div class="ph ph--rose has-img"><img class="ph__img" src="assets/photo-4.jpg" alt="Beauty portrait by Yana Vergun"><span class="ph__tag">фото</span></div>
   </div>
 </section>
