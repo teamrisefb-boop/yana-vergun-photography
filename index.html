@@ -239,11 +239,14 @@ header.scrolled .nav{padding-block:14px}
 .qbtn{display:inline-flex;align-items:center;gap:.6em;font-size:.82rem;font-weight:600;letter-spacing:.04em;
   padding:.85em 1.3em;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);
   transition:border-color .4s var(--ease-lux),background .4s var(--ease-lux),transform .4s var(--ease-lux);will-change:transform}
-.qbtn:hover{border-color:var(--ink)}
-.qbtn--primary{background:var(--wine);color:var(--cream-on-wine);border-color:var(--wine)}
-.qbtn--primary:hover{background:var(--wine-hover);border-color:var(--wine-hover)}
-.qbtn .qico{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.9rem;line-height:1;background:rgba(242,231,221,.18)}
-.qbtn:not(.qbtn--primary) .qico{background:rgba(122,18,6,.08);color:var(--wine)}
+.qbtn:hover{border-color:var(--ink);transform:translateY(-2px)}
+.qbtn--tg{background:#229ed9;color:#fff;border-color:#229ed9}
+.qbtn--tg:hover{background:#178fca;border-color:#178fca}
+.qbtn--ig{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4) border-box;border-color:transparent}
+.qbtn .qico{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;line-height:1;flex:0 0 auto}
+.qbtn .qico svg{width:16px;height:16px;display:block}
+.qbtn--tg .qico{background:rgba(255,255,255,.18);color:#fff}
+.qbtn--ig .qico{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4);color:#fff}
 .qbtn__text{display:grid;gap:1px}
 .qbtn__text small{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;opacity:.64}
 .contact h2{margin:14px 0 22px}
@@ -255,17 +258,6 @@ header.scrolled .nav{padding-block:14px}
 .field input::placeholder,.field textarea::placeholder{color:#a89c92}
 .contact-media .ph{aspect-ratio:3/4;border-radius:6px}
 .note{font-size:.78rem;color:var(--ink-muted);margin-top:6px}
-
-/* ---------- SOCIAL WIDGETS ---------- */
-.social-dock{position:fixed;right:18px;bottom:18px;z-index:8600;display:grid;gap:10px}
-.social-widget{display:flex;align-items:center;gap:10px;min-width:156px;padding:10px 14px;border-radius:999px;
-  background:rgba(244,238,230,.88);border:1px solid rgba(219,207,194,.75);box-shadow:0 18px 46px -30px rgba(28,21,18,.6);
-  backdrop-filter:blur(16px);color:var(--ink);font-size:.78rem;font-weight:700;letter-spacing:.04em;transition:transform .35s var(--ease-lux),background .35s var(--ease-lux)}
-.social-widget:hover{transform:translateY(-2px);background:var(--paper)}
-.social-widget--tg{background:var(--wine);border-color:var(--wine);color:var(--cream-on-wine)}
-.social-widget--tg:hover{background:var(--wine-hover)}
-.social-widget .qico{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(242,231,221,.18)}
-.social-widget--ig .qico{background:rgba(122,18,6,.08);color:var(--wine)}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--ink);color:#e9e1d8;padding-block:clamp(60px,8vw,90px) 36px;position:relative;overflow:hidden}
@@ -316,10 +308,6 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .burger{display:block}
   .burger{width:28px;height:17px}
   .nav-right .btn{display:none}
-  .social-dock{right:14px;bottom:78px;gap:8px}
-  .social-widget{min-width:0;width:48px;height:48px;padding:0;justify-content:center}
-  .social-widget span:not(.qico){display:none}
-  .social-widget .qico{width:28px;height:28px}
   .hero{padding-top:128px;padding-bottom:34px}
   .hero-grid{gap:24px}
   .hero-media{height:auto;min-height:0;display:grid;grid-template-columns:1fr .62fr;gap:10px;align-items:end}
@@ -386,15 +374,6 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
     </div>
   </nav>
 </header>
-
-<div class="social-dock" aria-label="Швидкий зв'язок">
-  <a class="social-widget social-widget--tg magnet" href="https://t.me/yanVergn" target="_blank" rel="noopener" aria-label="Написати в Telegram">
-    <span class="qico">✈</span><span>Telegram</span>
-  </a>
-  <a class="social-widget social-widget--ig magnet" href="https://instagram.com/vergun_ph" target="_blank" rel="noopener" aria-label="Відкрити Instagram">
-    <span class="qico">◎</span><span>Instagram</span>
-  </a>
-</div>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
@@ -540,8 +519,8 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <h2 class="h-xl reveal" style="font-size:clamp(2.6rem,6vw,5rem)" data-en="LET'S<br><span class='it'>create.</span>">ГОТОВІ<br><span class="it">почати?</span></h2>
       <p class="lead reveal" data-en="Write to me wherever's comfortable — or leave a request and I'll text you back.">Пиши, де зручно — або залиш заявку, і я напишу тобі сама.</p>
       <div class="quick reveal">
-        <a class="qbtn qbtn--primary magnet" href="https://t.me/yanVergn" target="_blank" rel="noopener"><span class="qico">✈</span><span class="qbtn__text">Telegram<small>написати</small></span></a>
-        <a class="qbtn magnet" href="https://instagram.com/vergun_ph" target="_blank" rel="noopener"><span class="qico">◎</span><span class="qbtn__text">Instagram<small>@vergun_ph</small></span></a>
+        <a class="qbtn qbtn--tg magnet" href="https://t.me/yanVergn" target="_blank" rel="noopener"><span class="qico"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 4.2 18.3 20c-.25 1.12-.9 1.39-1.82.87l-5.03-3.7-2.43 2.34c-.27.27-.5.5-1.02.5l.36-5.13 9.34-8.44c.41-.36-.09-.56-.63-.2L5.53 13.5.56 11.94c-1.08-.34-1.1-1.08.23-1.6L20.2 2.86c.9-.34 1.68.2 1.4 1.34Z"/></svg></span><span class="qbtn__text">Telegram<small>написати</small></span></a>
+        <a class="qbtn qbtn--ig magnet" href="https://instagram.com/vergun_ph" target="_blank" rel="noopener"><span class="qico"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.7 2h8.6A5.7 5.7 0 0 1 22 7.7v8.6a5.7 5.7 0 0 1-5.7 5.7H7.7A5.7 5.7 0 0 1 2 16.3V7.7A5.7 5.7 0 0 1 7.7 2Zm0 2A3.7 3.7 0 0 0 4 7.7v8.6A3.7 3.7 0 0 0 7.7 20h8.6a3.7 3.7 0 0 0 3.7-3.7V7.7A3.7 3.7 0 0 0 16.3 4H7.7Zm4.3 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 2a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.15-2.25a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg></span><span class="qbtn__text">Instagram<small>@vergun_ph</small></span></a>
       </div>
       <form class="form reveal" id="form" onsubmit="return false">
         <div class="field"><input type="text" placeholder="Ваше ім'я" required></div>
