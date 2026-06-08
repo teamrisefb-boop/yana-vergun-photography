@@ -78,12 +78,10 @@ section{position:relative;padding-block:clamp(80px,12vh,150px)}
 .ph__tag{position:absolute;left:14px;bottom:12px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
   color:rgba(255,255,255,.62);font-weight:600;z-index:2}
 .ph--rose .ph__tag,.ph--light .ph__tag{color:rgba(28,21,18,.4)}
-.video-open{display:none;position:absolute;right:12px;bottom:12px;z-index:4;align-items:center;gap:.45em;padding:.72em 1em;
-  border-radius:999px;background:rgba(242,231,221,.92);color:var(--wine);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .ph__mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;
   font-size:1.5rem;color:rgba(255,255,255,.18);letter-spacing:.05em}
 .ph--rose .ph__mono,.ph--light .ph__mono{color:rgba(96,12,0,.14)}
-.ph__img,.ph__video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0}
+.ph__img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0}
 .ph__fallback{display:none}
 .ph.has-img::before{z-index:1;background:linear-gradient(to top,rgba(28,21,18,.18),transparent 55%)}
 
@@ -330,7 +328,6 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .testi .quote{padding:28px 24px}
   .testi .ph{aspect-ratio:4/5;min-height:0}
   .testi .ph .ph__img{object-position:center top}
-  .video-open{display:inline-flex}
   #services{padding-bottom:28px}
   #process{padding-top:30px;padding-bottom:34px}
   .svc-grid{grid-template-columns:1fr;margin:28px 0 28px;gap:22px}
@@ -503,7 +500,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <div class="testi-stack" id="testiStack"></div>
       <div class="testi-dots" id="testiDots"></div>
     </div>
-    <div class="ph ph--dark has-img video-tile"><video class="ph__video" poster="assets/photo-1.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" controls><source src="assets/video-1.mp4" type="video/mp4"></video><img class="ph__img ph__fallback" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">video</span><a class="video-open" href="assets/video-1.mp4" target="_blank" rel="noopener">Відкрити відео</a></div>
+    <div class="ph ph--dark has-img"><img class="ph__img" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">фото</span></div>
     <div class="ph ph--rose has-img"><img class="ph__img" src="assets/photo-4.jpg" alt="Beauty portrait by Yana Vergun"><span class="ph__tag">фото</span></div>
   </div>
 </section>
@@ -726,30 +723,6 @@ mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMen
   function dots(){ Array.prototype.forEach.call(dotsWrap.children,function(b,idx){ b.classList.toggle('active', idx===i); }); }
   function restart(){ clearInterval(timer); if(!REDUCE) timer=setInterval(function(){ go(i+1); }, 6000); }
   dots(); restart();
-})();
-
-/* ---- MOBILE VIDEO AUTOPLAY FALLBACK ---- */
-(function(){
-  var videos = document.querySelectorAll('.ph__video');
-  if(!videos.length) return;
-  function tryPlay(v){
-    v.muted = true;
-    v.loop = true;
-    v.playsInline = true;
-    var p = v.play && v.play();
-    if(p && p.catch) p.catch(function(){});
-  }
-  videos.forEach(function(v){
-    tryPlay(v);
-    v.addEventListener('canplay', function(){ tryPlay(v); }, {once:true});
-  });
-  ['touchstart','click','scroll'].forEach(function(evt){
-    window.addEventListener(evt, function(){
-      videos.forEach(function(v){
-        tryPlay(v);
-      });
-    }, {once:true, passive:true});
-  });
 })();
 
 /* ---- LANG TOGGLE (UA default) ---- */
