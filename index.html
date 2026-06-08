@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yana Vergun — Photography / Visual Content · Львів</title>
 <meta name="description" content="Yana Vergun — фотограф та відеограф у Львові. Photo & video content для брендів, fashion & beauty, жіночі портрети. Працюю по всій Україні.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="alternate icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,8 +94,13 @@ section{position:relative;padding-block:clamp(80px,12vh,150px)}
 .loader{position:fixed;inset:0;z-index:9800;background:var(--wine);display:grid;place-items:center;
   animation:loaderFail 0s linear 3.2s forwards}
 @keyframes loaderFail{to{visibility:hidden;opacity:0;pointer-events:none}}
-.loader__inner{text-align:center;color:var(--cream-on-wine)}
-.loader__logo{width:min(66vw,360px);height:auto;margin:auto;filter:brightness(0) invert(92%) sepia(13%) saturate(345%) hue-rotate(337deg) brightness(106%);opacity:.96}
+.loader__inner{text-align:center;color:var(--cream-on-wine);display:grid;justify-items:center;gap:18px}
+.loader__logo-wrap{width:min(66vw,360px);overflow:hidden;clip-path:inset(0 100% 0 0);animation:logoWrite 1.45s .18s cubic-bezier(.77,0,.18,1) forwards}
+.loader__logo{width:100%;height:auto;margin:auto;display:block;filter:brightness(0) invert(92%) sepia(13%) saturate(345%) hue-rotate(337deg) brightness(106%);opacity:.98}
+.loader__caption{font-size:.74rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(242,231,221,.82);opacity:0;transform:translateY(8px);
+  animation:captionIn .8s 1.25s var(--ease-lux) forwards}
+@keyframes logoWrite{to{clip-path:inset(0 0 0 0)}}
+@keyframes captionIn{to{opacity:1;transform:none}}
 .loader.done{visibility:hidden}
 .curtain{position:fixed;inset:0;z-index:9700;background:var(--oxblood);transform:translateY(0)}
 
@@ -342,7 +348,8 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
 
 <!-- LOADER + CURTAIN -->
 <div class="loader" id="loader"><div class="loader__inner">
-  <img class="loader__logo" src="assets/logo.png" alt="Yana Vergun Photography">
+  <div class="loader__logo-wrap"><img class="loader__logo" src="assets/logo.png" alt="Yana Vergun Photography"></div>
+  <div class="loader__caption">Yana Vergun Photography</div>
 </div></div>
 <div class="curtain" id="curtain"></div>
 
@@ -562,7 +569,7 @@ function startIntro(){
   var curtain = document.getElementById('curtain');
   if(hasGSAP && !REDUCE){
     gsap.timeline()
-      .to('#loader .loader__inner',{opacity:0,duration:.5,ease:'power2.out'},.6)
+      .to('#loader .loader__inner',{opacity:0,duration:.5,ease:'power2.out'},1.95)
       .to(loader,{yPercent:-100,duration:.9,ease:'power4.inOut'},'-=.1')
       .to(curtain,{yPercent:-100,duration:.9,ease:'power4.inOut'},'-=.7')
       .add(introReveal,'-=.3')
