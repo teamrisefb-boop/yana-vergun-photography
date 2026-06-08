@@ -82,8 +82,6 @@ section{position:relative;padding-block:clamp(80px,12vh,150px)}
 .ph--rose .ph__mono,.ph--light .ph__mono{color:rgba(96,12,0,.14)}
 .ph__img,.ph__video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0}
 .ph__fallback{display:none}
-.video-fallback .ph__video{display:none}
-.video-fallback .ph__fallback{display:block}
 .ph.has-img::before{z-index:1;background:linear-gradient(to top,rgba(28,21,18,.18),transparent 55%)}
 
 /* grain overlay */
@@ -177,8 +175,8 @@ header.scrolled .nav{padding-block:14px}
 .pf-a{grid-column:span 2;aspect-ratio:4/5}
 .pf-b{grid-column:span 2;aspect-ratio:4/5}
 .pf-c{grid-column:span 2;aspect-ratio:4/5}
-.pf-d{grid-column:span 4;aspect-ratio:3/2}
-.pf-e{grid-column:span 2;aspect-ratio:4/5}
+.pf-d{grid-column:span 3;aspect-ratio:4/5}
+.pf-e{grid-column:span 3;aspect-ratio:4/5}
 
 /* ---------- ABOUT ---------- */
 .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,90px);align-items:center}
@@ -280,8 +278,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .contact-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr;gap:30px 20px}
   .pf{grid-template-columns:repeat(2,1fr)}
-  .pf-a,.pf-b,.pf-c,.pf-e{grid-column:span 1}
-  .pf-d{grid-column:span 2}
+  .pf-a,.pf-b,.pf-c,.pf-d,.pf-e{grid-column:span 1}
   .proc{grid-template-columns:1fr;gap:0}
   .step{padding:26px 0;border-bottom:1px solid var(--line)}
   .step:last-child{border-bottom:none}
@@ -477,7 +474,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <div class="testi-stack" id="testiStack"></div>
       <div class="testi-dots" id="testiDots"></div>
     </div>
-    <div class="ph ph--dark has-img video-tile"><video class="ph__video" src="assets/video-1.mp4" poster="assets/photo-1.jpg" autoplay muted loop playsinline preload="auto"></video><img class="ph__img ph__fallback" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">video</span></div>
+    <div class="ph ph--dark has-img video-tile"><video class="ph__video" poster="assets/photo-1.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" controls><source src="assets/video-1.mp4" type="video/mp4"></video><img class="ph__img ph__fallback" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">video</span></div>
     <div class="ph ph--rose has-img"><img class="ph__img" src="assets/photo-4.jpg" alt="Beauty portrait by Yana Vergun"><span class="ph__tag">фото</span></div>
   </div>
 </section>
@@ -716,18 +713,10 @@ mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMen
   videos.forEach(function(v){
     tryPlay(v);
     v.addEventListener('canplay', function(){ tryPlay(v); }, {once:true});
-    setTimeout(function(){
-      if(v.paused && v.readyState < 3){
-        var tile = v.closest('.video-tile');
-        if(tile) tile.classList.add('video-fallback');
-      }
-    }, 4200);
   });
   ['touchstart','click','scroll'].forEach(function(evt){
     window.addEventListener(evt, function(){
       videos.forEach(function(v){
-        var tile = v.closest('.video-tile');
-        if(tile) tile.classList.remove('video-fallback');
         tryPlay(v);
       });
     }, {once:true, passive:true});
