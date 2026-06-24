@@ -161,6 +161,7 @@ header.scrolled .nav{padding-block:14px}
 .marquee__track span::after{content:"·";margin-left:52px;color:var(--wine);font-style:normal}
 
 /* ---------- CATEGORIES ---------- */
+.cats-section{padding-bottom:clamp(32px,5vh,56px)}
 .cats{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(14px,1.6vw,24px)}
 .cat{display:flex;flex-direction:column;gap:16px}
 .cat .ph{aspect-ratio:3/4}
@@ -168,6 +169,7 @@ header.scrolled .nav{padding-block:14px}
 .cat p{font-size:.9rem;color:var(--ink-muted);line-height:1.55}
 
 /* ---------- PORTFOLIO (broken grid) ---------- */
+#portfolio{padding-top:clamp(32px,5vh,56px)}
 .pf{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,1.6vw,22px);align-items:start}
 .pf-item{position:relative;overflow:hidden;border-radius:4px;cursor:pointer}
 .pf-item .ph{position:absolute;inset:0;border-radius:0;transition:transform 1.2s var(--ease-lux)}
@@ -315,6 +317,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .hero-media .m2{display:none}
   .hero-badge{display:grid;width:72px;height:72px;left:16px;top:16px}
   .marquee{padding-block:12px}
+  .cats-section{padding-bottom:24px}
   .cats{grid-template-columns:1fr 1fr;gap:18px 14px}
   .cat{gap:12px}
   .cat h3{margin-top:0}
@@ -326,6 +329,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .step h4{margin:12px 0 8px}
   .proc-line{display:none}
   .pf{grid-template-columns:1fr;gap:16px}
+  #portfolio{padding-top:30px}
   .pf-a,.pf-b,.pf-c,.pf-d,.pf-e{grid-column:1/-1!important}
   .pf-item{aspect-ratio:4/5}
   .pf-d{aspect-ratio:4/5}
@@ -420,7 +424,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
 </div>
 
 <!-- CATEGORIES -->
-<section class="wrap">
+<section class="wrap cats-section">
   <div class="cats">
     <article class="cat reveal"><div class="ph ph--rose has-img" data-tilt><img class="ph__img" src="assets/photo-studio.jpg" alt="Studio fashion shoot by Yana Vergun"><span class="ph__tag">Studio</span></div><h3 class="h3">Studio</h3><p data-en="Portrait, fashion &amp; beauty shoots in the studio.">Портретні, fashion та beauty зйомки у студії.</p></article>
     <article class="cat reveal"><div class="ph has-img" data-tilt><img class="ph__img" src="assets/photo-street.jpg" alt="Street fashion shoot by Yana Vergun"><span class="ph__tag">Street</span></div><h3 class="h3">Street</h3><p data-en="Live emotion, natural light, frames on the street.">Живі емоції, природне світло та кадри на вулиці.</p></article>
