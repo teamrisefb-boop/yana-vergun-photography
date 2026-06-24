@@ -144,12 +144,12 @@ header.scrolled .nav{padding-block:14px}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
 .hero-loc{display:flex;align-items:center;gap:10px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
 .hero-loc .dot{width:6px;height:6px;border-radius:50%;background:var(--wine)}
-.hero-media{position:relative;height:min(72vh,640px)}
-.hero-media .m1{position:absolute;inset:0 18% 8% 0;border-radius:6px}
-.hero-media .m2{position:absolute;right:0;bottom:0;width:42%;height:46%;border:6px solid var(--ivory);border-radius:4px}
-.hero-badge{position:absolute;left:-26px;top:18%;width:104px;height:104px;border-radius:50%;background:var(--ivory);
+.hero-media{position:relative;height:min(72vh,680px)}
+.hero-media .m1{position:absolute;inset:0;border-radius:8px;overflow:hidden}
+.hero-media .m2{display:none}
+.hero-badge{position:absolute;left:-26px;top:22%;width:104px;height:104px;border-radius:50%;background:var(--ivory);
   display:grid;place-items:center;
-  box-shadow:0 20px 50px -25px rgba(0,0,0,.4);z-index:3}
+  box-shadow:0 20px 50px -25px rgba(0,0,0,.35);z-index:3}
 .badge-logo{width:72%;height:auto;display:block}
 .badge-logo--wine{filter:brightness(0)}
 .badge-logo--light{filter:brightness(0) invert(1)}
@@ -310,10 +310,10 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .nav-right .btn{display:none}
   .hero{padding-top:128px;padding-bottom:34px}
   .hero-grid{gap:24px}
-  .hero-media{height:auto;min-height:0;display:grid;grid-template-columns:1fr .62fr;gap:10px;align-items:end}
-  .hero-media .m1,.hero-media .m2{position:relative;inset:auto;right:auto;bottom:auto;width:auto;height:auto;border-radius:6px}
-  .hero-media .m1{aspect-ratio:4/5}
-  .hero-media .m2{aspect-ratio:4/5;border:4px solid var(--ivory);transform:translateY(18px)}
+  .hero-media{height:auto;min-height:0;display:block}
+  .hero-media .m1{position:relative;inset:auto;width:100%;aspect-ratio:4/5;border-radius:8px}
+  .hero-media .m2{display:none}
+  .hero-badge{display:grid;width:72px;height:72px;left:16px;top:16px}
   .marquee{padding-block:12px}
   .cats{grid-template-columns:1fr 1fr;gap:18px 14px}
   .cat{gap:12px}
@@ -340,7 +340,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .svc{padding-top:18px}
   .facts{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
-  .hero-badge{display:none}
+  .hero-badge{z-index:3}
 }
 </style>
 </head>
@@ -406,8 +406,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
     </div>
     <div class="hero-media">
       <div class="hero-badge"><img class="badge-logo badge-logo--wine" src="assets/logo.png" alt=""></div>
-      <div class="ph m1 has-img" data-parallax="-40"><img class="ph__img" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">Fashion portrait</span></div>
-      <div class="ph ph--dark m2 has-img" data-parallax="30"><img class="ph__img" src="assets/photo-5.jpg" alt="Beauty portrait by Yana Vergun"><span class="ph__tag">Beauty</span></div>
+      <div class="ph m1 has-img" data-parallax="-40"><img class="ph__img" src="assets/hero-main.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">Fashion portrait</span></div>
     </div>
   </div>
 </section>
