@@ -1,4 +1,5 @@
 import { validateBooking } from '../../assets/booking-validation.js';
+import { telegramMessage, telegramDestination } from './telegram-message.js';
 
 export const ALLOWED_ORIGIN = 'https://teamrisefb-boop.github.io';
 export const MAX_BODY_BYTES = 8192;
@@ -48,19 +49,6 @@ async function readBody(request) {
   }
 }
 
-export function telegramText(data, now) {
-  const time = new Intl.DateTimeFormat('uk-UA', {
-    timeZone: 'Europe/Kyiv', dateStyle: 'short', timeStyle: 'medium', hour12: false,
-  }).format(now);
-  return [
-    '\u{1f4f8} Нова заявка на зйомку', '',
-    `Ім’я: ${data.name}`, `Телефон: ${data.phone}`,
-    `Instagram: ${data.instagram || 'не вказано'}`,
-    `Побажання: ${data.comment || 'не вказано'}`,
-    `Час: ${time} (Europe/Kyiv)`, 'Джерело: сайт Yana Vergun',
-  ].join('\n');
-}
-
 // Dependencies are injectable for offline tests; production always uses fetch and the real clock.
 export function createHandler({ telegramFetch = fetch, now = () => new Date(), timeoutMs = TELEGRAM_TIMEOUT_MS } = {}) {
   return async function handle(request, env) {
@@ -92,7 +80,8 @@ export function createHandler({ telegramFetch = fetch, now = () => new Date(), t
       return reply(415, { ok: false, code: 'content_type' });
     }
     try {
-      if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID ||
+      const destination = telegramDestination(env);
+      if (!env.TELEGRAM_BOT_TOKEN || !destination ||
           !env.BOOKING_IP_LIMIT || !env.BOOKING_SITE_LIMIT) {
         return reply(503, { ok: false, code: 'unavailable' });
       }
@@ -106,7 +95,7 @@ export function createHandler({ telegramFetch = fetch, now = () => new Date(), t
         return reply(429, { ok: false, code: 'rate_limited' }, { 'Retry-After': '60' });
       }
       const result = validateBooking(await readBody(request));
-      if (!result.valid) return reply(400, { ok: false, code: 'invalid' });
+      if (!result.valid) return reply(400, { ok: false, code: 'invalid', fields: result.errors });
 
       const controller = new AbortController();
       let timer;
@@ -121,7 +110,7 @@ export function createHandler({ telegramFetch = fetch, now = () => new Date(), t
         const delivery = (async () => {
           const response = await telegramFetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
             method: 'POST', signal: controller.signal, headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: telegramText(result.data, now()) }),
+            body: JSON.stringify({ ...destination, ...telegramMessage(result.data, now()) }),
           });
           if (!response.ok) throw new RequestError(502, 'delivery_failed');
           const body = await response.json();

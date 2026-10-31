@@ -1,5 +1,5 @@
 import { BOOKING_ENDPOINT } from './booking-config.js';
-import { validateBooking } from './booking-validation.js';
+import { validateBooking } from './booking-validation.js?v=groups-1';
 
 const copy = {
   uk: {
@@ -10,7 +10,7 @@ const copy = {
     rate: 'Забагато спроб. Зачекайте хвилину та повторіть або напишіть у Telegram.',
     unavailable: 'Онлайн-заявки тимчасово недоступні. Напишіть у Telegram.',
     invalid: 'Перевірте заповнення полів.', telegram: 'Написати в Telegram',
-    name: 'Вкажіть ім’я (до 80 символів).', phone: 'Вкажіть телефон: від 7 до 15 цифр, можна +, пробіли, дужки та дефіси.',
+    name: 'Вкажіть ім’я (до 80 символів).', phone: 'Вкажіть коректний український номер або міжнародний номер з кодом країни (+…).',
     instagram: 'Вкажіть @username або посилання https://instagram.com/username.',
     comment: 'Побажання мають містити не більше 1500 символів.',
   },
@@ -22,7 +22,7 @@ const copy = {
     rate: 'Too many attempts. Please wait a minute and try again, or message me on Telegram.',
     unavailable: 'Online requests are temporarily unavailable. Please message me on Telegram.',
     invalid: 'Please check the form fields.', telegram: 'Message on Telegram',
-    name: 'Enter your name (up to 80 characters).', phone: 'Enter a phone number with 7 to 15 digits; +, spaces, parentheses and hyphens are allowed.',
+    name: 'Enter your name (up to 80 characters).', phone: 'Enter a valid Ukrainian phone number or an international number with country code (+…).',
     instagram: 'Enter @username or a https://instagram.com/username link.',
     comment: 'Please keep your wishes under 1500 characters.',
   },
@@ -103,7 +103,12 @@ if (form) {
         errors = {};
         state = 'success';
       } else {
-        state = response.status === 429 ? 'rate' : result?.code === 'timeout' ? 'timeout' : 'error';
+        if (response.status === 400 && result?.code === 'invalid' && result.fields && typeof result.fields === 'object') {
+          errors = Object.fromEntries(fields.filter(name => Object.hasOwn(result.fields, name)).map(name => [name, name]));
+          state = 'invalid';
+        } else {
+          state = response.status === 429 ? 'rate' : result?.code === 'timeout' ? 'timeout' : 'error';
+        }
       }
     } catch {
       state = controller.signal.aborted ? 'timeout' : 'error';
@@ -111,6 +116,7 @@ if (form) {
       clearTimeout(timer);
       busy = false;
       render();
+      if (state === 'invalid') form.reportValidity();
     }
   });
   render();

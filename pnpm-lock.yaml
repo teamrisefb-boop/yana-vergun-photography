@@ -7,7 +7,14 @@ settings:
 importers:
 
   .:
+    dependencies:
+      libphonenumber-js:
+        specifier: 1.13.15
+        version: 1.13.15
     devDependencies:
+      esbuild:
+        specifier: 0.28.2
+        version: 0.28.2
       playwright:
         specifier: 1.64.1
         version: 1.64.1
@@ -439,6 +446,9 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
+  libphonenumber-js@1.13.15:
+    resolution: {integrity: sha512-AHdhEQeDFEJ4GKDAQ9AwxChy+v2kUILUB3TGQRpkXMkWePjXTU/WQEzWVQoIx/Gz8fE73Wr5SEuZCy2vk8jrMQ==}
+
   miniflare@5.20261023.3-beta:
     resolution: {integrity: sha512-thdXzlktu5GE1o/BlmMAPeJ0Cu6Tu5LpMbRlyfRrpVvMRrhd6p52TMqcITCZZLVzt1UO92VGBkLDhLOpryUAyQ==}
     engines: {node: '>=22.0.0'}
@@ -804,6 +814,8 @@ snapshots:
     optional: true
 
   kleur@4.1.5: {}
+
+  libphonenumber-js@1.13.15: {}
 
   miniflare@5.20261023.3-beta:
     dependencies:

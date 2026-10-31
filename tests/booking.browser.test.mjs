@@ -9,7 +9,7 @@ const site = `${ALLOWED_ORIGIN}/yana-vergun-photography/`;
 // This test-only hostname never appears in the published configuration.
 const api = 'https://booking.test/booking';
 const limiter = () => ({ limit: async () => ({ success: true }) });
-const bindings = () => ({ TELEGRAM_BOT_TOKEN: 'test-only', TELEGRAM_CHAT_ID: 'test-chat', BOOKING_IP_LIMIT: limiter(), BOOKING_SITE_LIMIT: limiter() });
+const bindings = () => ({ TELEGRAM_BOT_TOKEN: 'test-only', TELEGRAM_CHAT_ID: '-1001234567890', BOOKING_IP_LIMIT: limiter(), BOOKING_SITE_LIMIT: limiter() });
 
 test('booking in a real browser with offline Telegram responses', async t => {
   const browser = await chromium.launch({ headless: true });
@@ -54,7 +54,7 @@ test('booking in a real browser with offline Telegram responses', async t => {
   }
   async function fill(page) {
     await page.locator('[name="name"]').fill('Тестова заявка');
-    await page.locator('[name="phone"]').fill('+380 00 000 00 00');
+    await page.locator('[name="phone"]').fill('+380 93 135-36-43');
   }
   const submit = page => page.locator('#submitBtn').click();
   const status = page => page.locator('#formStatus').textContent();
@@ -68,7 +68,7 @@ test('booking in a real browser with offline Telegram responses', async t => {
     await page.locator('[name="phone"]').fill('abcdefg');
     await submit(page);
     assert.equal(calls(), 0);
-    await page.locator('[name="phone"]').fill('+380 00 000 00 00');
+    await page.locator('[name="phone"]').fill('+380 93 135-36-43');
     await page.locator('[name="instagram"]').fill('https://evil.test/profile');
     await submit(page);
     assert.equal(calls(), 0);
@@ -131,7 +131,7 @@ test('booking in a real browser with offline Telegram responses', async t => {
       await submit(page);
       await page.waitForFunction(() => document.querySelector('#formStatus').textContent.length > 0);
       assert.match(await status(page), limited ? /Забагато спроб/ : /Не отримано підтвердження/);
-      assert.equal(await page.locator('[name="phone"]').inputValue(), '+380 00 000 00 00');
+      assert.equal(await page.locator('[name="phone"]').inputValue(), '+380 93 135-36-43');
       await page.locator('[data-lang="en"]').click();
       assert.match(await status(page), limited ? /Too many attempts/ : /could not be confirmed/);
       assert.equal(await page.locator('#submitBtn').isDisabled(), false);
@@ -161,5 +161,43 @@ test('booking in a real browser with offline Telegram responses', async t => {
     assert.notEqual(await status(page), '');
     assert.equal(await page.locator('#bookingWebsite').getAttribute('tabindex'), '-1');
     assert.deepEqual(errors, []);
+  });
+
+  await t.test('Ukrainian phone variants reach Telegram identically; foreign local numbers fail in browser', async () => {
+    const numbers = [];
+    const { page, calls } = await open({ telegramFetch: async (_, options) => {
+      const body = JSON.parse(options.body);
+      const entity = body.entities.find(e => e.type === 'phone_number');
+      numbers.push(body.text.slice(entity.offset, entity.offset + entity.length));
+      return Response.json({ ok: true });
+    } });
+    for (const phone of ['0931353643', '380931353643', '+38 (093) 135-36-43']) {
+      await fill(page);
+      await page.locator('[name="phone"]').fill(phone);
+      await submit(page);
+      await page.waitForFunction(() => document.querySelector('#formStatus').dataset.state === 'success');
+    }
+    assert.deepEqual(numbers, ['+380931353643', '+380931353643', '+380931353643']);
+    await fill(page);
+    await page.locator('[name="phone"]').fill('02079460018');
+    await submit(page);
+    assert.equal(calls(), 3);
+    assert.equal(await page.locator('[name="phone"]').getAttribute('aria-invalid'), 'true');
+  });
+
+  await t.test('server field errors preserve form and show a translated phone error', async () => {
+    const { page } = await open();
+    await page.route(api, route => route.fulfill({
+      status: 400, contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN },
+      body: JSON.stringify({ ok: false, code: 'invalid', fields: { phone: 'phone' } }),
+    }));
+    await fill(page);
+    await submit(page);
+    await page.waitForFunction(() => document.querySelector('[name="phone"]').getAttribute('aria-invalid') === 'true');
+    assert.equal(await page.locator('[name="phone"]').inputValue(), '+380 93 135-36-43');
+    assert.equal(await page.locator('#submitBtn').isDisabled(), false);
+    await page.locator('[data-lang="en"]').click();
+    assert.match(await page.locator('[name="phone"]').evaluate(el => el.validationMessage), /international number/);
+    assert.equal(await page.locator('#formStatus').getAttribute('data-state'), 'error');
   });
 });

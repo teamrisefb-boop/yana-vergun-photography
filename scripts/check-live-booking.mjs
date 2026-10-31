@@ -17,9 +17,10 @@ try {
   const ctas = await page.locator('a[data-en="Book a shoot"]').evaluateAll(nodes => nodes.map(n => n.getAttribute('href')));
   if (ctas.length !== 3 || ctas.some(href => href !== '#form')) throw new Error('Booking CTA verification failed.');
   if (sendTest) {
-    await page.locator('[name="name"]').fill('Тест інтеграції Codex');
-    await page.locator('[name="phone"]').fill('+380000000000');
-    await page.locator('[name="comment"]').fill('ТЕСТ ІНТЕГРАЦІЇ з опублікованого сайту. Це перевірка доставки, не бронювання.');
+    await page.locator('[name="name"]').fill('Тест групи Codex 🧪');
+    await page.locator('[name="phone"]').fill('+38 (093) 135-36-43');
+    await page.locator('[name="instagram"]').fill('https://www.instagram.com/vergun_ph/');
+    await page.locator('[name="comment"]').fill('ТЕСТ ГРУПИ з опублікованого сайту. Перевірка телефону й форматування, не бронювання.');
     const responsePromise = page.waitForResponse(r => r.url() === BOOKING_ENDPOINT && r.request().method() === 'POST');
     await page.locator('#submitBtn').click();
     const response = await responsePromise;

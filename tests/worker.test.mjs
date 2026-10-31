@@ -1,10 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { ALLOWED_ORIGIN, MAX_BODY_BYTES, createHandler, telegramText } from '../worker/src/index.js';
+import { ALLOWED_ORIGIN, MAX_BODY_BYTES, createHandler } from '../worker/src/index.js';
+import { telegramMessage } from '../worker/src/telegram-message.js';
 import { validateBooking } from '../assets/booking-validation.js';
 
-const booking = { name: 'Тестова заявка', phone: '+380 00 000 00 00', instagram: '', comment: '', website: '' };
+const booking = { name: 'Тестова заявка', phone: '+380 93 135-36-43', instagram: '', comment: '', website: '' };
 function limiter(max = Infinity) {
   const counts = new Map();
   return { async limit({ key }) {
@@ -14,7 +15,7 @@ function limiter(max = Infinity) {
   } };
 }
 function env() {
-  return { TELEGRAM_BOT_TOKEN: 'test-only', TELEGRAM_CHAT_ID: 'test-chat', BOOKING_IP_LIMIT: limiter(3), BOOKING_SITE_LIMIT: limiter(30) };
+  return { TELEGRAM_BOT_TOKEN: 'test-only', TELEGRAM_CHAT_ID: '-1001234567890', BOOKING_IP_LIMIT: limiter(3), BOOKING_SITE_LIMIT: limiter(30) };
 }
 function request(data = booking, options = {}) {
   const { raw, headers, ...rest } = options;
@@ -25,7 +26,7 @@ function request(data = booking, options = {}) {
 }
 const confirmed = () => Promise.resolve(Response.json({ ok: true, result: { message_id: 1 } }));
 
-test('success waits for Telegram confirmation; correct plain-text message and Kyiv time', async () => {
+test('success waits for Telegram confirmation; entities, normalized phone and Kyiv time', async () => {
   let sent;
   let confirm;
   const handler = createHandler({
@@ -44,16 +45,19 @@ test('success waits for Telegram confirmation; correct plain-text message and Ky
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), { ok: true });
   assert.equal(sent.parse_mode, undefined);
-  assert.match(sent.text, /📸 Нова заявка на зйомку/);
-  assert.match(sent.text, /Instagram: не вказано/);
+  assert.match(sent.text, /📸 НОВА ЗАЯВКА НА ЗЙОМКУ/);
+  assert.doesNotMatch(sent.text, /Instagram:/);
+  assert.match(sent.text, /Телефон: \+380931353643/);
   assert.match(sent.text, /<b>Тест<\/b> & details/);
-  assert.match(sent.text, /15:00:00 \(Europe\/Kyiv\)/);
-  assert.match(sent.text, /Джерело: сайт Yana Vergun/);
+  assert.match(sent.text, /24\.06\.2026 · 15:00/);
+  assert.doesNotMatch(sent.text, /Europe\/Kyiv|15:00:00/);
+  assert.match(sent.text, /Yana Vergun · заявка із сайту/);
+  assert.deepEqual(sent.link_preview_options, { is_disabled: true });
 });
 
 test('both daylight-saving offsets use Europe/Kyiv', () => {
-  assert.match(telegramText(booking, new Date('2026-01-10T12:00:00Z')), /14:00:00/);
-  assert.match(telegramText(booking, new Date('2026-07-10T12:00:00Z')), /15:00:00/);
+  assert.match(telegramMessage(booking, new Date('2026-01-10T12:00:00Z')).text, /10\.01\.2026 · 14:00/);
+  assert.match(telegramMessage(booking, new Date('2026-07-10T12:00:00Z')).text, /10\.07\.2026 · 15:00/);
 });
 
 test('missing, invalid, wrongly typed and overlong fields never reach Telegram', async () => {
