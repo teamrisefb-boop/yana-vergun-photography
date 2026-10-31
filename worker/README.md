@@ -169,6 +169,15 @@ HTTP 200, Telegram `ok: true`, форма показала успіх і очи�
 українських прикладів, міжнародні номери, поля помилок, UTF-16 з emoji/ZWJ,
 захист destination від підміни й відсутність втручання в update-обробники.
 
+31 жовтня 2026 року призначення змінено на потрібну групу через серверний
+`TELEGRAM_CHAT_ID`. Після зміни виконано одну тестову заявку з опублікованого
+сайту: HTTP 200, Telegram `ok: true`, форма показала успіх. Повідомлення
+перевірено безпосередньо в групі через Telegram Web: жирні поля, ім'я з емодзі,
+нормалізований телефон-посилання та посилання Instagram відображаються правильно.
+Токен не змінювався; webhook, polling і privacy mode не змінювалися.
+Користувач підтвердив, що номер натискається у його мобільному Telegram.
+Це перевірка конкретного клієнта, а не гарантія однакової поведінки всіх клієнтів.
+
 Джерела: [Cloudflare Secrets](https://developers.cloudflare.com/workers/configuration/secrets/),
 [Cloudflare Rate Limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/),
 [Telegram sendMessage](https://core.telegram.org/bots/api#sendmessage),
