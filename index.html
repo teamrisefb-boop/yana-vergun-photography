@@ -260,6 +260,13 @@ header.scrolled .nav{padding-block:14px}
 .field input::placeholder,.field textarea::placeholder{color:#9a9a9a}
 .contact-media .ph{aspect-ratio:3/4;border-radius:6px}
 .note{font-size:.78rem;color:var(--ink-muted);margin-top:6px}
+.form-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.form-status:empty{display:none}
+.form-status[data-state="error"]{color:var(--ink)}
+#formTelegram[hidden]{display:none}
+#submitBtn:disabled{opacity:.65;cursor:wait}
+#submitBtn .arr[hidden]{display:none}
+#form{scroll-margin-top:100px}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--ink);color:#f2f2f2;padding-block:clamp(60px,8vw,90px) 36px;position:relative;overflow:hidden}
@@ -373,7 +380,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
     </ul>
     <div class="nav-right">
       <div class="lang"><button class="active" data-lang="uk">UA</button><span>/</span><button data-lang="en">EN</button></div>
-      <a href="#contact" class="btn btn--primary magnet" data-en="Book a shoot">Забронювати зйомку</a>
+      <a href="#form" class="btn btn--primary magnet" data-en="Book a shoot">Забронювати зйомку</a>
       <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -389,7 +396,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
     <li><a href="#about" data-en="About">Про мене</a></li>
     <li><a href="#contact" data-en="Contacts">Контакти</a></li>
   </ul>
-  <a href="#contact" class="btn btn--light" style="margin-top:40px;align-self:flex-start" data-en="Book a shoot">Забронювати зйомку <span class="arr">→</span></a>
+  <a href="#form" class="btn btn--light" style="margin-top:40px;align-self:flex-start" data-en="Book a shoot">Забронювати зйомку <span class="arr">→</span></a>
 </div>
 
 <main>
@@ -488,7 +495,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <div class="svc reveal"><div class="ico">◇</div><h3>Brand Content</h3><p data-en="Visual content for brands, social media &amp; campaigns.">Візуальний контент для брендів, соцмереж та кампаній.</p><div class="price" data-en="Cost — individual">Вартість — індивідуально</div><a href="#contact" class="tlink" data-en="Discuss →">Обговорити →</a></div>
       <div class="svc reveal"><div class="ico">▷</div><h3>Photo &amp; Video</h3><p data-en="Photo and video format of content for your brand.">Фото та відео формат контенту під твій бренд.</p><div class="price" data-en="Cost — individual">Вартість — індивідуально</div><a href="#contact" class="tlink" data-en="Discuss →">Обговорити →</a></div>
     </div>
-    <div class="svc-cta reveal"><a href="#contact" class="btn btn--light magnet" data-en="Book a shoot">Забронювати зйомку <span class="arr">→</span></a></div>
+    <div class="svc-cta reveal"><a href="#form" class="btn btn--light magnet" data-en="Book a shoot">Забронювати зйомку <span class="arr">→</span></a></div>
   </div>
 </section>
 
@@ -530,13 +537,15 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
         <a class="qbtn qbtn--tg magnet" href="https://t.me/yanVergn" target="_blank" rel="noopener"><span class="qico"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 4.2 18.3 20c-.25 1.12-.9 1.39-1.82.87l-5.03-3.7-2.43 2.34c-.27.27-.5.5-1.02.5l.36-5.13 9.34-8.44c.41-.36-.09-.56-.63-.2L5.53 13.5.56 11.94c-1.08-.34-1.1-1.08.23-1.6L20.2 2.86c.9-.34 1.68.2 1.4 1.34Z"/></svg></span><span class="qbtn__text">Telegram<small>написати</small></span></a>
         <a class="qbtn qbtn--ig magnet" href="https://instagram.com/vergun_ph" target="_blank" rel="noopener"><span class="qico"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.7 2h8.6A5.7 5.7 0 0 1 22 7.7v8.6a5.7 5.7 0 0 1-5.7 5.7H7.7A5.7 5.7 0 0 1 2 16.3V7.7A5.7 5.7 0 0 1 7.7 2Zm0 2A3.7 3.7 0 0 0 4 7.7v8.6A3.7 3.7 0 0 0 7.7 20h8.6a3.7 3.7 0 0 0 3.7-3.7V7.7A3.7 3.7 0 0 0 16.3 4H7.7Zm4.3 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 2a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.15-2.25a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg></span><span class="qbtn__text">Instagram<small>@vergun_ph</small></span></a>
       </div>
-      <form class="form reveal" id="form" onsubmit="return false">
-        <div class="field"><input type="text" placeholder="Ваше ім'я" required></div>
-        <div class="field"><input type="tel" placeholder="Телефон" required></div>
-        <div class="field"><input type="text" placeholder="Instagram (необов'язково)"></div>
-        <div class="field"><textarea placeholder="Кілька слів про зйомку (необов'язково)"></textarea></div>
-        <button type="submit" class="btn btn--primary magnet" id="submitBtn" data-en="Send request">Надіслати заявку <span class="arr">→</span></button>
-        <p class="note" data-en="* demo form — connect to phone / Telegram when building">* демо-форма — підключимо до телефону / Telegram при розробці</p>
+      <form class="form reveal" id="form" method="post" action="#form">
+        <div class="field"><input type="text" name="name" placeholder="Ваше ім'я" aria-label="Ваше ім'я" data-en-placeholder="Your name" data-en-label="Your name" autocomplete="name" maxlength="80" required></div>
+        <div class="field"><input type="tel" name="phone" placeholder="Телефон" aria-label="Телефон" data-en-placeholder="Phone number" data-en-label="Phone number" autocomplete="tel" inputmode="tel" maxlength="32" required></div>
+        <div class="field"><input type="text" name="instagram" placeholder="Instagram (необов'язково)" aria-label="Instagram (необов'язково)" data-en-placeholder="Instagram (optional)" data-en-label="Instagram (optional)" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="100"></div>
+        <div class="field"><textarea name="comment" placeholder="Кілька слів про зйомку (необов'язково)" aria-label="Побажання до зйомки (необов'язково)" data-en-placeholder="A few words about your shoot (optional)" data-en-label="Wishes for the shoot (optional)" autocomplete="off" maxlength="1500"></textarea></div>
+        <div class="form-trap" aria-hidden="true"><label for="bookingWebsite">Website</label><input id="bookingWebsite" type="text" name="website" tabindex="-1" autocomplete="off" maxlength="200"></div>
+        <button type="submit" class="btn btn--primary magnet" id="submitBtn"><span id="submitLabel">Надіслати заявку</span> <span class="arr" aria-hidden="true">→</span></button>
+        <p class="note form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+        <a class="tlink" id="formTelegram" href="https://t.me/yanVergn" target="_blank" rel="noopener" hidden>Написати в Telegram</a>
       </form>
     </div>
     <div class="contact-media reveal"><div class="ph has-img" data-parallax="-30"><img class="ph__img" src="assets/photo-7.jpg" alt="Contact section portrait by Yana Vergun"></div></div>
@@ -744,22 +753,23 @@ mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMen
   var btns=document.querySelectorAll('.lang button'); var cur='uk';
   var nodes=document.querySelectorAll('[data-en]');
   var ua=new Map(); nodes.forEach(function(n){ ua.set(n, n.innerHTML); });
+  var fields=document.querySelectorAll('[data-en-placeholder],[data-en-label]');
+  var uaFields=new Map(); fields.forEach(function(n){ uaFields.set(n,{placeholder:n.getAttribute('placeholder'),label:n.getAttribute('aria-label')}); });
   function setLang(l){
     cur=l;
     nodes.forEach(function(n){ n.innerHTML = (l==='en') ? n.getAttribute('data-en') : ua.get(n); });
+    fields.forEach(function(n){
+      n.setAttribute('placeholder',l==='en'?n.getAttribute('data-en-placeholder'):uaFields.get(n).placeholder);
+      n.setAttribute('aria-label',l==='en'?n.getAttribute('data-en-label'):uaFields.get(n).label);
+    });
     document.documentElement.lang = (l==='en')?'en':'uk';
     btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===l); });
+    document.dispatchEvent(new Event('site:languagechange'));
   }
   btns.forEach(function(b){ b.addEventListener('click',function(){ setLang(b.getAttribute('data-lang')); }); });
 })();
 
-/* ---- FORM DEMO ---- */
-var form=document.getElementById('form');
-form&&form.addEventListener('submit',function(){
-  var b=document.getElementById('submitBtn');
-  b.innerHTML='Дякую! Я зв\u0027яжуся з тобою ✓';
-  b.style.background='var(--ink)';
-});
 </script>
+<script type="module" src="assets/booking.js"></script>
 </body>
 </html>

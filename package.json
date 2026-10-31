@@ -1,0 +1,19 @@
+{
+  "name": "yana-vergun-photography",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test tests/worker.test.mjs",
+    "test:browser": "node --test tests/booking.browser.test.mjs",
+    "worker:check": "wrangler deploy --config worker/wrangler.jsonc --dry-run --outdir .wrangler/check",
+    "worker:dev": "wrangler dev --config worker/wrangler.jsonc",
+    "worker:deploy": "wrangler deploy --config worker/wrangler.jsonc",
+    "telegram:setup": "node scripts/setup-telegram.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1",
+    "wrangler": "4.156.0"
+  }
+}
