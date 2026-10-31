@@ -4,6 +4,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const wrangler = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
+const tokenOnly = process.argv.includes('--token-only');
+const botArgument = process.argv.indexOf('--bot');
+const expectedBot = botArgument >= 0 ? process.argv[botArgument + 1] : '';
 
 function hiddenInput() {
   if (!process.stdin.isTTY || !process.stdout.isTTY) {
@@ -14,7 +17,7 @@ function hiddenInput() {
     let value = '';
     const restore = () => {
       process.stdin.off('data', onData);
-      process.stdin.setRawMode(false);
+      // Leave echo disabled during network requests and until the helper closes.
       process.stdin.pause();
       process.stdout.write('\n');
     };
@@ -64,35 +67,62 @@ async function putSecret(name, value) {
   });
 }
 
+async function waitToClose() {
+  if (!process.stdin.isTTY || !process.stdout.isTTY) return;
+  process.stdout.write('Натисніть Enter, щоб закрити це вікно.\n');
+  // Keep echo disabled until the terminal closes, including accidental extra pastes.
+  await new Promise(resolve => {
+    process.stdin.setRawMode(true);
+    process.stdin.resume();
+    function onData(chunk) {
+      if (!/[\r\n\u0003]/.test(chunk.toString())) return;
+      process.stdin.off('data', onData);
+      process.stdin.pause();
+      resolve();
+    }
+    process.stdin.on('data', onData);
+  });
+}
+
 try {
   const token = await hiddenInput();
   if (!/^\d+:[a-zA-Z0-9_-]{20,}$/.test(token)) throw new Error('Формат токена не схожий на токен BotFather.');
   const bot = await telegram(token, 'getMe');
   if (!bot.is_bot || !bot.username) throw new Error('Не вдалося підтвердити бота.');
-  const webhook = await telegram(token, 'getWebhookInfo');
-  if (webhook.url) throw new Error('Бот уже підключений до webhook. Використайте окремого нового бота; наявне підключення не змінено.');
-  const marker = 'yv_' + randomBytes(16).toString('hex');
-  console.log(`Власниця має зі свого Telegram відкрити https://t.me/${bot.username}?start=${marker} і натиснути Start.`);
-  console.log('Очікування до 3 хвилин. Секрети та повідомлення не виводяться й не зберігаються у файлах.');
-  let offset = 0;
-  let chatId;
-  const end = Date.now() + 180000;
-  while (!chatId && Date.now() < end) {
-    const updates = await telegram(token, 'getUpdates', { offset, timeout: 20, limit: 100, allowed_updates: ['message'] });
-    for (const update of updates) {
-      offset = Math.max(offset, update.update_id + 1);
-      const message = update.message;
-      if (message?.chat?.type === 'private' && message.text === `/start ${marker}`) {
-        chatId = String(message.chat.id);
+  if (expectedBot && bot.username.toLowerCase() !== expectedBot.replace(/^@/, '').toLowerCase()) {
+    throw new Error('Цей токен належить іншому боту. Секрети не змінено.');
+  }
+  if (tokenOnly) {
+    if (!expectedBot) throw new Error('Для заміни токена вкажіть очікуваного бота через --bot.');
+    await putSecret('TELEGRAM_BOT_TOKEN', token);
+    console.log('Новий токен записано в Cloudflare. Chat ID залишено без змін.');
+  } else {
+    const webhook = await telegram(token, 'getWebhookInfo');
+    if (webhook.url) throw new Error('Бот уже підключений до webhook. Використайте окремого нового бота; наявне підключення не змінено.');
+    const marker = 'yv_' + randomBytes(16).toString('hex');
+    console.log(`Власниця має зі свого Telegram відкрити https://t.me/${bot.username}?start=${marker} і натиснути Start.`);
+    console.log('Очікування до 3 хвилин. Секрети та повідомлення не виводяться й не зберігаються у файлах.');
+    let offset = 0;
+    let chatId;
+    const end = Date.now() + 180000;
+    while (!chatId && Date.now() < end) {
+      const updates = await telegram(token, 'getUpdates', { offset, timeout: 20, limit: 100, allowed_updates: ['message'] });
+      for (const update of updates) {
+        offset = Math.max(offset, update.update_id + 1);
+        const message = update.message;
+        if (message?.chat?.type === 'private' && message.text === `/start ${marker}`) {
+          chatId = String(message.chat.id);
+        }
       }
     }
+    if (!chatId) throw new Error('Start із посилання не отримано. Запустіть помічник ще раз.');
+    await putSecret('TELEGRAM_BOT_TOKEN', token);
+    await putSecret('TELEGRAM_CHAT_ID', chatId);
+    console.log('Обидва секрети записані в Cloudflare. Тепер перевірте тестову заявку з опублікованого сайту.');
   }
-  if (!chatId) throw new Error('Start із посилання не отримано. Запустіть помічник ще раз.');
-  await putSecret('TELEGRAM_BOT_TOKEN', token);
-  await putSecret('TELEGRAM_CHAT_ID', chatId);
-  console.log('Обидва секрети записані в Cloudflare. Тепер перевірте тестову заявку з опублікованого сайту.');
 } catch (error) {
   // Only explicitly written safe messages are ever printed; never upstream exceptions.
   console.error(error.message);
   process.exitCode = 1;
 }
+await waitToClose();
