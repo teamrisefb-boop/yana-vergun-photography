@@ -12,6 +12,9 @@ export function groupReference(value) {
     if (numericId(id)) return { chat: id, thread: '' };
   }
   if (url.hostname === 't.me') {
+    if (/^\/(?:\+|joinchat\/)/.test(url.pathname)) {
+      throw new Error('Це посилання-запрошення. Відкрийте групу в https://web.telegram.org/a/ та скопіюйте адресу браузера через Ctrl+L, Ctrl+C.');
+    }
     const privateLink = url.pathname.match(/^\/c\/([1-9]\d*)\/([1-9]\d*)(?:\/([1-9]\d*))?\/?$/);
     if (privateLink) {
       const chat = '-100' + privateLink[1];

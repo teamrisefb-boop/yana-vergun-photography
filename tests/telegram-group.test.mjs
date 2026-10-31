@@ -123,6 +123,9 @@ test('group references support private message/topic links and Telegram Web with
   assert.deepEqual(groupReference('https://web.telegram.org/a/#-123456789'), { chat: '-123456789', thread: '' });
   assert.deepEqual(groupReference('-123456789'), { chat: '-123456789', thread: '' });
   assert.deepEqual(groupReference('https://t.me/group_name/55'), { chat: '@group_name', thread: '' });
+  for (const value of ['https://t.me/+invitation', 'https://t.me/joinchat/invitation']) {
+    assert.throws(() => groupReference(value), /Ctrl\+L, Ctrl\+C/);
+  }
   for (const value of ['https://t.me/+invitation', 'https://evil.test/c/123/42', 'https://t.me.evil.test/c/123/42',
     'https://user@t.me/c/123/42', '123456789', 'https://t.me/c/9007199254740992/77']) assert.throws(() => groupReference(value));
 });

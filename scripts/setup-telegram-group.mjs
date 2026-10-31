@@ -8,8 +8,12 @@ try {
   const token = await hiddenInput('Вставте чинний токен бота (приховано), потім Enter: ');
   if (!/^\d+:[a-zA-Z0-9_-]{20,}$/.test(token)) throw new Error('Некоректний формат токена.');
   console.log('Відкрийте потрібну групу в Telegram Web або скопіюйте посилання на її повідомлення.');
-  const value = await hiddenInput('Вставте посилання/точний ID групи (приховано), потім Enter: ');
-  const reference = groupReference(value);
+  let reference;
+  while (!reference) {
+    const value = await hiddenInput('Вставте адресу відкритої групи з Telegram Web (приховано), потім Enter: ');
+    try { reference = groupReference(value); }
+    catch (error) { console.error(error.message); }
+  }
   // Only read-only Bot API calls: no getUpdates, offsets, webhook or privacy-mode changes.
   const group = await inspectGroup((method, data) => telegram(token, method, data), reference, expectedBot);
   console.log(`Перевірена група: ${group.title}`);
