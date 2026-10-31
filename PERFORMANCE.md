@@ -55,15 +55,15 @@ One paired laboratory run, not field/CrUX data and not a median over devices.
 
 | Metric | Before | After |
 | --- | ---: | ---: |
-| Performance | 68 | 97 |
+| Performance | 73 | 97 |
 | Accessibility | 93 | 100 |
 | Best Practices / SEO | 100 / 100 | 100 / 100 |
-| FCP | 1.89 s | 1.05 s |
-| LCP | 187.31 s | 2.25 s |
-| CLS | 0 | 0 |
-| Total Blocking Time | 121 ms | 146 ms |
-| Speed Index | 5.66 s | 1.05 s |
-| Transfer in the initial audit | 60,988,635 bytes | 301,020 bytes |
+| FCP | 1.85 s | 1.05 s |
+| LCP | 187.32 s | 2.25 s |
+| CLS | 0.0014 | 0 |
+| Total Blocking Time | 118 ms | 140 ms |
+| Speed Index | 1.89 s | 1.05 s |
+| Transfer in the initial audit | 60,988,609 bytes | 301,382 bytes |
 
 The extreme baseline LCP is Lighthouse's *simulated* result for the large
 original gallery and load-dependent intro, not a measured 187-second wait on
@@ -72,6 +72,20 @@ that every metric improved. Measurements vary with host scheduling and network.
 
 Reports/traces, excluded from Git: `test-results/performance/before.html`,
 `after.html`, matching JSON and `*-defaultPass.trace.json` files.
+
+## Published Version
+
+App commits: `d695b75` and `0a6d456`. A first published audit exposed CLS 0.15
+when the deferred script switched a static no-JS header to fixed positioning.
+This was reproduced with a 700 ms script delay, then fixed by setting the
+enhancement class before first paint. A regression test covers the delayed script.
+
+The final published audit (`?v=0a6d456`, same Lighthouse mobile configuration):
+Performance **99**, Accessibility/Best Practices/SEO **100**, FCP **1.05 s**,
+LCP **1.67 s**, CLS **0**, TBT **70 ms**, Speed Index **1.46 s**, transfer
+**302,245 bytes**. This is a separate laboratory deployment check, not a paired
+before/after measurement of the old public URL and not field Core Web Vitals.
+Artifacts: `test-results/performance/published.html`, matching JSON and trace.
 
 ## Slow Network Scroll Trace
 
@@ -87,6 +101,9 @@ Artifacts: `test-results/performance/mobile-scroll.trace.json`,
 
 ## Checks and Limits
 
+- Passed: 30 Worker/form mock checks and 36 UI checks (66 total). The full
+  36-check UI suite passed again against the final published version, including
+  Google Chrome 156.0.8078.74, bundled Chromium and Windows WebKit.
 - Widths 360, 390, 430, 768, 1366 and 1440 in browser automation.
 - Direct `#form`, reload, booking links, Back/Forward and delayed photos; no
   overlap with header, horizontal overflow or image-induced anchor movement.
@@ -95,6 +112,9 @@ Artifacts: `test-results/performance/mobile-scroll.trace.json`,
 - Existing Worker security and phone/entity unit tests, plus mock form success,
   Telegram error, timeout, rate limit, double submit and validation-module failure.
 - No real booking request was sent during this performance/UI update.
+- Published screenshots: `test-results/published/chrome-hero-1440.png`,
+  `chrome-hero-390.png`, form captures for each width and `chrome-gallery-390.png`.
+  These local artifacts are intentionally ignored by Git.
 - Windows WebKit is an engine check, not real Safari/iOS. Physical iPhone Safari,
   VoiceOver/TalkBack and field Core Web Vitals remain unverified.
 
