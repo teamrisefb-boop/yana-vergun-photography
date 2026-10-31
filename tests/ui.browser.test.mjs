@@ -109,5 +109,15 @@ for (const [name, engine] of Object.entries({ chrome, chromium, webkit })) {
       const after=await page.locator('#form').evaluate(e=>e.getBoundingClientRect().top);
       assert.ok(Math.abs(before-after)<=2,`${before} -> ${after}`);
     });
+    await t.test('late enhancement script never moves the fixed header or hero',async()=>{
+      const {page,context}=await open();
+      await page.addInitScript(()=>{
+        window.testCLS=0;
+        if (PerformanceObserver.supportedEntryTypes.includes('layout-shift')) new PerformanceObserver(l=>l.getEntries().forEach(e=>{if(!e.hadRecentInput)window.testCLS+=e.value;})).observe({type:'layout-shift',buffered:true});
+      });
+      await context.route('**/site.js*',async r=>{await new Promise(resolve=>setTimeout(resolve,700));await r.continue();});
+      await page.goto(base,{waitUntil:'load'});
+      assert.ok(await page.evaluate(()=>window.testCLS<.01));
+    });
   });
 }

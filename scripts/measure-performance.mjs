@@ -16,9 +16,7 @@ try {
   await mkdir('test-results/performance', { recursive: true });
   await writeFile(`test-results/performance/${label}.json`, result.report[0]);
   await writeFile(`test-results/performance/${label}.html`, result.report[1]);
-  for (const [name, trace] of Object.entries(result.artifacts.traces || {})) {
-    await writeFile(`test-results/performance/${label}-${name}.trace.json`, JSON.stringify(trace));
-  }
+  if (result.artifacts.Trace) await writeFile(`test-results/performance/${label}-defaultPass.trace.json`, JSON.stringify(result.artifacts.Trace));
   const lhr = result.lhr;
   const metrics = Object.fromEntries(['first-contentful-paint','largest-contentful-paint','cumulative-layout-shift','total-blocking-time','speed-index','total-byte-weight'].map(key => [key, lhr.audits[key]?.numericValue]));
   console.log(JSON.stringify({ label, lighthouseVersion:lhr.lighthouseVersion, fetchTime:lhr.fetchTime, categories:Object.fromEntries(Object.entries(lhr.categories).map(([k,v])=>[k,v.score])), metrics, warnings:lhr.runWarnings }, null, 2));

@@ -33,6 +33,7 @@ header.scrolled{background:#fffffffa;backdrop-filter:none}
 .ph::before,.ph.has-img::before{display:none}
 .ph picture{display:block;width:100%;height:100%}
 .ph__img{color:#555}
+.badge-logo{aspect-ratio:1;object-fit:contain}
 .ph__tag{color:#fff!important;background:#111b;padding:4px 8px;left:10px;bottom:10px;border-radius:3px}
 .ph.is-error::after{content:attr(data-image-error);position:absolute;inset:0;display:grid;place-items:center;padding:24px;color:#555;font-size:.85rem;text-align:center}
 .ph.is-error .ph__img{visibility:hidden}
