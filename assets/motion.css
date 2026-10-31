@@ -1,0 +1,39 @@
+/* Choreography and logo composition restored from e260bb8. */
+.loader,.curtain{display:none;position:fixed;inset:0;pointer-events:none}
+.loader{z-index:9800;background:#000;place-items:center}
+.curtain{z-index:9700;background:#111;transform:translateY(0)}
+.intro-pending{overflow:hidden;background:#000;animation:intro-unlock 0s 6s forwards}
+.intro-pending .loader{display:grid;pointer-events:auto;animation:intro-failsafe 0s 6s forwards}
+.intro-pending .curtain{display:block;pointer-events:auto;animation:intro-failsafe 0s 6s forwards}
+.loader[hidden],.curtain[hidden]{display:none!important}
+.loader__inner{text-align:center;color:#fff;display:grid;justify-items:center;gap:18px}
+.loader__logo-wrap{width:min(66vw,360px);overflow:hidden;clip-path:inset(0 100% 0 0);animation:logoWrite 1.45s .18s cubic-bezier(.77,0,.18,1) forwards}
+.loader__logo{width:100%;height:auto;display:block;filter:brightness(0) invert(1);opacity:.98}
+.loader__caption{font-size:.74rem;letter-spacing:.42em;text-transform:uppercase;color:#ffffffd1;opacity:0;transform:translateY(8px);animation:captionIn .8s 1.25s var(--ease-lux) forwards}
+@keyframes logoWrite{to{clip-path:inset(0)}}
+@keyframes captionIn{to{opacity:1;transform:none}}
+@keyframes intro-failsafe{to{visibility:hidden;pointer-events:none}}
+@keyframes intro-unlock{to{overflow:visible}}
+.image-reveal,.image-hover{position:absolute;inset:0}
+.image-reveal{overflow:hidden}
+.image-hover{transition:transform 1.2s var(--ease-lux)}
+.magnet-shell{display:inline-flex;max-width:100%;vertical-align:middle}
+.form>.magnet-shell,.form>.magnet-shell>.btn{width:100%}
+.btn,.qbtn{transition:background .5s var(--ease-lux),color .5s var(--ease-lux),border-color .5s var(--ease-lux)}
+.pf-item .ov{transition:opacity .6s var(--ease-lux)}
+.motion-ready .proc-line .fill{transform:scaleX(0)}
+@media(min-width:1025px) and (hover:hover){
+  .pf-item:hover .image-hover,.pf-item:focus-visible .image-hover{transform:scale(1.06)}
+  .pf-item .ov{opacity:0}
+  .pf-item:hover .ov,.pf-item:focus-visible .ov{opacity:1}
+  .pf-item .ov h3,.pf-item .ov small{transform:translateY(10px);transition:transform .6s var(--ease-lux)}
+  .pf-item:hover .ov h3,.pf-item:hover .ov small,.pf-item:focus-visible .ov h3,.pf-item:focus-visible .ov small{transform:none}
+}
+@media(min-width:1101px){.h-xl{font-size:7rem}.h1{font-size:4.2rem}.h2{font-size:3rem}}
+@media(max-width:760px){.h-xl{font-size:3.4rem}}
+@media(prefers-reduced-motion:reduce){
+  .loader,.curtain{display:none!important}
+  .intro-pending{overflow:visible;animation:none}
+  .image-reveal{clip-path:none!important}
+  .proc-line .fill{transform:scaleX(1)!important}
+}

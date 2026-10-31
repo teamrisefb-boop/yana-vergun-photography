@@ -8,7 +8,7 @@ import { gzipSync } from 'node:zlib';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const ref=process.env.BASELINE_REF || 'HEAD';
 const baseline = execFileSync('git',['show',`${ref}:index.html`],{cwd:root});
-const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.avif': 'image/avif', '.woff2': 'font/woff2' };
+const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.avif': 'image/avif', '.woff2': 'font/woff2', '.webm':'video/webm', '.mp4':'video/mp4' };
 const server = createServer(async (req, res) => {
   try {
     function respond(data, type) {
@@ -21,6 +21,7 @@ const server = createServer(async (req, res) => {
     }
     const url = new URL(req.url, 'http://localhost');
     let path = decodeURIComponent(url.pathname);
+    if (path.split('/').some(part=>['.git','.wrangler','node_modules'].includes(part)||/^\.(env|dev\.vars)/.test(part))) {res.writeHead(403);return res.end();}
     if (path.startsWith('/baseline/')) {
       path = path.slice('/baseline'.length);
       if (path === '/' || path === '/index.html') return respond(baseline,'text/html');

@@ -19,7 +19,7 @@ button,a,input,textarea{-webkit-tap-highlight-color:transparent}
 .contact h2.h-xl{font-size:4.6rem!important}
 .btn,.qbtn{will-change:auto;transition:background .2s,color .2s,border-color .2s}
 .btn{white-space:normal;max-width:100%;justify-content:center;text-align:center}
-.grain,.loader,.curtain{display:none!important}
+.grain{display:none!important}
 header{transition:background .2s,box-shadow .2s}
 header .nav,header.scrolled .nav{padding-block:16px}
 header.scrolled{background:#fffffffa;backdrop-filter:none}

@@ -1,6 +1,5 @@
 const root = document.documentElement;
 root.classList.replace('no-js', 'js');
-const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const header = document.getElementById('header');
 const language = () => root.lang === 'en' ? 'en' : 'uk';
 const text = (uk, en) => language() === 'en' ? en : uk;
@@ -61,23 +60,20 @@ document.querySelectorAll('.ph__img').forEach(img => {
   if (img.complete && !img.naturalWidth) failed();
 });
 
-// Content is visible by default. Only animate loaded content currently entering view.
-if ('IntersectionObserver' in window && !reduced.matches) {
-  const observer = new IntersectionObserver(entries => {
-    for (const { target, isIntersecting } of entries) {
-      if (!isIntersecting) continue;
-      observer.unobserve(target);
-      const images = [...target.querySelectorAll('img')];
-      if (images.every(img => img.complete && img.naturalWidth) && !location.hash) {
-        target.classList.add('is-entering');
-        target.addEventListener('animationend', () => target.classList.remove('is-entering'), { once: true });
-      }
-    }
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(node => {
-    if (!node.closest('.hero,.pf,.photo-pair') && !node.matches('#form')) observer.observe(node);
-  });
+// Promote only nearby responsive images; the browser still selects srcset/format.
+if ('IntersectionObserver' in window) {
+  const lead=Math.round(innerHeight*1.6);
+  const photos=new IntersectionObserver(entries=>{
+    entries.forEach(({target,isIntersecting})=>{
+      if(!isIntersecting)return;
+      const img=target.querySelector('.ph__img');
+      if(img){img.loading='eager';img.dataset.preloaded='true';}
+      photos.unobserve(target);
+    });
+  },{rootMargin:`${lead}px 0px`});
+  document.querySelectorAll('.ph.has-img').forEach(frame=>photos.observe(frame));
 }
+
 function visibility() { root.classList.toggle('is-hidden-tab', document.hidden); }
 document.addEventListener('visibilitychange', visibility);
 visibility();

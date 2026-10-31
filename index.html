@@ -1,7 +1,25 @@
 <!DOCTYPE html><html lang="uk" class="no-js"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>document.documentElement.classList.replace('no-js','js');</script>
+<script>
+(function(){
+  var root=document.documentElement;
+  root.classList.replace('no-js','js');
+  var allowed=(!location.hash||location.hash==='#top')&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer;
+  window.YVIntro={allowed:allowed,finish:function(reason){
+    clearTimeout(timer);root.classList.remove('intro-pending');root.dataset.intro=reason;
+    ['loader','curtain'].forEach(function(id){var el=document.getElementById(id);if(el)el.hidden=true;});
+    document.querySelectorAll('[data-intro-inert]').forEach(function(el){el.inert=false;el.removeAttribute('data-intro-inert');});
+    document.dispatchEvent(new CustomEvent('yv:introend',{detail:reason}));
+  }};
+  if(allowed){
+    root.classList.add('intro-pending');root.dataset.intro='pending';
+    timer=setTimeout(function(){window.YVIntro.finish('failsafe');},6000);
+    addEventListener('keydown',function(e){if((e.key==='Escape'||e.key==='Tab')&&root.classList.contains('intro-pending'))window.YVIntro.finish('keyboard');});
+  }else root.dataset.intro='skipped';
+})();
+</script>
 <title>Yana Vergun — Photography / Visual Content · Львів</title>
 <meta name="description" content="Yana Vergun — фотограф та відеограф у Львові. Photo &amp; video content для брендів, fashion &amp; beauty, жіночі портрети. Працюю по всій Україні.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -320,9 +338,15 @@ footer{background:var(--ink);color:#f2f2f2;padding-block:clamp(60px,8vw,90px) 36
   .hero-badge{z-index:3}
 }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=ux-2">
+<link rel="stylesheet" href="assets/site.css?v=motion-2">
+<link rel="stylesheet" href="assets/motion.css?v=restore-1">
 </head>
 <body>
+<div class="loader" id="loader" aria-hidden="true"><div class="loader__inner">
+  <div class="loader__logo-wrap"><img class="loader__logo" src="assets/logo.png" width="1000" height="1000" alt="Yana Vergun Photography" decoding="async"></div>
+  <div class="loader__caption">Yana Vergun Photography</div>
+</div></div>
+<div class="curtain" id="curtain" aria-hidden="true"></div>
 <a class="skip-link" href="#main" data-en="Skip to content">Перейти до вмісту</a>
 
 <!-- HEADER -->
@@ -549,7 +573,10 @@ footer{background:var(--ink);color:#f2f2f2;padding-block:clamp(60px,8vw,90px) 36
   <p data-en="For questions about your request, correction or deletion of its details, contact Yana using the Telegram or Instagram links below. You can also use those channels instead of the form.">Щодо заявки, виправлення чи видалення її даних зверніться до Яни через Telegram або Instagram нижче. Цими каналами також можна скористатися замість форми.</p>
   <p><a href="https://t.me/yanVergn" target="_blank" rel="noopener">Telegram</a> · <a href="https://instagram.com/vergun_ph" target="_blank" rel="noopener">Instagram · @vergun_ph</a></p>
 </dialog>
-<script defer="" src="assets/site.js?v=ux-2"></script>
+<script defer="" src="assets/site.js?v=motion-2"></script>
+<script defer src="assets/vendor/gsap.min.js"></script>
+<script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+<script defer src="assets/motion.js?v=restore-2"></script>
 <script type="module" src="assets/booking.js?v=ux-1"></script>
 
 
