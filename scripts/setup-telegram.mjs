@@ -19,9 +19,13 @@ function hiddenInput() {
       process.stdout.write('\n');
     };
     function onData(chunk) {
-      for (const char of chunk.toString()) {
+      const input = chunk.toString().replace(/\u001b\[20[01]~/g, '');
+      for (const char of input) {
         if (char === '\u0003') { restore(); reject(new Error('Налаштування скасовано.')); return; }
-        if (char === '\r' || char === '\n') { restore(); resolve(value.trim()); return; }
+        if (char === '\r' || char === '\n') {
+          if (!value.trim()) continue;
+          restore(); resolve(value.trim()); return;
+        }
         if (char === '\u007f' || char === '\b') { value = value.slice(0, -1); continue; }
         if (/^[\x21-\x7e]$/.test(char) && value.length < 256) value += char;
       }
@@ -50,6 +54,7 @@ async function putSecret(name, value) {
   return new Promise((resolve, reject) => {
     const child = spawn(process.execPath, [wrangler, 'secret', 'put', name, '--config', 'worker/wrangler.jsonc'], {
       cwd: root, windowsHide: true, stdio: ['pipe', 'ignore', 'ignore'],
+      env: { ...process.env, WRANGLER_WRITE_LOGS: 'false', WRANGLER_LOG_SANITIZE: 'true', WRANGLER_SEND_METRICS: 'false' },
     });
     child.stdin.on('error', () => {});
     child.on('error', () => reject(new Error(`Не вдалося записати ${name}. Перевірте вхід Wrangler.`)));
