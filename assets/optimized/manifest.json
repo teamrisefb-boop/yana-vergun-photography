@@ -1,0 +1,1218 @@
+{
+  "assets/hero-main.jpg": {
+    "original": "assets/hero-main.jpg",
+    "width": 1600,
+    "height": 2400,
+    "originalBytes": 355776,
+    "variants": [
+      {
+        "width": 240,
+        "height": 360,
+        "avif": {
+          "src": "assets/optimized/hero-main-240.avif",
+          "bytes": 7899
+        },
+        "webp": {
+          "src": "assets/optimized/hero-main-240.webp",
+          "bytes": 11182
+        },
+        "jpg": {
+          "src": "assets/optimized/hero-main-240.jpg",
+          "bytes": 16402
+        }
+      },
+      {
+        "width": 480,
+        "height": 720,
+        "avif": {
+          "src": "assets/optimized/hero-main-480.avif",
+          "bytes": 19086
+        },
+        "webp": {
+          "src": "assets/optimized/hero-main-480.webp",
+          "bytes": 27816
+        },
+        "jpg": {
+          "src": "assets/optimized/hero-main-480.jpg",
+          "bytes": 45043
+        }
+      },
+      {
+        "width": 800,
+        "height": 1200,
+        "avif": {
+          "src": "assets/optimized/hero-main-800.avif",
+          "bytes": 36962
+        },
+        "webp": {
+          "src": "assets/optimized/hero-main-800.webp",
+          "bytes": 56720
+        },
+        "jpg": {
+          "src": "assets/optimized/hero-main-800.jpg",
+          "bytes": 97686
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1800,
+        "avif": {
+          "src": "assets/optimized/hero-main-1200.avif",
+          "bytes": 66187
+        },
+        "webp": {
+          "src": "assets/optimized/hero-main-1200.webp",
+          "bytes": 101212
+        },
+        "jpg": {
+          "src": "assets/optimized/hero-main-1200.jpg",
+          "bytes": 182802
+        }
+      },
+      {
+        "width": 1600,
+        "height": 2400,
+        "avif": {
+          "src": "assets/optimized/hero-main-1600.avif",
+          "bytes": 108108
+        },
+        "webp": {
+          "src": "assets/optimized/hero-main-1600.webp",
+          "bytes": 160468
+        },
+        "jpg": {
+          "src": "assets/optimized/hero-main-1600.jpg",
+          "bytes": 307450
+        }
+      }
+    ]
+  },
+  "assets/photo-studio-miss-universe-2026.jpg": {
+    "original": "assets/photo-studio-miss-universe-2026.jpg",
+    "width": 4672,
+    "height": 7008,
+    "originalBytes": 7797179,
+    "variants": [
+      {
+        "width": 240,
+        "height": 360,
+        "avif": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-240.avif",
+          "bytes": 6339
+        },
+        "webp": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-240.webp",
+          "bytes": 9536
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-240.jpg",
+          "bytes": 13739
+        }
+      },
+      {
+        "width": 480,
+        "height": 720,
+        "avif": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-480.avif",
+          "bytes": 16049
+        },
+        "webp": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-480.webp",
+          "bytes": 24898
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-480.jpg",
+          "bytes": 37703
+        }
+      },
+      {
+        "width": 800,
+        "height": 1200,
+        "avif": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-800.avif",
+          "bytes": 35978
+        },
+        "webp": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-800.webp",
+          "bytes": 53480
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-800.jpg",
+          "bytes": 84726
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1800,
+        "avif": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-1200.avif",
+          "bytes": 69668
+        },
+        "webp": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-1200.webp",
+          "bytes": 100918
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-1200.jpg",
+          "bytes": 162777
+        }
+      },
+      {
+        "width": 1600,
+        "height": 2400,
+        "avif": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-1600.avif",
+          "bytes": 112526
+        },
+        "webp": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-1600.webp",
+          "bytes": 162338
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-1600.jpg",
+          "bytes": 261476
+        }
+      },
+      {
+        "width": 2400,
+        "height": 3600,
+        "avif": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-2400.avif",
+          "bytes": 206651
+        },
+        "webp": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-2400.webp",
+          "bytes": 295314
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-studio-miss-universe-2026-2400.jpg",
+          "bytes": 498518
+        }
+      }
+    ]
+  },
+  "assets/photo-street-black-and-white.jpg": {
+    "original": "assets/photo-street-black-and-white.jpg",
+    "width": 4535,
+    "height": 6802,
+    "originalBytes": 8838735,
+    "variants": [
+      {
+        "width": 240,
+        "height": 360,
+        "avif": {
+          "src": "assets/optimized/photo-street-black-and-white-240.avif",
+          "bytes": 5797
+        },
+        "webp": {
+          "src": "assets/optimized/photo-street-black-and-white-240.webp",
+          "bytes": 8518
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-street-black-and-white-240.jpg",
+          "bytes": 12085
+        }
+      },
+      {
+        "width": 480,
+        "height": 720,
+        "avif": {
+          "src": "assets/optimized/photo-street-black-and-white-480.avif",
+          "bytes": 15251
+        },
+        "webp": {
+          "src": "assets/optimized/photo-street-black-and-white-480.webp",
+          "bytes": 22136
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-street-black-and-white-480.jpg",
+          "bytes": 35124
+        }
+      },
+      {
+        "width": 800,
+        "height": 1200,
+        "avif": {
+          "src": "assets/optimized/photo-street-black-and-white-800.avif",
+          "bytes": 33107
+        },
+        "webp": {
+          "src": "assets/optimized/photo-street-black-and-white-800.webp",
+          "bytes": 51604
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-street-black-and-white-800.jpg",
+          "bytes": 80980
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1800,
+        "avif": {
+          "src": "assets/optimized/photo-street-black-and-white-1200.avif",
+          "bytes": 68570
+        },
+        "webp": {
+          "src": "assets/optimized/photo-street-black-and-white-1200.webp",
+          "bytes": 106846
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-street-black-and-white-1200.jpg",
+          "bytes": 163819
+        }
+      },
+      {
+        "width": 1600,
+        "height": 2400,
+        "avif": {
+          "src": "assets/optimized/photo-street-black-and-white-1600.avif",
+          "bytes": 116714
+        },
+        "webp": {
+          "src": "assets/optimized/photo-street-black-and-white-1600.webp",
+          "bytes": 180034
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-street-black-and-white-1600.jpg",
+          "bytes": 272282
+        }
+      },
+      {
+        "width": 2400,
+        "height": 3600,
+        "avif": {
+          "src": "assets/optimized/photo-street-black-and-white-2400.avif",
+          "bytes": 234349
+        },
+        "webp": {
+          "src": "assets/optimized/photo-street-black-and-white-2400.webp",
+          "bytes": 393754
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-street-black-and-white-2400.jpg",
+          "bytes": 574136
+        }
+      }
+    ]
+  },
+  "assets/photo-brand-cowgirl.jpg": {
+    "original": "assets/photo-brand-cowgirl.jpg",
+    "width": 4535,
+    "height": 6802,
+    "originalBytes": 13770738,
+    "variants": [
+      {
+        "width": 240,
+        "height": 360,
+        "avif": {
+          "src": "assets/optimized/photo-brand-cowgirl-240.avif",
+          "bytes": 9516
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-cowgirl-240.webp",
+          "bytes": 13878
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-cowgirl-240.jpg",
+          "bytes": 18126
+        }
+      },
+      {
+        "width": 480,
+        "height": 720,
+        "avif": {
+          "src": "assets/optimized/photo-brand-cowgirl-480.avif",
+          "bytes": 24640
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-cowgirl-480.webp",
+          "bytes": 35460
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-cowgirl-480.jpg",
+          "bytes": 51703
+        }
+      },
+      {
+        "width": 800,
+        "height": 1200,
+        "avif": {
+          "src": "assets/optimized/photo-brand-cowgirl-800.avif",
+          "bytes": 50799
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-cowgirl-800.webp",
+          "bytes": 73520
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-cowgirl-800.jpg",
+          "bytes": 112759
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1800,
+        "avif": {
+          "src": "assets/optimized/photo-brand-cowgirl-1200.avif",
+          "bytes": 95602
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-cowgirl-1200.webp",
+          "bytes": 140810
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-cowgirl-1200.jpg",
+          "bytes": 218839
+        }
+      },
+      {
+        "width": 1600,
+        "height": 2400,
+        "avif": {
+          "src": "assets/optimized/photo-brand-cowgirl-1600.avif",
+          "bytes": 155364
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-cowgirl-1600.webp",
+          "bytes": 232232
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-cowgirl-1600.jpg",
+          "bytes": 356728
+        }
+      },
+      {
+        "width": 2400,
+        "height": 3600,
+        "avif": {
+          "src": "assets/optimized/photo-brand-cowgirl-2400.avif",
+          "bytes": 302587
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-cowgirl-2400.webp",
+          "bytes": 454072
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-cowgirl-2400.jpg",
+          "bytes": 710704
+        }
+      }
+    ]
+  },
+  "assets/photo-backstage-field.png": {
+    "original": "assets/photo-backstage-field.png",
+    "width": 1290,
+    "height": 1691,
+    "originalBytes": 425029,
+    "variants": [
+      {
+        "width": 240,
+        "height": 315,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-field-240.avif",
+          "bytes": 8913
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-field-240.webp",
+          "bytes": 13704
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-field-240.jpg",
+          "bytes": 17103
+        }
+      },
+      {
+        "width": 480,
+        "height": 629,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-field-480.avif",
+          "bytes": 25567
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-field-480.webp",
+          "bytes": 39478
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-field-480.jpg",
+          "bytes": 52544
+        }
+      },
+      {
+        "width": 800,
+        "height": 1049,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-field-800.avif",
+          "bytes": 53310
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-field-800.webp",
+          "bytes": 80480
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-field-800.jpg",
+          "bytes": 115735
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1573,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-field-1200.avif",
+          "bytes": 92870
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-field-1200.webp",
+          "bytes": 137708
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-field-1200.jpg",
+          "bytes": 212659
+        }
+      },
+      {
+        "width": 1290,
+        "height": 1691,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-field-1290.avif",
+          "bytes": 104528
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-field-1290.webp",
+          "bytes": 154210
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-field-1290.jpg",
+          "bytes": 234207
+        }
+      }
+    ]
+  },
+  "assets/photo-family-four-generations.jpg": {
+    "original": "assets/photo-family-four-generations.jpg",
+    "width": 4543,
+    "height": 6815,
+    "originalBytes": 14419831,
+    "variants": [
+      {
+        "width": 240,
+        "height": 360,
+        "avif": {
+          "src": "assets/optimized/photo-family-four-generations-240.avif",
+          "bytes": 10048
+        },
+        "webp": {
+          "src": "assets/optimized/photo-family-four-generations-240.webp",
+          "bytes": 14612
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-family-four-generations-240.jpg",
+          "bytes": 19466
+        }
+      },
+      {
+        "width": 480,
+        "height": 720,
+        "avif": {
+          "src": "assets/optimized/photo-family-four-generations-480.avif",
+          "bytes": 25944
+        },
+        "webp": {
+          "src": "assets/optimized/photo-family-four-generations-480.webp",
+          "bytes": 38266
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-family-four-generations-480.jpg",
+          "bytes": 55227
+        }
+      },
+      {
+        "width": 800,
+        "height": 1200,
+        "avif": {
+          "src": "assets/optimized/photo-family-four-generations-800.avif",
+          "bytes": 56469
+        },
+        "webp": {
+          "src": "assets/optimized/photo-family-four-generations-800.webp",
+          "bytes": 82154
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-family-four-generations-800.jpg",
+          "bytes": 124420
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1800,
+        "avif": {
+          "src": "assets/optimized/photo-family-four-generations-1200.avif",
+          "bytes": 104958
+        },
+        "webp": {
+          "src": "assets/optimized/photo-family-four-generations-1200.webp",
+          "bytes": 159220
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-family-four-generations-1200.jpg",
+          "bytes": 241662
+        }
+      },
+      {
+        "width": 1600,
+        "height": 2400,
+        "avif": {
+          "src": "assets/optimized/photo-family-four-generations-1600.avif",
+          "bytes": 169257
+        },
+        "webp": {
+          "src": "assets/optimized/photo-family-four-generations-1600.webp",
+          "bytes": 263416
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-family-four-generations-1600.jpg",
+          "bytes": 394196
+        }
+      },
+      {
+        "width": 2400,
+        "height": 3600,
+        "avif": {
+          "src": "assets/optimized/photo-family-four-generations-2400.avif",
+          "bytes": 344741
+        },
+        "webp": {
+          "src": "assets/optimized/photo-family-four-generations-2400.webp",
+          "bytes": 551840
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-family-four-generations-2400.jpg",
+          "bytes": 806075
+        }
+      }
+    ]
+  },
+  "assets/photo-editorial-portrait-glasses.jpg": {
+    "original": "assets/photo-editorial-portrait-glasses.jpg",
+    "width": 4539,
+    "height": 6808,
+    "originalBytes": 7372053,
+    "variants": [
+      {
+        "width": 240,
+        "height": 360,
+        "avif": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-240.avif",
+          "bytes": 7416
+        },
+        "webp": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-240.webp",
+          "bytes": 11498
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-240.jpg",
+          "bytes": 16355
+        }
+      },
+      {
+        "width": 480,
+        "height": 720,
+        "avif": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-480.avif",
+          "bytes": 18993
+        },
+        "webp": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-480.webp",
+          "bytes": 29560
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-480.jpg",
+          "bytes": 44740
+        }
+      },
+      {
+        "width": 800,
+        "height": 1200,
+        "avif": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-800.avif",
+          "bytes": 38342
+        },
+        "webp": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-800.webp",
+          "bytes": 61908
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-800.jpg",
+          "bytes": 97206
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1800,
+        "avif": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-1200.avif",
+          "bytes": 68403
+        },
+        "webp": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-1200.webp",
+          "bytes": 109234
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-1200.jpg",
+          "bytes": 177118
+        }
+      },
+      {
+        "width": 1600,
+        "height": 2400,
+        "avif": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-1600.avif",
+          "bytes": 104218
+        },
+        "webp": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-1600.webp",
+          "bytes": 166786
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-1600.jpg",
+          "bytes": 272519
+        }
+      },
+      {
+        "width": 2400,
+        "height": 3600,
+        "avif": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-2400.avif",
+          "bytes": 184570
+        },
+        "webp": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-2400.webp",
+          "bytes": 298854
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-editorial-portrait-glasses-2400.jpg",
+          "bytes": 496409
+        }
+      }
+    ]
+  },
+  "assets/photo-summer-in-lviv-field.png": {
+    "original": "assets/photo-summer-in-lviv-field.png",
+    "width": 1290,
+    "height": 1700,
+    "originalBytes": 329288,
+    "variants": [
+      {
+        "width": 240,
+        "height": 316,
+        "avif": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-240.avif",
+          "bytes": 7945
+        },
+        "webp": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-240.webp",
+          "bytes": 11696
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-240.jpg",
+          "bytes": 15534
+        }
+      },
+      {
+        "width": 480,
+        "height": 633,
+        "avif": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-480.avif",
+          "bytes": 22987
+        },
+        "webp": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-480.webp",
+          "bytes": 33496
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-480.jpg",
+          "bytes": 46648
+        }
+      },
+      {
+        "width": 800,
+        "height": 1054,
+        "avif": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-800.avif",
+          "bytes": 48743
+        },
+        "webp": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-800.webp",
+          "bytes": 71490
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-800.jpg",
+          "bytes": 104571
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1581,
+        "avif": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-1200.avif",
+          "bytes": 87973
+        },
+        "webp": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-1200.webp",
+          "bytes": 129004
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-1200.jpg",
+          "bytes": 196138
+        }
+      },
+      {
+        "width": 1290,
+        "height": 1700,
+        "avif": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-1290.avif",
+          "bytes": 104842
+        },
+        "webp": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-1290.webp",
+          "bytes": 142210
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-summer-in-lviv-field-1290.jpg",
+          "bytes": 190880
+        }
+      }
+    ]
+  },
+  "assets/photo-brand-campaign-studio.png": {
+    "original": "assets/photo-brand-campaign-studio.png",
+    "width": 1290,
+    "height": 1708,
+    "originalBytes": 455378,
+    "variants": [
+      {
+        "width": 240,
+        "height": 318,
+        "avif": {
+          "src": "assets/optimized/photo-brand-campaign-studio-240.avif",
+          "bytes": 5709
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-campaign-studio-240.webp",
+          "bytes": 8094
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-campaign-studio-240.jpg",
+          "bytes": 11139
+        }
+      },
+      {
+        "width": 480,
+        "height": 636,
+        "avif": {
+          "src": "assets/optimized/photo-brand-campaign-studio-480.avif",
+          "bytes": 18691
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-campaign-studio-480.webp",
+          "bytes": 28646
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-campaign-studio-480.jpg",
+          "bytes": 36249
+        }
+      },
+      {
+        "width": 800,
+        "height": 1059,
+        "avif": {
+          "src": "assets/optimized/photo-brand-campaign-studio-800.avif",
+          "bytes": 52886
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-campaign-studio-800.webp",
+          "bytes": 79336
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-campaign-studio-800.jpg",
+          "bytes": 94970
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1589,
+        "avif": {
+          "src": "assets/optimized/photo-brand-campaign-studio-1200.avif",
+          "bytes": 115803
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-campaign-studio-1200.webp",
+          "bytes": 187512
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-campaign-studio-1200.jpg",
+          "bytes": 214905
+        }
+      },
+      {
+        "width": 1290,
+        "height": 1708,
+        "avif": {
+          "src": "assets/optimized/photo-brand-campaign-studio-1290.avif",
+          "bytes": 140537
+        },
+        "webp": {
+          "src": "assets/optimized/photo-brand-campaign-studio-1290.webp",
+          "bytes": 225884
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-brand-campaign-studio-1290.jpg",
+          "bytes": 252200
+        }
+      }
+    ]
+  },
+  "assets/photo-backstage-studio.jpg": {
+    "original": "assets/photo-backstage-studio.jpg",
+    "width": 4672,
+    "height": 7008,
+    "originalBytes": 6633604,
+    "variants": [
+      {
+        "width": 240,
+        "height": 360,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-studio-240.avif",
+          "bytes": 3696
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-studio-240.webp",
+          "bytes": 4914
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-studio-240.jpg",
+          "bytes": 7186
+        }
+      },
+      {
+        "width": 480,
+        "height": 720,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-studio-480.avif",
+          "bytes": 9801
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-studio-480.webp",
+          "bytes": 14678
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-studio-480.jpg",
+          "bytes": 20833
+        }
+      },
+      {
+        "width": 800,
+        "height": 1200,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-studio-800.avif",
+          "bytes": 24472
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-studio-800.webp",
+          "bytes": 37476
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-studio-800.jpg",
+          "bytes": 50285
+        }
+      },
+      {
+        "width": 1200,
+        "height": 1800,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-studio-1200.avif",
+          "bytes": 53171
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-studio-1200.webp",
+          "bytes": 87402
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-studio-1200.jpg",
+          "bytes": 108100
+        }
+      },
+      {
+        "width": 1600,
+        "height": 2400,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-studio-1600.avif",
+          "bytes": 104048
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-studio-1600.webp",
+          "bytes": 172190
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-studio-1600.jpg",
+          "bytes": 196910
+        }
+      },
+      {
+        "width": 2400,
+        "height": 3600,
+        "avif": {
+          "src": "assets/optimized/photo-backstage-studio-2400.avif",
+          "bytes": 245106
+        },
+        "webp": {
+          "src": "assets/optimized/photo-backstage-studio-2400.webp",
+          "bytes": 460240
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-backstage-studio-2400.jpg",
+          "bytes": 502650
+        }
+      }
+    ]
+  },
+  "assets/photo-about.jpg": {
+    "original": "assets/photo-about.jpg",
+    "width": 960,
+    "height": 1280,
+    "originalBytes": 126140,
+    "variants": [
+      {
+        "width": 240,
+        "height": 320,
+        "avif": {
+          "src": "assets/optimized/photo-about-240.avif",
+          "bytes": 4638
+        },
+        "webp": {
+          "src": "assets/optimized/photo-about-240.webp",
+          "bytes": 6216
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-about-240.jpg",
+          "bytes": 9754
+        }
+      },
+      {
+        "width": 480,
+        "height": 640,
+        "avif": {
+          "src": "assets/optimized/photo-about-480.avif",
+          "bytes": 13962
+        },
+        "webp": {
+          "src": "assets/optimized/photo-about-480.webp",
+          "bytes": 19088
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-about-480.jpg",
+          "bytes": 30540
+        }
+      },
+      {
+        "width": 800,
+        "height": 1067,
+        "avif": {
+          "src": "assets/optimized/photo-about-800.avif",
+          "bytes": 33136
+        },
+        "webp": {
+          "src": "assets/optimized/photo-about-800.webp",
+          "bytes": 46302
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-about-800.jpg",
+          "bytes": 73936
+        }
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "avif": {
+          "src": "assets/optimized/photo-about-960.avif",
+          "bytes": 49593
+        },
+        "webp": {
+          "src": "assets/optimized/photo-about-960.webp",
+          "bytes": 65952
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-about-960.jpg",
+          "bytes": 114944
+        }
+      }
+    ]
+  },
+  "assets/photo-1.jpg": {
+    "original": "assets/photo-1.jpg",
+    "width": 720,
+    "height": 960,
+    "originalBytes": 72261,
+    "variants": [
+      {
+        "width": 240,
+        "height": 320,
+        "avif": {
+          "src": "assets/optimized/photo-1-240.avif",
+          "bytes": 8802
+        },
+        "webp": {
+          "src": "assets/optimized/photo-1-240.webp",
+          "bytes": 13276
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-1-240.jpg",
+          "bytes": 16083
+        }
+      },
+      {
+        "width": 480,
+        "height": 640,
+        "avif": {
+          "src": "assets/optimized/photo-1-480.avif",
+          "bytes": 24173
+        },
+        "webp": {
+          "src": "assets/optimized/photo-1-480.webp",
+          "bytes": 37568
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-1-480.jpg",
+          "bytes": 48876
+        }
+      },
+      {
+        "width": 720,
+        "height": 960,
+        "avif": {
+          "src": "assets/optimized/photo-1-720.avif",
+          "bytes": 44404
+        },
+        "webp": {
+          "src": "assets/optimized/photo-1-720.webp",
+          "bytes": 65266
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-1-720.jpg",
+          "bytes": 77741
+        }
+      }
+    ]
+  },
+  "assets/photo-4.jpg": {
+    "original": "assets/photo-4.jpg",
+    "width": 720,
+    "height": 960,
+    "originalBytes": 72517,
+    "variants": [
+      {
+        "width": 240,
+        "height": 320,
+        "avif": {
+          "src": "assets/optimized/photo-4-240.avif",
+          "bytes": 7858
+        },
+        "webp": {
+          "src": "assets/optimized/photo-4-240.webp",
+          "bytes": 11822
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-4-240.jpg",
+          "bytes": 15494
+        }
+      },
+      {
+        "width": 480,
+        "height": 640,
+        "avif": {
+          "src": "assets/optimized/photo-4-480.avif",
+          "bytes": 22874
+        },
+        "webp": {
+          "src": "assets/optimized/photo-4-480.webp",
+          "bytes": 34746
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-4-480.jpg",
+          "bytes": 47413
+        }
+      },
+      {
+        "width": 720,
+        "height": 960,
+        "avif": {
+          "src": "assets/optimized/photo-4-720.avif",
+          "bytes": 46678
+        },
+        "webp": {
+          "src": "assets/optimized/photo-4-720.webp",
+          "bytes": 64628
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-4-720.jpg",
+          "bytes": 75852
+        }
+      }
+    ]
+  },
+  "assets/photo-7.jpg": {
+    "original": "assets/photo-7.jpg",
+    "width": 720,
+    "height": 960,
+    "originalBytes": 43112,
+    "variants": [
+      {
+        "width": 240,
+        "height": 320,
+        "avif": {
+          "src": "assets/optimized/photo-7-240.avif",
+          "bytes": 4184
+        },
+        "webp": {
+          "src": "assets/optimized/photo-7-240.webp",
+          "bytes": 6180
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-7-240.jpg",
+          "bytes": 9540
+        }
+      },
+      {
+        "width": 480,
+        "height": 640,
+        "avif": {
+          "src": "assets/optimized/photo-7-480.avif",
+          "bytes": 11958
+        },
+        "webp": {
+          "src": "assets/optimized/photo-7-480.webp",
+          "bytes": 17922
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-7-480.jpg",
+          "bytes": 27117
+        }
+      },
+      {
+        "width": 720,
+        "height": 960,
+        "avif": {
+          "src": "assets/optimized/photo-7-720.avif",
+          "bytes": 25233
+        },
+        "webp": {
+          "src": "assets/optimized/photo-7-720.webp",
+          "bytes": 35526
+        },
+        "jpg": {
+          "src": "assets/optimized/photo-7-720.jpg",
+          "bytes": 43851
+        }
+      }
+    ]
+  }
+}

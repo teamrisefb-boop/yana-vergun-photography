@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="uk" class="no-js">
-<head>
+<!DOCTYPE html><html lang="uk" class="no-js"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yana Vergun — Photography / Visual Content · Львів</title>
-<meta name="description" content="Yana Vergun — фотограф та відеограф у Львові. Photo & video content для брендів, fashion & beauty, жіночі портрети. Працюю по всій Україні.">
+<meta name="description" content="Yana Vergun — фотограф та відеограф у Львові. Photo &amp; video content для брендів, fashion &amp; beauty, жіночі портрети. Працюю по всій Україні.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="alternate icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-latin-wght-normal.woff2" crossorigin="">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-cyrillic-wght-normal.woff2" crossorigin="">
+<link rel="stylesheet" href="assets/fonts.css">
 <style>
 :root{
   --wine:#000000; --oxblood:#111111; --wine-hover:#1A1A1A;
@@ -88,19 +86,6 @@ section{position:relative;padding-block:clamp(80px,12vh,150px)}
 /* grain overlay */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.05;mix-blend-mode:multiply}
 
-/* ---------- LOADER ---------- */
-.loader{position:fixed;inset:0;z-index:9800;background:var(--wine);display:grid;place-items:center;
-  animation:loaderFail 0s linear 3.2s forwards}
-@keyframes loaderFail{to{visibility:hidden;opacity:0;pointer-events:none}}
-.loader__inner{text-align:center;color:var(--cream-on-wine);display:grid;justify-items:center;gap:18px}
-.loader__logo-wrap{width:min(66vw,360px);overflow:hidden;clip-path:inset(0 100% 0 0);animation:logoWrite 1.45s .18s cubic-bezier(.77,0,.18,1) forwards}
-.loader__logo{width:100%;height:auto;margin:auto;display:block;filter:brightness(0) invert(1);opacity:.98}
-.loader__caption{font-size:.74rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.82);opacity:0;transform:translateY(8px);
-  animation:captionIn .8s 1.25s var(--ease-lux) forwards}
-@keyframes logoWrite{to{clip-path:inset(0 0 0 0)}}
-@keyframes captionIn{to{opacity:1;transform:none}}
-.loader.done{visibility:hidden}
-.curtain{position:fixed;inset:0;z-index:9700;background:var(--oxblood);transform:translateY(0)}
 
 /* ---------- HEADER ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:8000;transition:background .5s var(--ease-lux),padding .5s var(--ease-lux),box-shadow .5s}
@@ -219,21 +204,6 @@ header.scrolled .nav{padding-block:14px}
 .step h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;margin:14px 0 8px;font-weight:600}
 .step p{font-size:.84rem;color:var(--ink-muted);line-height:1.55}
 
-/* ---------- TESTIMONIAL ---------- */
-.testi{display:grid;grid-template-columns:1.4fr .9fr 1fr;gap:20px;align-items:stretch}
-.testi .quote{background:var(--wine);color:var(--cream-on-wine);border-radius:6px;padding:clamp(30px,4vw,52px);display:flex;flex-direction:column;justify-content:center}
-.testi .quote .mark{font-family:var(--serif);font-size:4rem;line-height:.5;opacity:.5}
-.testi-stack{display:grid;margin:18px 0 22px}
-.testi-stack .slide{grid-area:1/1;opacity:0;transform:translateY(12px);pointer-events:none;
-  transition:opacity .6s var(--ease-lux),transform .6s var(--ease-lux)}
-.testi-stack .slide.active{opacity:1;transform:none;pointer-events:auto}
-.testi-stack .slide p{font-family:var(--serif);font-size:clamp(1.4rem,2.4vw,2rem);font-style:italic;margin:0 0 18px;line-height:1.25}
-.testi-stack .slide cite{font-style:normal;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;opacity:.8;display:block}
-.testi-dots{display:flex;gap:9px;margin-top:26px}
-.testi-dots button{width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;
-  background:rgba(255,255,255,.32);transition:background .4s var(--ease-lux),width .4s var(--ease-lux)}
-.testi-dots button.active{background:var(--cream-on-wine);width:22px;border-radius:4px}
-.testi .ph{border-radius:6px}
 
 /* ---------- CONTACT ---------- */
 .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,6vw,80px);align-items:center}
@@ -280,11 +250,6 @@ footer{background:var(--ink);color:#f2f2f2;padding-block:clamp(60px,8vw,90px) 36
 .foot-brand span{font-size:.55rem;letter-spacing:.45em;color:rgba(255,255,255,.5);display:block;margin-top:4px}
 .foot-bottom{display:flex;justify-content:space-between;padding-top:26px;font-size:.72rem;color:rgba(255,255,255,.5);letter-spacing:.05em;flex-wrap:wrap;gap:10px}
 
-/* ---------- REVEAL (JS-driven) ---------- */
-.js .reveal{opacity:0;transform:translateY(46px);filter:blur(9px)}
-.js .reveal-mask{display:inline-block;overflow:hidden;vertical-align:top}
-.js .reveal-mask>*{display:inline-block;transform:translateY(110%)}
-html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:none!important;filter:none!important}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1024px){
@@ -354,23 +319,15 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   .hero-badge{z-index:3}
 }
 </style>
+<link rel="stylesheet" href="assets/site.css?v=ux-1">
 </head>
 <body>
-
-<!-- GRAIN -->
-<svg class="grain" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
-
-<!-- LOADER + CURTAIN -->
-<div class="loader" id="loader"><div class="loader__inner">
-  <div class="loader__logo-wrap"><img class="loader__logo" src="assets/logo.png" alt="Yana Vergun Photography"></div>
-  <div class="loader__caption">Yana Vergun Photography</div>
-</div></div>
-<div class="curtain" id="curtain"></div>
+<a class="skip-link" href="#main" data-en="Skip to content">Перейти до вмісту</a>
 
 <!-- HEADER -->
 <header id="header">
-  <nav class="wrap nav">
-    <a href="#" class="brand"><b>YANA VERGUN</b><span>PHOTOGRAPHY</span></a>
+  <nav class="wrap nav" aria-label="Основна навігація" data-en-label="Main navigation">
+    <a href="#top" class="brand"><b>YANA VERGUN</b><span>PHOTOGRAPHY</span></a>
     <ul class="menu">
       <li><a href="#portfolio" data-en="Portfolio">Портфоліо</a></li>
       <li><a href="#services" data-en="Services">Послуги</a></li>
@@ -379,16 +336,16 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <li><a href="#contact" data-en="Contacts">Контакти</a></li>
     </ul>
     <div class="nav-right">
-      <div class="lang"><button class="active" data-lang="uk">UA</button><span>/</span><button data-lang="en">EN</button></div>
+      <div class="lang" aria-label="Мова" data-en-label="Language"><button class="active" data-lang="uk" aria-label="UA — Українська" aria-pressed="true">UA</button><span aria-hidden="true">/</span><button data-lang="en" aria-label="EN — English" aria-pressed="false">EN</button></div>
       <a href="#form" class="btn btn--primary magnet" data-en="Book a shoot">Забронювати зйомку</a>
-      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Відкрити меню" data-en-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
 </header>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mm-close" id="mmClose" aria-label="Закрити">✕</button>
+<dialog class="mobile-menu" id="mobileMenu" aria-label="Навігація" data-en-label="Navigation">
+  <button class="mm-close dialog-close" id="mmClose" aria-label="Закрити меню" data-en-label="Close menu" data-close="" autofocus="">×</button>
   <ul>
     <li><a href="#portfolio" data-en="Portfolio">Портфоліо</a></li>
     <li><a href="#services" data-en="Services">Послуги</a></li>
@@ -397,9 +354,9 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
     <li><a href="#contact" data-en="Contacts">Контакти</a></li>
   </ul>
   <a href="#form" class="btn btn--light" style="margin-top:40px;align-self:flex-start" data-en="Book a shoot">Забронювати зйомку <span class="arr">→</span></a>
-</div>
+</dialog>
 
-<main>
+<main id="main" tabindex="-1">
 <!-- HERO -->
 <section class="hero wrap" id="top">
   <div class="hero-grid">
@@ -416,8 +373,8 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <div class="hero-loc reveal"><span class="dot"></span><span data-en="Lviv · working across Ukraine">Львів · працюю по всій Україні</span></div>
     </div>
     <div class="hero-media">
-      <div class="hero-badge"><img class="badge-logo badge-logo--wine" src="assets/logo.png" alt=""></div>
-      <div class="ph m1 has-img" data-parallax="-40"><img class="ph__img" src="assets/hero-main.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">Fashion portrait</span></div>
+      <div class="hero-badge"><img class="badge-logo badge-logo--wine" src="assets/logo-mark.webp" width="192" height="192" decoding="async" alt=""></div>
+      <div class="ph m1 has-img"><picture><source type="image/avif" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 528px, 42vw" srcset="assets/optimized/hero-main-240.avif 240w, assets/optimized/hero-main-480.avif 480w, assets/optimized/hero-main-800.avif 800w, assets/optimized/hero-main-1200.avif 1200w, assets/optimized/hero-main-1600.avif 1600w"><source type="image/webp" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 528px, 42vw" srcset="assets/optimized/hero-main-240.webp 240w, assets/optimized/hero-main-480.webp 480w, assets/optimized/hero-main-800.webp 800w, assets/optimized/hero-main-1200.webp 1200w, assets/optimized/hero-main-1600.webp 1600w"><img class="ph__img" src="assets/optimized/hero-main-800.jpg" alt="Fashion-портрет авторства Yana Vergun" data-full-avif="assets/optimized/hero-main-1600.avif" data-full-webp="assets/optimized/hero-main-1600.webp" data-en-alt="Fashion portrait by Yana Vergun" srcset="assets/optimized/hero-main-240.jpg 240w, assets/optimized/hero-main-480.jpg 480w, assets/optimized/hero-main-800.jpg 800w, assets/optimized/hero-main-1200.jpg 1200w, assets/optimized/hero-main-1600.jpg 1600w" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 528px, 42vw" width="1600" height="2400" decoding="async" loading="eager" data-original="assets/hero-main.jpg" fetchpriority="high"></picture><span class="ph__tag">Fashion portrait</span></div>
     </div>
   </div>
 </section>
@@ -432,19 +389,20 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
 
 <!-- CATEGORIES -->
 <section class="wrap cats-section">
+  <h2 class="sr-only" data-en="Photography categories">Напрями зйомки</h2>
   <div class="cats">
-    <article class="cat reveal"><div class="ph ph--rose has-img" data-tilt><img class="ph__img" src="assets/photo-studio-miss-universe-2026.jpg" alt="Studio fashion shoot by Yana Vergun"><span class="ph__tag">Studio</span></div><h3 class="h3">Studio</h3><p data-en="Portrait, fashion &amp; beauty shoots in the studio.">Портретні, fashion та beauty зйомки у студії.</p></article>
-    <article class="cat reveal"><div class="ph has-img" data-tilt><img class="ph__img" src="assets/photo-street-black-and-white.jpg" alt="Street fashion shoot by Yana Vergun"><span class="ph__tag">Street</span></div><h3 class="h3">Street</h3><p data-en="Live emotion, natural light, frames on the street.">Живі емоції, природне світло та кадри на вулиці.</p></article>
-    <article class="cat reveal"><div class="ph ph--wine has-img" data-tilt><img class="ph__img" src="assets/photo-brand-cowgirl.jpg" alt="Brand content shoot by Yana Vergun"><span class="ph__tag">Brand</span></div><h3 class="h3">Brand Content</h3><p data-en="Photo &amp; video content for brands and business.">Фото та відео контент для брендів і бізнесу.</p></article>
-    <article class="cat reveal"><div class="ph ph--dark has-img" data-tilt><img class="ph__img" src="assets/photo-backstage-field.png" alt="Backstage style portrait by Yana Vergun"><span class="ph__tag">Backstage</span></div><h3 class="h3">Backstage</h3><p data-en="Behind the scenes — the process and atmosphere.">За кадром — процес і атмосфера зйомки.</p></article>
-    <article class="cat reveal"><div class="ph ph--dark has-img" data-tilt><img class="ph__img" src="assets/photo-family-four-generations.jpg" alt="Family photoshoot by Yana Vergun"><span class="ph__tag">Family</span></div><h3 class="h3">Family</h3><p data-en="Warm family stories, natural emotions and moments that stay with you.">Теплі сімейні історії, живі емоції та моменти, які хочеться зберегти.</p></article>
+    <article class="cat reveal"><div class="ph ph--rose has-img" data-tilt=""><picture><source type="image/avif" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-studio-miss-universe-2026-240.avif 240w, assets/optimized/photo-studio-miss-universe-2026-480.avif 480w, assets/optimized/photo-studio-miss-universe-2026-800.avif 800w, assets/optimized/photo-studio-miss-universe-2026-1200.avif 1200w, assets/optimized/photo-studio-miss-universe-2026-1600.avif 1600w"><source type="image/webp" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-studio-miss-universe-2026-240.webp 240w, assets/optimized/photo-studio-miss-universe-2026-480.webp 480w, assets/optimized/photo-studio-miss-universe-2026-800.webp 800w, assets/optimized/photo-studio-miss-universe-2026-1200.webp 1200w, assets/optimized/photo-studio-miss-universe-2026-1600.webp 1600w"><img class="ph__img" src="assets/optimized/photo-studio-miss-universe-2026-800.jpg" alt="Студійна fashion-зйомка авторства Yana Vergun" data-full-avif="assets/optimized/photo-studio-miss-universe-2026-2400.avif" data-full-webp="assets/optimized/photo-studio-miss-universe-2026-2400.webp" data-en-alt="Studio fashion shoot by Yana Vergun" srcset="assets/optimized/photo-studio-miss-universe-2026-240.jpg 240w, assets/optimized/photo-studio-miss-universe-2026-480.jpg 480w, assets/optimized/photo-studio-miss-universe-2026-800.jpg 800w, assets/optimized/photo-studio-miss-universe-2026-1200.jpg 1200w, assets/optimized/photo-studio-miss-universe-2026-1600.jpg 1600w" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" width="4672" height="7008" decoding="async" loading="lazy" data-original="assets/photo-studio-miss-universe-2026.jpg"></picture><span class="ph__tag">Studio</span></div><h3 class="h3">Studio</h3><p data-en="Portrait, fashion &amp; beauty shoots in the studio.">Портретні, fashion та beauty зйомки у студії.</p></article>
+    <article class="cat reveal"><div class="ph has-img" data-tilt=""><picture><source type="image/avif" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-street-black-and-white-240.avif 240w, assets/optimized/photo-street-black-and-white-480.avif 480w, assets/optimized/photo-street-black-and-white-800.avif 800w, assets/optimized/photo-street-black-and-white-1200.avif 1200w, assets/optimized/photo-street-black-and-white-1600.avif 1600w"><source type="image/webp" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-street-black-and-white-240.webp 240w, assets/optimized/photo-street-black-and-white-480.webp 480w, assets/optimized/photo-street-black-and-white-800.webp 800w, assets/optimized/photo-street-black-and-white-1200.webp 1200w, assets/optimized/photo-street-black-and-white-1600.webp 1600w"><img class="ph__img" src="assets/optimized/photo-street-black-and-white-800.jpg" alt="Вулична fashion-зйомка авторства Yana Vergun" data-full-avif="assets/optimized/photo-street-black-and-white-2400.avif" data-full-webp="assets/optimized/photo-street-black-and-white-2400.webp" data-en-alt="Street fashion shoot by Yana Vergun" srcset="assets/optimized/photo-street-black-and-white-240.jpg 240w, assets/optimized/photo-street-black-and-white-480.jpg 480w, assets/optimized/photo-street-black-and-white-800.jpg 800w, assets/optimized/photo-street-black-and-white-1200.jpg 1200w, assets/optimized/photo-street-black-and-white-1600.jpg 1600w" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" width="4535" height="6802" decoding="async" loading="lazy" data-original="assets/photo-street-black-and-white.jpg"></picture><span class="ph__tag">Street</span></div><h3 class="h3">Street</h3><p data-en="Live emotion, natural light, frames on the street.">Живі емоції, природне світло та кадри на вулиці.</p></article>
+    <article class="cat reveal"><div class="ph ph--wine has-img" data-tilt=""><picture><source type="image/avif" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-brand-cowgirl-240.avif 240w, assets/optimized/photo-brand-cowgirl-480.avif 480w, assets/optimized/photo-brand-cowgirl-800.avif 800w, assets/optimized/photo-brand-cowgirl-1200.avif 1200w, assets/optimized/photo-brand-cowgirl-1600.avif 1600w"><source type="image/webp" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-brand-cowgirl-240.webp 240w, assets/optimized/photo-brand-cowgirl-480.webp 480w, assets/optimized/photo-brand-cowgirl-800.webp 800w, assets/optimized/photo-brand-cowgirl-1200.webp 1200w, assets/optimized/photo-brand-cowgirl-1600.webp 1600w"><img class="ph__img" src="assets/optimized/photo-brand-cowgirl-800.jpg" alt="Контент для бренду авторства Yana Vergun" data-full-avif="assets/optimized/photo-brand-cowgirl-2400.avif" data-full-webp="assets/optimized/photo-brand-cowgirl-2400.webp" data-en-alt="Brand content shoot by Yana Vergun" srcset="assets/optimized/photo-brand-cowgirl-240.jpg 240w, assets/optimized/photo-brand-cowgirl-480.jpg 480w, assets/optimized/photo-brand-cowgirl-800.jpg 800w, assets/optimized/photo-brand-cowgirl-1200.jpg 1200w, assets/optimized/photo-brand-cowgirl-1600.jpg 1600w" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" width="4535" height="6802" decoding="async" loading="lazy" data-original="assets/photo-brand-cowgirl.jpg"></picture><span class="ph__tag">Brand</span></div><h3 class="h3">Brand Content</h3><p data-en="Photo &amp; video content for brands and business.">Фото та відео контент для брендів і бізнесу.</p></article>
+    <article class="cat reveal"><div class="ph ph--dark has-img" data-tilt=""><picture><source type="image/avif" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-backstage-field-240.avif 240w, assets/optimized/photo-backstage-field-480.avif 480w, assets/optimized/photo-backstage-field-800.avif 800w, assets/optimized/photo-backstage-field-1200.avif 1200w, assets/optimized/photo-backstage-field-1290.avif 1290w"><source type="image/webp" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-backstage-field-240.webp 240w, assets/optimized/photo-backstage-field-480.webp 480w, assets/optimized/photo-backstage-field-800.webp 800w, assets/optimized/photo-backstage-field-1200.webp 1200w, assets/optimized/photo-backstage-field-1290.webp 1290w"><img class="ph__img" src="assets/optimized/photo-backstage-field-800.jpg" alt="Портрет за кадром авторства Yana Vergun" data-full-avif="assets/optimized/photo-backstage-field-1290.avif" data-full-webp="assets/optimized/photo-backstage-field-1290.webp" data-en-alt="Backstage style portrait by Yana Vergun" srcset="assets/optimized/photo-backstage-field-240.jpg 240w, assets/optimized/photo-backstage-field-480.jpg 480w, assets/optimized/photo-backstage-field-800.jpg 800w, assets/optimized/photo-backstage-field-1200.jpg 1200w, assets/optimized/photo-backstage-field-1290.jpg 1290w" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" width="1290" height="1691" decoding="async" loading="lazy" data-original="assets/photo-backstage-field.png"></picture><span class="ph__tag">Backstage</span></div><h3 class="h3">Backstage</h3><p data-en="Behind the scenes — the process and atmosphere.">За кадром — процес і атмосфера зйомки.</p></article>
+    <article class="cat reveal"><div class="ph ph--dark has-img" data-tilt=""><picture><source type="image/avif" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-family-four-generations-240.avif 240w, assets/optimized/photo-family-four-generations-480.avif 480w, assets/optimized/photo-family-four-generations-800.avif 800w, assets/optimized/photo-family-four-generations-1200.avif 1200w, assets/optimized/photo-family-four-generations-1600.avif 1600w"><source type="image/webp" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" srcset="assets/optimized/photo-family-four-generations-240.webp 240w, assets/optimized/photo-family-four-generations-480.webp 480w, assets/optimized/photo-family-four-generations-800.webp 800w, assets/optimized/photo-family-four-generations-1200.webp 1200w, assets/optimized/photo-family-four-generations-1600.webp 1600w"><img class="ph__img" src="assets/optimized/photo-family-four-generations-800.jpg" alt="Сімейна зйомка авторства Yana Vergun" data-full-avif="assets/optimized/photo-family-four-generations-2400.avif" data-full-webp="assets/optimized/photo-family-four-generations-2400.webp" data-en-alt="Family photoshoot by Yana Vergun" srcset="assets/optimized/photo-family-four-generations-240.jpg 240w, assets/optimized/photo-family-four-generations-480.jpg 480w, assets/optimized/photo-family-four-generations-800.jpg 800w, assets/optimized/photo-family-four-generations-1200.jpg 1200w, assets/optimized/photo-family-four-generations-1600.jpg 1600w" sizes="(max-width: 760px) 43vw, (max-width: 1024px) 42vw, (min-width: 1320px) 212px, 16vw" width="4543" height="6815" decoding="async" loading="lazy" data-original="assets/photo-family-four-generations.jpg"></picture><span class="ph__tag">Family</span></div><h3 class="h3">Family</h3><p data-en="Warm family stories, natural emotions and moments that stay with you.">Теплі сімейні історії, живі емоції та моменти, які хочеться зберегти.</p></article>
   </div>
 </section>
 
 <!-- PORTFOLIO -->
 <section class="wrap" id="portfolio">
   <div class="sec-head">
-    <div><div class="eyebrow reveal" data-en="Curated portfolio">Обрані роботи</div></div>
+    <div><h2 class="eyebrow reveal" data-en="Curated portfolio">Обрані роботи</h2></div>
     <!--
     <a href="#" class="tlink reveal" data-en="View full portfolio">
       Дивитись повне портфоліо <span class="arr">→</span>
@@ -452,11 +410,11 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
     -->
   </div>
   <div class="pf">
-    <div class="pf-item pf-a reveal"><div class="ph ph--rose has-img"><img class="ph__img" src="assets/photo-brand-cowgirl.jpg" alt="Beauty editorial portrait by Yana Vergun"></div><div class="ov"><h4>Beauty Editorial</h4><small data-en="brand content">контент для бренду</small></div></div>
-    <div class="pf-item pf-b reveal"><div class="ph ph--dark has-img"><img class="ph__img" src="assets/photo-editorial-portrait-glasses.jpg" alt="Editorial portrait by Yana Vergun"></div><div class="ov"><h4>Editorial Portraits</h4><small data-en="studio">студія</small></div></div>
-    <div class="pf-item pf-c reveal"><div class="ph has-img"><img class="ph__img" src="assets/photo-summer-in-lviv-field.png" alt="Summer outdoor portrait by Yana Vergun"></div><div class="ov"><h4>Summer in Lviv</h4><small>street</small></div></div>
-    <div class="pf-item pf-d reveal"><div class="ph ph--wine has-img"><img class="ph__img" src="assets/photo-brand-campaign-studio.png" alt="Brand campaign portrait by Yana Vergun"></div><div class="ov"><h4>Brand Campaign</h4><small data-en="fashion &amp; beauty">fashion &amp; beauty</small></div></div>
-    <div class="pf-item pf-e reveal"><div class="ph ph--dark has-img"><img class="ph__img" src="assets/photo-backstage-studio.jpg" alt="Studio fashion image by Yana Vergun"></div><div class="ov"><h4>Backstage</h4><small data-en="behind the scenes">за кадром</small></div></div>
+    <a data-gallery="" href="assets/optimized/photo-brand-cowgirl-2400.jpg" class="pf-item pf-a reveal"><div class="ph ph--rose has-img"><picture><source type="image/avif" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" srcset="assets/optimized/photo-brand-cowgirl-240.avif 240w, assets/optimized/photo-brand-cowgirl-480.avif 480w, assets/optimized/photo-brand-cowgirl-800.avif 800w, assets/optimized/photo-brand-cowgirl-1200.avif 1200w, assets/optimized/photo-brand-cowgirl-1600.avif 1600w"><source type="image/webp" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" srcset="assets/optimized/photo-brand-cowgirl-240.webp 240w, assets/optimized/photo-brand-cowgirl-480.webp 480w, assets/optimized/photo-brand-cowgirl-800.webp 800w, assets/optimized/photo-brand-cowgirl-1200.webp 1200w, assets/optimized/photo-brand-cowgirl-1600.webp 1600w"><img class="ph__img" src="assets/optimized/photo-brand-cowgirl-800.jpg" alt="Контент для бренду авторства Yana Vergun" data-full-avif="assets/optimized/photo-brand-cowgirl-2400.avif" data-full-webp="assets/optimized/photo-brand-cowgirl-2400.webp" data-en-alt="Beauty editorial portrait by Yana Vergun" srcset="assets/optimized/photo-brand-cowgirl-240.jpg 240w, assets/optimized/photo-brand-cowgirl-480.jpg 480w, assets/optimized/photo-brand-cowgirl-800.jpg 800w, assets/optimized/photo-brand-cowgirl-1200.jpg 1200w, assets/optimized/photo-brand-cowgirl-1600.jpg 1600w" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" width="4535" height="6802" decoding="async" loading="lazy" data-original="assets/photo-brand-cowgirl.jpg"></picture></div><div class="ov"><h3>Beauty Editorial</h3><small data-en="brand content">контент для бренду</small></div></a>
+    <a data-gallery="" href="assets/optimized/photo-editorial-portrait-glasses-2400.jpg" class="pf-item pf-b reveal"><div class="ph ph--dark has-img"><picture><source type="image/avif" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" srcset="assets/optimized/photo-editorial-portrait-glasses-240.avif 240w, assets/optimized/photo-editorial-portrait-glasses-480.avif 480w, assets/optimized/photo-editorial-portrait-glasses-800.avif 800w, assets/optimized/photo-editorial-portrait-glasses-1200.avif 1200w, assets/optimized/photo-editorial-portrait-glasses-1600.avif 1600w"><source type="image/webp" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" srcset="assets/optimized/photo-editorial-portrait-glasses-240.webp 240w, assets/optimized/photo-editorial-portrait-glasses-480.webp 480w, assets/optimized/photo-editorial-portrait-glasses-800.webp 800w, assets/optimized/photo-editorial-portrait-glasses-1200.webp 1200w, assets/optimized/photo-editorial-portrait-glasses-1600.webp 1600w"><img class="ph__img" src="assets/optimized/photo-editorial-portrait-glasses-800.jpg" alt="Editorial-портрет авторства Yana Vergun" data-full-avif="assets/optimized/photo-editorial-portrait-glasses-2400.avif" data-full-webp="assets/optimized/photo-editorial-portrait-glasses-2400.webp" data-en-alt="Editorial portrait by Yana Vergun" srcset="assets/optimized/photo-editorial-portrait-glasses-240.jpg 240w, assets/optimized/photo-editorial-portrait-glasses-480.jpg 480w, assets/optimized/photo-editorial-portrait-glasses-800.jpg 800w, assets/optimized/photo-editorial-portrait-glasses-1200.jpg 1200w, assets/optimized/photo-editorial-portrait-glasses-1600.jpg 1600w" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" width="4539" height="6808" decoding="async" loading="lazy" data-original="assets/photo-editorial-portrait-glasses.jpg"></picture></div><div class="ov"><h3>Editorial Portraits</h3><small data-en="studio">студія</small></div></a>
+    <a data-gallery="" href="assets/optimized/photo-summer-in-lviv-field-1290.jpg" class="pf-item pf-c reveal"><div class="ph has-img"><picture><source type="image/avif" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" srcset="assets/optimized/photo-summer-in-lviv-field-240.avif 240w, assets/optimized/photo-summer-in-lviv-field-480.avif 480w, assets/optimized/photo-summer-in-lviv-field-800.avif 800w, assets/optimized/photo-summer-in-lviv-field-1200.avif 1200w, assets/optimized/photo-summer-in-lviv-field-1290.avif 1290w"><source type="image/webp" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" srcset="assets/optimized/photo-summer-in-lviv-field-240.webp 240w, assets/optimized/photo-summer-in-lviv-field-480.webp 480w, assets/optimized/photo-summer-in-lviv-field-800.webp 800w, assets/optimized/photo-summer-in-lviv-field-1200.webp 1200w, assets/optimized/photo-summer-in-lviv-field-1290.webp 1290w"><img class="ph__img" src="assets/optimized/photo-summer-in-lviv-field-800.jpg" alt="Літній портрет просто неба авторства Yana Vergun" data-full-avif="assets/optimized/photo-summer-in-lviv-field-1290.avif" data-full-webp="assets/optimized/photo-summer-in-lviv-field-1290.webp" data-en-alt="Summer outdoor portrait by Yana Vergun" srcset="assets/optimized/photo-summer-in-lviv-field-240.jpg 240w, assets/optimized/photo-summer-in-lviv-field-480.jpg 480w, assets/optimized/photo-summer-in-lviv-field-800.jpg 800w, assets/optimized/photo-summer-in-lviv-field-1200.jpg 1200w, assets/optimized/photo-summer-in-lviv-field-1290.jpg 1290w" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 373px, 28vw" width="1290" height="1700" decoding="async" loading="lazy" data-original="assets/photo-summer-in-lviv-field.png"></picture></div><div class="ov"><h3>Summer in Lviv</h3><small>street</small></div></a>
+    <a data-gallery="" href="assets/optimized/photo-brand-campaign-studio-1290.jpg" class="pf-item pf-d reveal"><div class="ph ph--wine has-img"><picture><source type="image/avif" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 570px, 43vw" srcset="assets/optimized/photo-brand-campaign-studio-240.avif 240w, assets/optimized/photo-brand-campaign-studio-480.avif 480w, assets/optimized/photo-brand-campaign-studio-800.avif 800w, assets/optimized/photo-brand-campaign-studio-1200.avif 1200w, assets/optimized/photo-brand-campaign-studio-1290.avif 1290w"><source type="image/webp" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 570px, 43vw" srcset="assets/optimized/photo-brand-campaign-studio-240.webp 240w, assets/optimized/photo-brand-campaign-studio-480.webp 480w, assets/optimized/photo-brand-campaign-studio-800.webp 800w, assets/optimized/photo-brand-campaign-studio-1200.webp 1200w, assets/optimized/photo-brand-campaign-studio-1290.webp 1290w"><img class="ph__img" src="assets/optimized/photo-brand-campaign-studio-800.jpg" alt="Зйомка кампанії бренду авторства Yana Vergun" data-full-avif="assets/optimized/photo-brand-campaign-studio-1290.avif" data-full-webp="assets/optimized/photo-brand-campaign-studio-1290.webp" data-en-alt="Brand campaign portrait by Yana Vergun" srcset="assets/optimized/photo-brand-campaign-studio-240.jpg 240w, assets/optimized/photo-brand-campaign-studio-480.jpg 480w, assets/optimized/photo-brand-campaign-studio-800.jpg 800w, assets/optimized/photo-brand-campaign-studio-1200.jpg 1200w, assets/optimized/photo-brand-campaign-studio-1290.jpg 1290w" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 570px, 43vw" width="1290" height="1708" decoding="async" loading="lazy" data-original="assets/photo-brand-campaign-studio.png"></picture></div><div class="ov"><h3>Brand Campaign</h3><small data-en="fashion &amp; beauty">fashion &amp; beauty</small></div></a>
+    <a data-gallery="" href="assets/optimized/photo-backstage-studio-2400.jpg" class="pf-item pf-e reveal"><div class="ph ph--dark has-img"><picture><source type="image/avif" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 570px, 43vw" srcset="assets/optimized/photo-backstage-studio-240.avif 240w, assets/optimized/photo-backstage-studio-480.avif 480w, assets/optimized/photo-backstage-studio-800.avif 800w, assets/optimized/photo-backstage-studio-1200.avif 1200w, assets/optimized/photo-backstage-studio-1600.avif 1600w"><source type="image/webp" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 570px, 43vw" srcset="assets/optimized/photo-backstage-studio-240.webp 240w, assets/optimized/photo-backstage-studio-480.webp 480w, assets/optimized/photo-backstage-studio-800.webp 800w, assets/optimized/photo-backstage-studio-1200.webp 1200w, assets/optimized/photo-backstage-studio-1600.webp 1600w"><img class="ph__img" src="assets/optimized/photo-backstage-studio-800.jpg" alt="Студійний fashion-портрет авторства Yana Vergun" data-full-avif="assets/optimized/photo-backstage-studio-2400.avif" data-full-webp="assets/optimized/photo-backstage-studio-2400.webp" data-en-alt="Studio fashion image by Yana Vergun" srcset="assets/optimized/photo-backstage-studio-240.jpg 240w, assets/optimized/photo-backstage-studio-480.jpg 480w, assets/optimized/photo-backstage-studio-800.jpg 800w, assets/optimized/photo-backstage-studio-1200.jpg 1200w, assets/optimized/photo-backstage-studio-1600.jpg 1600w" sizes="(max-width: 760px) 90vw, (max-width: 1024px) 44vw, (min-width: 1320px) 570px, 43vw" width="4672" height="7008" decoding="async" loading="lazy" data-original="assets/photo-backstage-studio.jpg"></picture></div><div class="ov"><h3>Backstage</h3><small data-en="behind the scenes">за кадром</small></div></a>
   </div>
 </section>
 
@@ -464,8 +422,8 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
 <section class="wrap about" id="about">
   <div class="about-grid">
     <div class="about-media reveal">
-      <div class="ph has-img" data-parallax="-30"><img class="ph__img" src="assets/photo-about.jpg" alt="Yana Vergun with camera in studio"></div>
-      <div class="badge"><img class="badge-logo badge-logo--light" src="assets/logo.png" alt=""></div>
+      <div class="ph has-img" data-parallax="-30"><picture><source type="image/avif" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" srcset="assets/optimized/photo-about-240.avif 240w, assets/optimized/photo-about-480.avif 480w, assets/optimized/photo-about-800.avif 800w, assets/optimized/photo-about-960.avif 960w"><source type="image/webp" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" srcset="assets/optimized/photo-about-240.webp 240w, assets/optimized/photo-about-480.webp 480w, assets/optimized/photo-about-800.webp 800w, assets/optimized/photo-about-960.webp 960w"><img class="ph__img" src="assets/optimized/photo-about-800.jpg" alt="Яна Вергун із камерою у студії" data-full-avif="assets/optimized/photo-about-960.avif" data-full-webp="assets/optimized/photo-about-960.webp" data-en-alt="Yana Vergun with camera in studio" srcset="assets/optimized/photo-about-240.jpg 240w, assets/optimized/photo-about-480.jpg 480w, assets/optimized/photo-about-800.jpg 800w, assets/optimized/photo-about-960.jpg 960w" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" width="960" height="1280" decoding="async" loading="lazy" data-original="assets/photo-about.jpg"></picture></div>
+      <div class="badge"><img class="badge-logo badge-logo--light" src="assets/logo-mark.webp" width="192" height="192" decoding="async" alt=""></div>
     </div>
     <div class="about-copy">
       <div class="eyebrow reveal" data-en="About me">Про мене</div>
@@ -474,10 +432,10 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
         Для мене фотографія — це про людей, настрій і деталі. Працюю з брендами та творчими людьми, створюючи візуал, що виглядає дорого і живе у кадрі.
       </p>
       <div class="facts reveal">
-        <div class="fact"><div class="k" data-en="City">Місто</div><div class="v">Львів</div></div>
+        <div class="fact"><div class="k" data-en="City">Місто</div><div class="v" data-en="Lviv">Львів</div></div>
         <div class="fact"><div class="k" data-en="Focus">Фокус</div><div class="v">Photo &amp; Video</div></div>
         <div class="fact"><div class="k" data-en="Genre">Напрям</div><div class="v">Fashion / Portraits</div></div>
-        <div class="fact"><div class="k" data-en="Availability">Доступність</div><div class="v">Україна &amp; worldwide</div></div>
+        <div class="fact"><div class="k" data-en="Availability">Доступність</div><div class="v" data-en="Ukraine &amp; worldwide">Україна &amp; worldwide</div></div>
       </div>
       <a href="#contact" class="btn btn--primary magnet reveal" data-en="Let's work together">Попрацюймо разом <span class="arr">→</span></a>
     </div>
@@ -488,7 +446,7 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
 <section class="services" id="services">
   <div class="wrap">
     <div class="eyebrow reveal" data-en="Services">Послуги</div>
-    <h2 class="h2 reveal">What I Shoot</h2>
+<h2 class="h2 reveal" data-en="What I shoot">Що я знімаю</h2>
     <div class="svc-grid">
       <div class="svc reveal"><div class="ico">◐</div><h3 data-en="Women Portraits">Жіночі портрети</h3><p data-en="Individual portraits that reveal who you really are.">Індивідуальні портрети, що розкривають тебе по-справжньому.</p><div class="price" data-en="Cost — individual">Вартість — індивідуально</div><a href="#contact" class="tlink" data-en="Discuss →">Обговорити →</a></div>
       <div class="svc reveal"><div class="ico">✦</div><h3>Fashion &amp; Beauty</h3><p data-en="Fashion shoots, lookbook, beauty &amp; editorial.">Fashion-зйомки, lookbook, beauty та editorial.</p><div class="price" data-en="Cost — individual">Вартість — індивідуально</div><a href="#contact" class="tlink" data-en="Discuss →">Обговорити →</a></div>
@@ -505,25 +463,18 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
   <h2 class="h1 reveal" style="margin:10px 0 50px" data-en="How we work together">Як ми працюємо разом</h2>
   <div class="proc-line" id="procLine"><div class="fill" id="procFill"></div></div>
   <div class="proc">
-    <div class="step reveal"><div class="num">01</div><h4 data-en="Request">Запит</h4><p data-en="You leave a request — we discuss the idea and goals.">Ти залишаєш заявку — обговорюємо ідею та задачі.</p></div>
-    <div class="step reveal"><div class="num">02</div><h4 data-en="Planning">Планування</h4><p data-en="We pick a concept, location and references.">Підбираємо концепцію, локацію та референси.</p></div>
-    <div class="step reveal"><div class="num">03</div><h4 data-en="Shoot day">Зйомка</h4><p data-en="We create content in a calm, comfortable atmosphere.">Створюємо контент у спокійній, комфортній атмосфері.</p></div>
-    <div class="step reveal"><div class="num">04</div><h4 data-en="Selection">Відбір</h4><p data-en="A careful selection of the best frames together.">Ретельно відбираємо найкращі кадри разом.</p></div>
-    <div class="step reveal"><div class="num">05</div><h4 data-en="Delivery">Готовий матеріал</h4><p data-en="You get finished content in the needed formats.">Отримуєш готовий контент у потрібних форматах.</p></div>
+    <div class="step reveal"><div class="num">01</div><h3 data-en="Request">Запит</h3><p data-en="You leave a request — we discuss the idea and goals.">Ти залишаєш заявку — обговорюємо ідею та задачі.</p></div>
+    <div class="step reveal"><div class="num">02</div><h3 data-en="Planning">Планування</h3><p data-en="We pick a concept, location and references.">Підбираємо концепцію, локацію та референси.</p></div>
+    <div class="step reveal"><div class="num">03</div><h3 data-en="Shoot day">Зйомка</h3><p data-en="We create content in a calm, comfortable atmosphere.">Створюємо контент у спокійній, комфортній атмосфері.</p></div>
+    <div class="step reveal"><div class="num">04</div><h3 data-en="Selection">Відбір</h3><p data-en="A careful selection of the best frames together.">Ретельно відбираємо найкращі кадри разом.</p></div>
+    <div class="step reveal"><div class="num">05</div><h3 data-en="Delivery">Готовий матеріал</h3><p data-en="You get finished content in the needed formats.">Отримуєш готовий контент у потрібних форматах.</p></div>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="wrap">
-  <div class="testi reveal">
-    <div class="quote">
-      <div class="mark">“</div>
-      <div class="testi-stack" id="testiStack"></div>
-      <div class="testi-dots" id="testiDots"></div>
-    </div>
-    <div class="ph ph--dark has-img"><img class="ph__img" src="assets/photo-1.jpg" alt="Fashion portrait by Yana Vergun"><span class="ph__tag">фото</span></div>
-    <div class="ph ph--rose has-img"><img class="ph__img" src="assets/photo-4.jpg" alt="Beauty portrait by Yana Vergun"><span class="ph__tag">фото</span></div>
-  </div>
+<!-- Additional photographs; testimonials omitted until verified by the owner. -->
+<section class="wrap photo-pair" aria-label="Деталі портфоліо" data-en-label="Portfolio details">
+  <a href="assets/optimized/photo-1-720.jpg" data-gallery=""><div class="ph ph--dark has-img"><picture><source type="image/avif" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" srcset="assets/optimized/photo-1-240.avif 240w, assets/optimized/photo-1-480.avif 480w, assets/optimized/photo-1-720.avif 720w"><source type="image/webp" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" srcset="assets/optimized/photo-1-240.webp 240w, assets/optimized/photo-1-480.webp 480w, assets/optimized/photo-1-720.webp 720w"><img class="ph__img" src="assets/optimized/photo-1-720.jpg" alt="Fashion-портрет авторства Yana Vergun" data-full-avif="assets/optimized/photo-1-720.avif" data-full-webp="assets/optimized/photo-1-720.webp" data-en-alt="Fashion portrait by Yana Vergun" srcset="assets/optimized/photo-1-240.jpg 240w, assets/optimized/photo-1-480.jpg 480w, assets/optimized/photo-1-720.jpg 720w" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" width="720" height="960" decoding="async" loading="lazy" data-original="assets/photo-1.jpg"></picture><span class="ph__tag">Fashion portrait</span></div></a>
+  <a href="assets/optimized/photo-4-720.jpg" data-gallery=""><div class="ph ph--rose has-img"><picture><source type="image/avif" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" srcset="assets/optimized/photo-4-240.avif 240w, assets/optimized/photo-4-480.avif 480w, assets/optimized/photo-4-720.avif 720w"><source type="image/webp" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" srcset="assets/optimized/photo-4-240.webp 240w, assets/optimized/photo-4-480.webp 480w, assets/optimized/photo-4-720.webp 720w"><img class="ph__img" src="assets/optimized/photo-4-720.jpg" alt="Beauty-портрет авторства Yana Vergun" data-full-avif="assets/optimized/photo-4-720.avif" data-full-webp="assets/optimized/photo-4-720.webp" data-en-alt="Beauty portrait by Yana Vergun" srcset="assets/optimized/photo-4-240.jpg 240w, assets/optimized/photo-4-480.jpg 480w, assets/optimized/photo-4-720.jpg 720w" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" width="720" height="960" decoding="async" loading="lazy" data-original="assets/photo-4.jpg"></picture><span class="ph__tag">Beauty portrait</span></div></a>
 </section>
 
 <!-- CONTACT -->
@@ -534,242 +485,72 @@ html.reduce .reveal,html.reduce .reveal-mask>*{opacity:1!important;transform:non
       <h2 class="h-xl reveal" style="font-size:clamp(2.6rem,6vw,5rem)" data-en="LET'S<br><span class='it'>create.</span>">ГОТОВІ<br><span class="it">почати?</span></h2>
       <p class="lead reveal" data-en="Write to me wherever's comfortable — or leave a request and I'll text you back.">Пиши, де зручно — або залиш заявку, і я напишу тобі сама.</p>
       <div class="quick reveal">
-        <a class="qbtn qbtn--tg magnet" href="https://t.me/yanVergn" target="_blank" rel="noopener"><span class="qico"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 4.2 18.3 20c-.25 1.12-.9 1.39-1.82.87l-5.03-3.7-2.43 2.34c-.27.27-.5.5-1.02.5l.36-5.13 9.34-8.44c.41-.36-.09-.56-.63-.2L5.53 13.5.56 11.94c-1.08-.34-1.1-1.08.23-1.6L20.2 2.86c.9-.34 1.68.2 1.4 1.34Z"/></svg></span><span class="qbtn__text">Telegram<small>написати</small></span></a>
-        <a class="qbtn qbtn--ig magnet" href="https://instagram.com/vergun_ph" target="_blank" rel="noopener"><span class="qico"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.7 2h8.6A5.7 5.7 0 0 1 22 7.7v8.6a5.7 5.7 0 0 1-5.7 5.7H7.7A5.7 5.7 0 0 1 2 16.3V7.7A5.7 5.7 0 0 1 7.7 2Zm0 2A3.7 3.7 0 0 0 4 7.7v8.6A3.7 3.7 0 0 0 7.7 20h8.6a3.7 3.7 0 0 0 3.7-3.7V7.7A3.7 3.7 0 0 0 16.3 4H7.7Zm4.3 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 2a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.15-2.25a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg></span><span class="qbtn__text">Instagram<small>@vergun_ph</small></span></a>
+        <a class="qbtn qbtn--tg magnet" href="https://t.me/yanVergn" target="_blank" rel="noopener"><span class="qico"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 4.2 18.3 20c-.25 1.12-.9 1.39-1.82.87l-5.03-3.7-2.43 2.34c-.27.27-.5.5-1.02.5l.36-5.13 9.34-8.44c.41-.36-.09-.56-.63-.2L5.53 13.5.56 11.94c-1.08-.34-1.1-1.08.23-1.6L20.2 2.86c.9-.34 1.68.2 1.4 1.34Z"></path></svg></span><span class="qbtn__text">Telegram<small data-en="Message">написати</small></span></a>
+        <a class="qbtn qbtn--ig magnet" href="https://instagram.com/vergun_ph" target="_blank" rel="noopener"><span class="qico"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.7 2h8.6A5.7 5.7 0 0 1 22 7.7v8.6a5.7 5.7 0 0 1-5.7 5.7H7.7A5.7 5.7 0 0 1 2 16.3V7.7A5.7 5.7 0 0 1 7.7 2Zm0 2A3.7 3.7 0 0 0 4 7.7v8.6A3.7 3.7 0 0 0 7.7 20h8.6a3.7 3.7 0 0 0 3.7-3.7V7.7A3.7 3.7 0 0 0 16.3 4H7.7Zm4.3 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 2a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.15-2.25a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"></path></svg></span><span class="qbtn__text">Instagram<small>@vergun_ph</small></span></a>
       </div>
-      <form class="form reveal" id="form" method="post" action="#form">
-        <div class="field"><input type="text" name="name" placeholder="Ваше ім'я" aria-label="Ваше ім'я" data-en-placeholder="Your name" data-en-label="Your name" autocomplete="name" maxlength="80" required></div>
-        <div class="field"><input type="tel" name="phone" placeholder="Телефон" aria-label="Телефон" data-en-placeholder="Phone number" data-en-label="Phone number" autocomplete="tel" inputmode="tel" maxlength="32" required></div>
-        <div class="field"><input type="text" name="instagram" placeholder="Instagram (необов'язково)" aria-label="Instagram (необов'язково)" data-en-placeholder="Instagram (optional)" data-en-label="Instagram (optional)" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="100"></div>
-        <div class="field"><textarea name="comment" placeholder="Кілька слів про зйомку (необов'язково)" aria-label="Побажання до зйомки (необов'язково)" data-en-placeholder="A few words about your shoot (optional)" data-en-label="Wishes for the shoot (optional)" autocomplete="off" maxlength="1500"></textarea></div>
+      <form class="form" id="form" method="post" action="#form" aria-labelledby="bookingTitle" tabindex="-1">
+        <h3 id="bookingTitle" data-en="Booking request">Заявка на зйомку</h3>
+        <div class="field"><label for="bookingName" data-en="Your name">Ім'я</label><input id="bookingName" type="text" name="name" placeholder="Ваше ім'я" aria-label="Ваше ім'я" data-en-placeholder="Your name" data-en-label="Your name" autocomplete="name" maxlength="80" required=""></div>
+        <div class="field"><label for="bookingPhone" data-en="Phone number">Телефон</label><input id="bookingPhone" type="tel" name="phone" placeholder="Телефон" aria-label="Телефон" data-en-placeholder="Phone number" data-en-label="Phone number" autocomplete="tel" inputmode="tel" maxlength="32" required=""></div>
+        <div class="field"><label for="bookingInstagram" data-en="Instagram (optional)">Instagram (необов'язково)</label><input id="bookingInstagram" type="text" name="instagram" placeholder="Instagram (необов'язково)" aria-label="Instagram (необов'язково)" data-en-placeholder="Instagram (optional)" data-en-label="Instagram (optional)" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="100"></div>
+        <div class="field"><label for="bookingComment" data-en="Wishes for the shoot (optional)">Побажання до зйомки (необов'язково)</label><textarea id="bookingComment" name="comment" placeholder="Кілька слів про зйомку (необов'язково)" aria-label="Побажання до зйомки (необов'язково)" data-en-placeholder="A few words about your shoot (optional)" data-en-label="Wishes for the shoot (optional)" autocomplete="off" maxlength="1500"></textarea></div>
         <div class="form-trap" aria-hidden="true"><label for="bookingWebsite">Website</label><input id="bookingWebsite" type="text" name="website" tabindex="-1" autocomplete="off" maxlength="200"></div>
-        <button type="submit" class="btn btn--primary magnet" id="submitBtn"><span id="submitLabel">Надіслати заявку</span> <span class="arr" aria-hidden="true">→</span></button>
+        <p class="note"><button type="button" class="privacy-link" data-privacy="" data-en="How your request is processed">Як обробляється заявка</button></p>
+        <button type="submit" class="btn btn--primary magnet" id="submitBtn" disabled=""><span id="submitLabel">Надіслати заявку</span> <span class="arr" aria-hidden="true">→</span></button>
+        <noscript><p class="note">Для надсилання онлайн потрібен JavaScript. Напишіть у <a href="https://t.me/yanVergn">Telegram</a> або <a href="https://instagram.com/vergun_ph">Instagram</a>.</p></noscript>
         <p class="note form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true"></p>
-        <a class="tlink" id="formTelegram" href="https://t.me/yanVergn" target="_blank" rel="noopener" hidden>Написати в Telegram</a>
+        <a class="tlink" id="formTelegram" href="https://t.me/yanVergn" target="_blank" rel="noopener" hidden="">Написати в Telegram</a>
       </form>
     </div>
-    <div class="contact-media reveal"><div class="ph has-img" data-parallax="-30"><img class="ph__img" src="assets/photo-7.jpg" alt="Contact section portrait by Yana Vergun"></div></div>
+    <div class="contact-media reveal"><div class="ph has-img" data-parallax="-30"><picture><source type="image/avif" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" srcset="assets/optimized/photo-7-240.avif 240w, assets/optimized/photo-7-480.avif 480w, assets/optimized/photo-7-720.avif 720w"><source type="image/webp" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" srcset="assets/optimized/photo-7-240.webp 240w, assets/optimized/photo-7-480.webp 480w, assets/optimized/photo-7-720.webp 720w"><img class="ph__img" src="assets/optimized/photo-7-720.jpg" alt="Портрет для розділу контактів авторства Yana Vergun" data-full-avif="assets/optimized/photo-7-720.avif" data-full-webp="assets/optimized/photo-7-720.webp" data-en-alt="Contact section portrait by Yana Vergun" srcset="assets/optimized/photo-7-240.jpg 240w, assets/optimized/photo-7-480.jpg 480w, assets/optimized/photo-7-720.jpg 720w" sizes="(max-width: 1024px) 90vw, (min-width: 1320px) 500px, 40vw" width="720" height="960" decoding="async" loading="lazy" data-original="assets/photo-7.jpg"></picture></div></div>
   </div>
 </section>
 </main>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-watermark">Let's create</div>
+  <div class="foot-watermark" aria-hidden="true">Let's create</div>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand"><b>YANA VERGUN</b><span>PHOTOGRAPHY</span><p style="margin-top:18px;max-width:32ch" data-en="Visual stories that make brands and people fall in love.">Візуальні історії, у які закохуються бренди та люди.</p></div>
-      <div><h5 data-en="Menu">Меню</h5><a href="#portfolio" data-en="Portfolio">Портфоліо</a><a href="#services" data-en="Services">Послуги</a><a href="#process" data-en="Process">Процес</a><a href="#about" data-en="About">Про мене</a></div>
-      <div><h5>Follow</h5><a href="https://instagram.com/vergun_ph" target="_blank" rel="noopener">Instagram</a><a href="#">TikTok</a><a href="#">Pinterest</a><a href="#">Threads</a></div>
-      <div><h5 data-en="Let's connect">Зв'язатись</h5><a href="tel:+380960000000">+380 96 000 00 00</a><a href="https://t.me/yanVergn" target="_blank" rel="noopener">Telegram</a><a href="https://instagram.com/vergun_ph" target="_blank" rel="noopener">Instagram · @vergun_ph</a><p data-en="Lviv, Ukraine">Львів, Україна</p></div>
+      <div><h2 data-en="Menu">Меню</h2><a href="#portfolio" data-en="Portfolio">Портфоліо</a><a href="#services" data-en="Services">Послуги</a><a href="#process" data-en="Process">Процес</a><a href="#about" data-en="About">Про мене</a></div>
+      <div><h2 data-en="Follow">Соцмережі</h2><a href="https://instagram.com/vergun_ph" target="_blank" rel="noopener">Instagram</a><a href="https://t.me/yanVergn" target="_blank" rel="noopener">Telegram</a></div>
+      <div><h2 data-en="Let's connect">Зв'язатись</h2><a href="https://t.me/yanVergn" target="_blank" rel="noopener">Telegram</a><a href="https://instagram.com/vergun_ph" target="_blank" rel="noopener">Instagram · @vergun_ph</a><p data-en="Lviv, Ukraine">Львів, Україна</p></div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Yana Vergun Photography</span><span data-en="Privacy policy">Політика конфіденційності</span></div>
+    <div class="foot-bottom"><span>© 2026 Yana Vergun Photography</span><button type="button" class="privacy-link" data-privacy="" data-en="Privacy policy">Політика конфіденційності</button></div>
   </div>
 </footer>
 
-<!-- LIBS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
-<script>
-document.documentElement.classList.remove('no-js');
-document.documentElement.classList.add('js');
-var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(REDUCE) document.documentElement.classList.add('reduce');
-var hasGSAP = typeof gsap !== 'undefined';
+<dialog class="lightbox" id="lightbox" aria-labelledby="lightboxTitle">
+  <div class="lightbox-head">
+    <h2 class="lightbox-title" id="lightboxTitle">Портфоліо</h2>
+    <div class="lightbox-tools">
+      <button class="icon-btn" id="galleryPrevious" aria-label="Попереднє фото" data-en-label="Previous photo" title="Попереднє фото" data-en-title="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"></path></svg></button>
+      <button class="icon-btn" id="galleryNext" aria-label="Наступне фото" data-en-label="Next photo" title="Наступне фото" data-en-title="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"></path></svg></button>
+      <button class="icon-btn" id="galleryZoom" aria-label="Збільшити фото" data-en-label="Zoom photo" title="Збільшити фото" data-en-title="Zoom photo" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"></circle><path d="m15 15 6 6M7 10h6m-3-3v6"></path></svg></button>
+      <button class="icon-btn" data-close="" autofocus="" aria-label="Закрити фото" data-en-label="Close photo" title="Закрити фото" data-en-title="Close photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"></path></svg></button>
+    </div>
+  </div>
+  <div class="lightbox-media" id="lightboxMedia"><picture><source id="lightboxAvif" type="image/avif"><source id="lightboxWebp" type="image/webp"><img id="lightboxImage" alt="" decoding="async"></picture></div>
+  <p class="lightbox-status" id="lightboxStatus" aria-live="polite" aria-atomic="true"></p>
+</dialog>
 
-/* ---- LOADER + CURTAIN ---- */
-function forceShowAll(){
-  document.querySelectorAll('.reveal,.reveal-mask>*').forEach(function(e){
-    e.style.opacity=1; e.style.transform='none'; e.style.filter='none';
-  });
-}
-function startIntro(){
-  var loader = document.getElementById('loader');
-  var curtain = document.getElementById('curtain');
-  if(hasGSAP && !REDUCE){
-    gsap.timeline()
-      .to('#loader .loader__inner',{opacity:0,duration:.5,ease:'power2.out'},1.95)
-      .to(loader,{yPercent:-100,duration:.9,ease:'power4.inOut'},'-=.1')
-      .to(curtain,{yPercent:-100,duration:.9,ease:'power4.inOut'},'-=.7')
-      .add(introReveal,'-=.3')
-      .set([loader,curtain],{display:'none'});
-  } else {
-    loader.style.display='none'; curtain.style.display='none';
-    forceShowAll();
-  }
-}
-// run as soon as ready (handles the case where 'load' already fired)
-if(document.readyState === 'complete'){
-  setTimeout(startIntro, REDUCE?150:500);
-} else {
-  window.addEventListener('load', function(){ setTimeout(startIntro, REDUCE?150:800); });
-}
-// hard safety net — hero text must never stay hidden
-setTimeout(function(){
-  var hero=document.querySelector('.hero'); if(!hero) return;
-  hero.querySelectorAll('.reveal').forEach(function(e){
-    if(parseFloat(getComputedStyle(e).opacity) === 0){ e.style.opacity=1; e.style.transform='none'; e.style.filter='none'; }
-  });
-}, 3200);
+<dialog class="privacy" id="privacy" aria-labelledby="privacyTitle">
+  <button class="dialog-close" data-close="" autofocus="" aria-label="Закрити політику конфіденційності" data-en-label="Close privacy policy">×</button>
+  <h2 id="privacyTitle" data-en="Privacy policy">Політика конфіденційності</h2>
+  <h3 data-en="What you send">Що ви надсилаєте</h3>
+  <p data-en="The booking form asks for your name and phone number. Instagram and wishes for the shoot are optional. Please do not include payment details, identity documents or other sensitive information.">Форма бронювання запитує ім'я й телефон. Instagram і побажання до зйомки необов'язкові. Не додавайте платіжні дані, документи чи іншу чутливу інформацію.</p>
+  <h3 data-en="Purpose and delivery">Мета й передавання</h3>
+  <p data-en="The details are used to reply to your request and discuss the shoot. The GitHub Pages site sends them over HTTPS to a Cloudflare Worker, which delivers the request through a Telegram bot to the booking group used by Yana Vergun. People with access to that group can see the request.">Дані потрібні, щоб відповісти на заявку й обговорити зйомку. Сайт на GitHub Pages передає їх через HTTPS до Cloudflare Worker, а той через Telegram-бота — у групу заявок, яку використовує Yana Vergun. Учасники цієї групи з доступом до повідомлень можуть бачити заявку.</p>
+  <h3 data-en="Storage and technical protection">Зберігання й технічний захист</h3>
+  <p data-en="The form handler does not keep a separate booking database or log the submitted contact details. Requests remain in the Telegram conversation. No fixed retention period has been specified; you can discuss deletion directly with Yana. Hosting and messaging providers may process technical data under their own policies. An IP-derived hash is used for server-side rate limiting; CORS alone is not spam protection.">Обробник форми не створює окремої бази заявок і не записує надіслані контакти в журнали. Заявки залишаються в листуванні Telegram. Фіксований строк зберігання не визначено; видалення можна обговорити безпосередньо з Яною. Провайдери хостингу й месенджера можуть обробляти технічні дані за власними правилами. Для серверного обмеження частоти використовується хеш IP-адреси; CORS сам по собі не захищає від спаму.</p>
+  <h3 data-en="Questions and alternative contact">Запитання та інший спосіб зв'язку</h3>
+  <p data-en="For questions about your request, correction or deletion of its details, contact Yana using the Telegram or Instagram links below. You can also use those channels instead of the form.">Щодо заявки, виправлення чи видалення її даних зверніться до Яни через Telegram або Instagram нижче. Цими каналами також можна скористатися замість форми.</p>
+  <p><a href="https://t.me/yanVergn" target="_blank" rel="noopener">Telegram</a> · <a href="https://instagram.com/vergun_ph" target="_blank" rel="noopener">Instagram · @vergun_ph</a></p>
+</dialog>
+<script defer="" src="assets/site.js?v=ux-1"></script>
+<script type="module" src="assets/booking.js?v=ux-1"></script>
 
-/* ---- INTRO HERO REVEAL ---- */
-function introReveal(){
-  if(!hasGSAP) return;
-  gsap.to('.hero .reveal',{opacity:1,y:0,filter:'blur(0px)',duration:1.1,stagger:.12,ease:'power3.out'});
-}
 
-/* ---- SCROLL REVEALS ---- */
-if(hasGSAP && !REDUCE){
-  gsap.registerPlugin(ScrollTrigger);
 
-  // staggered groups — cards cascade one after another
-  ['.cats','.svc-grid','.proc','.pf'].forEach(function(sel){
-    document.querySelectorAll(sel).forEach(function(group){
-      var items = group.querySelectorAll('.reveal');
-      if(!items.length) return;
-      gsap.to(items,{opacity:1,y:0,filter:'blur(0px)',duration:1.2,ease:'power3.out',stagger:.13,
-        scrollTrigger:{trigger:group,start:'top 82%',once:true}});
-    });
-  });
-
-  // standalone fade-up (skip hero + grouped items above)
-  gsap.utils.toArray('.reveal').forEach(function(el){
-    if(el.closest('.hero')) return;
-    if(el.closest('.cats,.svc-grid,.proc,.pf')) return;
-    gsap.to(el,{opacity:1,y:0,filter:'blur(0px)',duration:1.2,ease:'power3.out',
-      scrollTrigger:{trigger:el,start:'top 86%',once:true}});
-  });
-
-  // masked headings — line rises from behind a mask
-  gsap.utils.toArray('.reveal-mask>*').forEach(function(el){
-    if(el.closest('.hero')) return;
-    gsap.fromTo(el,{yPercent:110},{yPercent:0,duration:1.25,ease:'power4.out',
-      scrollTrigger:{trigger:el,start:'top 90%',once:true}});
-  });
-
-  // image curtain — photos uncover from the bottom up
-  gsap.utils.toArray('.ph').forEach(function(el){
-    if(el.closest('.hero')) return;
-    gsap.fromTo(el,{clipPath:'inset(100% 0% 0% 0%)'},
-      {clipPath:'inset(0% 0% 0% 0%)',duration:1.35,ease:'power3.out',
-       scrollTrigger:{trigger:el,start:'top 88%',once:true}});
-  });
-
-  // parallax
-  gsap.utils.toArray('[data-parallax]').forEach(function(el){
-    var amt = parseFloat(el.getAttribute('data-parallax'));
-    gsap.to(el,{y:amt,ease:'none',
-      scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}});
-  });
-  // process line draw
-  gsap.to('#procFill',{scaleX:1,ease:'none',
-    scrollTrigger:{trigger:'#procLine',start:'top 80%',end:'+=300',scrub:true}});
-}
-
-/* ---- SMOOTH SCROLL (Lenis) ---- */
-if(typeof Lenis !== 'undefined' && !REDUCE){
-  var lenis = new Lenis({lerp:.085,wheelMultiplier:1,smoothWheel:true});
-  if(hasGSAP){
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function(time){ lenis.raf(time*1000); });
-    gsap.ticker.lagSmoothing(0);
-  } else {
-    (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })();
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      var id=a.getAttribute('href'); if(id.length<2) return;
-      var t=document.querySelector(id); if(!t) return;
-      e.preventDefault(); lenis.scrollTo(t,{offset:-70}); closeMenu();
-    });
-  });
-}
-
-/* ---- HEADER SCROLLED ---- */
-var header=document.getElementById('header');
-function onScroll(){ header.classList.toggle('scrolled', window.scrollY>40); }
-window.addEventListener('scroll',onScroll); onScroll();
-
-/* ---- MARQUEE ---- */
-(function(){
-  var track=document.getElementById('marquee'); if(!track||REDUCE) return;
-  var x=0, w=track.scrollWidth/2;
-  (function loop(){ x-=0.5; if(-x>=w) x=0; track.style.transform='translateX('+x+'px)'; requestAnimationFrame(loop); })();
-})();
-
-/* ---- MOBILE MENU ---- */
-var mm=document.getElementById('mobileMenu'), burger=document.getElementById('burger');
-function openMenu(){ mm.classList.add('open'); }
-function closeMenu(){ mm.classList.remove('open'); }
-burger&&burger.addEventListener('click',openMenu);
-document.getElementById('mmClose').addEventListener('click',closeMenu);
-mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
-
-/* ---- MAGNETIC BUTTONS ---- */
-(function(){
-  if(window.matchMedia('(hover:none)').matches || REDUCE) return;
-  document.querySelectorAll('.magnet').forEach(function(el){
-    el.addEventListener('mousemove',function(e){
-      var r=el.getBoundingClientRect();
-      var dx=(e.clientX-(r.left+r.width/2))*.25, dy=(e.clientY-(r.top+r.height/2))*.35;
-      el.style.transform='translate('+dx+'px,'+dy+'px)';
-    });
-    el.addEventListener('mouseleave',function(){ el.style.transform=''; });
-  });
-})();
-
-/* ---- TESTIMONIALS CAROUSEL (stacked crossfade — no layout shift) ---- */
-(function(){
-  var data=[
-    {t:"Яна допомагає відчути себе впевнено й красиво в кадрі.", n:"— Марія Бондаренко · особистий портрет"},
-    {t:"Працювати з Яною — суцільне задоволення. Кадри живі, теплі й по-справжньому мої.", n:"— Софія Коваленко · fashion-зйомка"},
-    {t:"Вона бачить деталі, яких не помічаєш сам. Результат перевершив усі очікування.", n:"— Катерина Шевченко · бренд"},
-    {t:"Зйомка минула легко й невимушено, а фото — наче з обкладинки журналу.", n:"— Анастасія Мельник · beauty"},
-    {t:"Для нашого бренду це були найкращі візуали за рік. Дякую за професійність і смак!", n:"— Олена Ткаченко · brand content"},
-    {t:"Відчувала себе спокійно весь процес. Яна вміє розкрити людину перед камерою.", n:"— Дарина Кравчук · портрет"}
-  ];
-  var stack=document.getElementById('testiStack'), dotsWrap=document.getElementById('testiDots');
-  if(!stack||!dotsWrap) return;
-  var slides=data.map(function(d,idx){
-    var s=document.createElement('div'); s.className='slide'+(idx===0?' active':'');
-    var p=document.createElement('p'); p.textContent=d.t;
-    var c=document.createElement('cite'); c.textContent=d.n;
-    s.appendChild(p); s.appendChild(c); stack.appendChild(s);
-    var b=document.createElement('button'); b.setAttribute('aria-label','Відгук '+(idx+1));
-    b.addEventListener('click',function(){ go(idx); restart(); });
-    dotsWrap.appendChild(b);
-    return s;
-  });
-  var i=0, timer;
-  function go(n){ slides[i].classList.remove('active'); i=(n+slides.length)%slides.length; slides[i].classList.add('active'); dots(); }
-  function dots(){ Array.prototype.forEach.call(dotsWrap.children,function(b,idx){ b.classList.toggle('active', idx===i); }); }
-  function restart(){ clearInterval(timer); if(!REDUCE) timer=setInterval(function(){ go(i+1); }, 6000); }
-  dots(); restart();
-})();
-
-/* ---- LANG TOGGLE (UA default) ---- */
-(function(){
-  var btns=document.querySelectorAll('.lang button'); var cur='uk';
-  var nodes=document.querySelectorAll('[data-en]');
-  var ua=new Map(); nodes.forEach(function(n){ ua.set(n, n.innerHTML); });
-  var fields=document.querySelectorAll('[data-en-placeholder],[data-en-label]');
-  var uaFields=new Map(); fields.forEach(function(n){ uaFields.set(n,{placeholder:n.getAttribute('placeholder'),label:n.getAttribute('aria-label')}); });
-  function setLang(l){
-    cur=l;
-    nodes.forEach(function(n){ n.innerHTML = (l==='en') ? n.getAttribute('data-en') : ua.get(n); });
-    fields.forEach(function(n){
-      n.setAttribute('placeholder',l==='en'?n.getAttribute('data-en-placeholder'):uaFields.get(n).placeholder);
-      n.setAttribute('aria-label',l==='en'?n.getAttribute('data-en-label'):uaFields.get(n).label);
-    });
-    document.documentElement.lang = (l==='en')?'en':'uk';
-    btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===l); });
-    document.dispatchEvent(new Event('site:languagechange'));
-  }
-  btns.forEach(function(b){ b.addEventListener('click',function(){ setLang(b.getAttribute('data-lang')); }); });
-})();
-
-</script>
-<script type="module" src="assets/booking.js?v=groups-1"></script>
-</body>
-</html>
+</body></html>

@@ -14,7 +14,7 @@ const bindings = () => ({ TELEGRAM_BOT_TOKEN: 'test-only', TELEGRAM_CHAT_ID: '-1
 test('booking in a real browser with offline Telegram responses', async t => {
   const browser = await chromium.launch({ headless: true });
   t.after(() => browser.close());
-  async function open({ telegramFetch = async () => Response.json({ ok: true }), endpoint = api, timeoutMs, env = bindings(), viewport = { width: 1280, height: 900 } } = {}) {
+  async function open({ telegramFetch = async () => Response.json({ ok: true }), endpoint = api, timeoutMs, env = bindings(), viewport = { width: 1280, height: 900 }, blockValidation = false } = {}) {
     const context = await browser.newContext({ viewport, reducedMotion: 'reduce' });
     t.after(() => context.close());
     const page = await context.newPage();
@@ -35,14 +35,15 @@ test('booking in a real browser with offline Telegram responses', async t => {
       }
       if (!request.url().startsWith(site)) return route.abort();
       const relative = new URL(request.url()).pathname.slice('/yana-vergun-photography/'.length) || 'index.html';
+      if (blockValidation && relative === 'assets/phone-number.js') return route.abort();
       if (relative === 'assets/booking-config.js') {
         return route.fulfill({ contentType: 'text/javascript', body: `export const BOOKING_ENDPOINT = ${JSON.stringify(endpoint)};` });
       }
       // Large portfolio photos are unrelated to the form tests; load the contact photo for visual QA.
-      if (/\.(jpg|png)$/i.test(relative) && !['assets/photo-7.jpg', 'assets/logo.png'].includes(relative)) return route.abort();
+      if (/\.(jpg|png|avif|webp)$/i.test(relative) && !relative.includes('photo-7-') && relative !== 'assets/logo.png') return route.abort();
       try {
         const body = await readFile(new URL(relative, root));
-        const contentType = relative.endsWith('.js') ? 'text/javascript' : relative.endsWith('.html') ? 'text/html' : relative.endsWith('.png') ? 'image/png' : relative.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg';
+        const contentType = relative.endsWith('.js') ? 'text/javascript' : relative.endsWith('.css') ? 'text/css' : relative.endsWith('.html') ? 'text/html' : relative.endsWith('.woff2') ? 'font/woff2' : relative.endsWith('.avif') ? 'image/avif' : relative.endsWith('.webp') ? 'image/webp' : relative.endsWith('.png') ? 'image/png' : relative.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg';
         return route.fulfill({ contentType, body });
       } catch { return route.fulfill({ status: 404, body: '' }); }
     });
@@ -59,9 +60,21 @@ test('booking in a real browser with offline Telegram responses', async t => {
   const submit = page => page.locator('#submitBtn').click();
   const status = page => page.locator('#formStatus').textContent();
 
+  await t.test('validation module loads only on form interaction; loading failure preserves data', async () => {
+    const { page, calls } = await open({ blockValidation: true });
+    assert.equal(await page.evaluate(()=>performance.getEntriesByType('resource').some(e=>e.name.endsWith('/phone-number.js'))),false);
+    await fill(page);
+    await submit(page);
+    await page.waitForFunction(()=>document.querySelector('#formStatus').textContent.includes('тимчасово недоступні'));
+    assert.equal(await page.locator('[name="name"]').inputValue(),'Тестова заявка');
+    assert.equal(await page.locator('#submitBtn').isDisabled(),false);
+    assert.equal(calls(),0);
+  });
+
   await t.test('required fields, invalid phone/Instagram and length constraints', async () => {
     const { page, calls } = await open();
     await submit(page);
+    await page.waitForFunction(()=>document.querySelector('[name="name"]').getAttribute('aria-invalid')==='true');
     assert.equal(calls(), 0);
     assert.equal(await page.locator('[name="name"]').getAttribute('aria-invalid'), 'true');
     await fill(page);

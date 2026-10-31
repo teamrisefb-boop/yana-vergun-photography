@@ -8,6 +8,11 @@
   },
   "scripts": {
     "build:phone": "node scripts/build-phone.mjs",
+    "build:images": "node scripts/build-images.mjs && node scripts/update-image-markup.mjs",
+    "build:fonts": "node scripts/build-fonts.mjs",
+    "preview": "node scripts/preview.mjs",
+    "test:ui": "node --test tests/ui.browser.test.mjs",
+    "measure": "node scripts/measure-performance.mjs",
     "test": "node --test tests/worker.test.mjs tests/telegram-group.test.mjs",
     "test:browser": "node --test tests/booking.browser.test.mjs",
     "worker:check": "wrangler deploy --config worker/wrangler.jsonc --dry-run --outdir .wrangler/check",
@@ -17,8 +22,12 @@
     "telegram:group": "node scripts/setup-telegram-group.mjs --bot YanaVergun_bot"
   },
   "devDependencies": {
+    "@fontsource-variable/montserrat": "^5.3.0",
     "esbuild": "0.28.2",
+    "lighthouse": "^13.6.0",
+    "parse5": "^8.0.1",
     "playwright": "1.64.1",
+    "sharp": "^0.35.5",
     "wrangler": "4.156.0"
   },
   "dependencies": {

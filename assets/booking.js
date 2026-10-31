@@ -1,5 +1,6 @@
 import { BOOKING_ENDPOINT } from './booking-config.js';
-import { validateBooking } from './booking-validation.js?v=groups-1';
+let validationModule;
+const loadValidation = () => validationModule ||= import('./booking-validation.js?v=groups-1');
 
 const copy = {
   uk: {
@@ -40,6 +41,7 @@ if (form) {
   let state = '';
   let errors = {};
   form.noValidate = true;
+  form.addEventListener('focusin', () => { loadValidation().catch(() => { validationModule = undefined; }); }, { once: true });
   const language = () => document.documentElement.lang === 'en' ? 'en' : 'uk';
   function render() {
     const text = copy[language()];
@@ -75,17 +77,31 @@ if (form) {
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (busy) return;
+    busy = true;
+    state = '';
+    render();
     const payload = Object.fromEntries(new FormData(form));
-    const validation = validateBooking(payload);
+    let validation;
+    try {
+      const { validateBooking } = await loadValidation();
+      validation = validateBooking(payload);
+    } catch {
+      validationModule = undefined;
+      busy = false;
+      state = 'unavailable';
+      render();
+      return;
+    }
     errors = validation.errors;
     if (!validation.valid) {
+      busy = false;
       state = 'invalid';
       render();
       form.reportValidity();
       return;
     }
     const url = endpoint();
-    if (!url) { state = 'unavailable'; render(); return; }
+    if (!url) { busy = false; state = 'unavailable'; render(); return; }
     busy = true;
     state = '';
     render();
